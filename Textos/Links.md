@@ -19,3 +19,6 @@ https://bandteccom-my.sharepoint.com/:x:/g/personal/nicoly_teixeira_sptech_schoo
 
 MACRO CRONOGRAMA
 https://bandteccom-my.sharepoint.com/:x:/g/personal/nicoly_teixeira_sptech_school/EZ7-dBBH7JtAhy8c_3pG3SMBSWafn_9YHw5GeZqtemME6w?e=xuEyaW
+
+FIGMA
+https://www.figma.com/design/YMEqR9CYldYgEqApWdAWIQ/Safe-Light?node-id=0-1&node-type=canvas&t=cp6oGJzNF9tdGMIp-0
