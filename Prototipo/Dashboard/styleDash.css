@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.logo{
+
+  
+    justify-content: space-between;
+    align-self: center;
+    display: flex;
+    height: 90px;
+    width: 20px;
+    
+   
+   
+}
+.logo2{
+
+    align-self: flex-start;
+    justify-content: flex-start;
+    display: flex;
+    height: 75px;
+    width: 20px;
+    margin-top: -70%;
+    
+    
+   
+}
+
+
+.header{
+    background-color: #84BFC3;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+    
+    
+}
+
+.header .hyperlinks span{
+    
+    padding: 20px;
+    font-size: 18px;
+    display: flex;
+    text-wrap: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+ 
+    
+    
+    
+}
+
+.header .hyperlinks{
+    display: flex;
+    gap: 0px;
+    justify-content: space-evenly;
+    align-items: center;
+
+    
+  
+    
+}
+
+.hyperlinks .Login{
+    background-color: rgb(255, 46, 46);
+    color: white;
+    font-weight: 900;
+    border-radius: 13px;
+    width: 100px;
+    height: 1px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+.Cadastro{
+    background-color: rgb(221, 202, 115);
+    color: white;
+    font-weight: 900;
+    border-radius: 13px;
+    width: 100px;
+    height: 1px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+ b{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 80px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(221, 202, 115);;
+    
+}
+
+.Dashboard{
+    display: flex;
+    height:100vw;
+    width: 100vw;
+    padding: 0px;
+    background-color: #FEF9E6;
+    justify-content: space-evenly;
+    margin-top: 4%;
+    
+}
+
+.Dashboard img{
+    width: 33%;
+    height: fit-content;
+    display: flex;
+    
+    
+}
