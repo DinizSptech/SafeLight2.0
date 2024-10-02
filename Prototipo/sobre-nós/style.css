@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FEF9E6;
+}
+
+:root {
+    --tamanho-header: 80px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamnho-footer) - 2px);
+    --tamanho-footer: 65px;
+}
+
+.header {
+    height: var(--tamnho-header);
+    background-color: #84BFC3;
+    font-size: 20px;
+}
+
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    display: flex;
+    margin: auto;
+}
+
+.header .login{
+    border: 2px solid #D96153;
+    border-radius: 20px;
+    background-color: #D96153;
+    padding: 5px 20px;
+}
+
+.header .cadastro{
+    border: 2px solid #FFB870;
+    border-radius: 20px;
+    background-color: #FFB870;
+    padding: 5px 20px;
+}
+
+.header a {
+    text-decoration: none;
+    color: white;
+}
+
+.agora{
+    font-weight: 800;
+}
+
+.navbar {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: white;
+}
+
+#sobre_nos {
+    background-color: #FEF9E6;
+    display: flex;
+    align-items: center;
+    height: var(--tamanho-banner);
+    flex-direction: column;
+}
+
+.sobre-nos .container{
+    
+}
+
+#sobre_nos h1{
+    color: #FFB870;
+    font-size: 60px;
+}
+
+#sobre_nos p{
+    font-size: 20px;
+}
+
+.footer {
+    height: var(--tamanho-footer);
+    color: black;
+    display: flex;
+    font-size: 15px;
+    border-top: 2px solid grey;
+    height: 100%;
+}
+
+.footer .container{
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
