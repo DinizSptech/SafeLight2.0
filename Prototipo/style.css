@@ -70,3 +70,56 @@ body{
     margin-right: 3.2%;
 }
 
+#login {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#imgLogin {
+    width: 50%;
+    height: auto;
+
+    background-color: #FFB870;
+}
+
+.container {
+    width: 20%;
+    background-color: #84BFC3;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px 40px 20px 40px;
+
+    p {
+        width: 90%;
+        font-size: 20px;
+        font-weight: 200;
+    }
+
+    input {
+        width: 70%;
+        height: 50px;
+        border-radius: 20px;
+        border: #FEF9E6 1px solid;
+    }
+
+    button {
+        width: 50%;
+        height: 40px;
+
+        margin-top: 20px;
+        border-radius: 10px;
+
+        background-color: #D96153;
+        color: black;
+        border: #D96153 1px solid;
+    }
+
+    #span_cadastro {
+        margin-top: 50px;
+        color: #FEF9E6;
+    }
+}
