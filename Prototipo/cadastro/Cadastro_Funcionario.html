@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeLight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <img class="safelight" src="../assets/fotos/image-removebg-preview.png">
+    <div class="fimheader">
+        <div class="palavras div_palavras">
+            <span onclick="irHome()">Home</span>
+            <span onclick="irSobre()">Sobre nós</span>
+            <span onclick="irCalc()">Simulador de energia</span>
+            <span onclick="irFale()">Fale conosco</span>
+            <span onclick="irFaq()">FAQ</span>
+        </div>
+        <div class="botão cor2" onclick="irLogin()">Login</div>
+        <div class="botão cor1" onclick="irCadastro()">Cadastro</div>
+    </div>
+    </div>
+    <div class="Cadastro_Funcionario">
+        
+        <div class="container">
+            <div class="titulo">Cadastro Funcionario</div>
+            <p class="p">Nome:</p>
+            <input type="text" id="ipt_nome_funcionario">
+            <p class="p">CPF:</p>
+            <input type="text" id="ipt_cpf">
+            <p class="p">Celular:</p>
+            <input type="text" id="ipt_celular">
+            <p class="p">Email:</p>
+            <input type="text" id="ipt_email">
+            <p class="p">Senha:</p>
+            <input type="password" id="ipt_senha">
+            <br> 
+            <button onclick="logar()">ENVIAR</button>
+            <br>
+           
+        </div>
+        <div class="footer">
+            <img class="safelight" src="../assets/fotos/image-removebg-preview.png">
+        <div class="fimfooter">
+            © 2024 SafeLight. Todos os direitos reservados.
+            </div>
+        </div>
+</body>
+</html>
+<script src="./script.js"></script>
