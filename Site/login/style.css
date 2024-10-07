@@ -3,9 +3,6 @@ body{
     background-color: #FEF9E6;
 }
 
-#div_palavras{
-    margin-right: 3.2%;
-}
 
 #login {
     display: flex;
@@ -17,7 +14,17 @@ body{
     width: 50%;
     height: auto;
 
-    background-color: #FFB870;
+    background-image: url(../assets/fotos/login_womanPC.png);
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.img_luz {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
 }
 
 .container {

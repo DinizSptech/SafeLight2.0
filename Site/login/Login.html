@@ -14,22 +14,25 @@
 
       <div class="select" id="div_selects">
         <div class="palavras" id="div_palavras">
-          <span onclick="irHome()">Home</span>
-          <span onclick="irSobre()">Sobre nós</span>
-          <span onclick="irCalc()">Simulador de energia</span>
-          <span onclick="irFale()">Fale conosco</span>
-          <span onclick="irFaq()">FAQ</span>
+          <a href="../home.html">Home</a>
+          <a href="../about/sobre_nos.html"">Sobre nós</a>
+          <a href="../Simulador de energia.html"">Simulador de energia</a>
+          <a href="../faq/faq.html">FAQ</a>
         </div>
 
-        <div class="botão cor2" onclick="irLogin()">Login</div>
-        <div class="botão cor1" onclick="irCadastro()">Cadastro</div>
+        <div class="botão cor2">
+          <a href="../login/Login.html">Login</a>
+        </div>
+        <div class="botão cor1"">
+          <a href="../sigin/Cadastro_Funcionario.html">Cadastro</a>
+        </div>
       </div>
     </div>
 
     <div id="login">
-      <img id="imgLogin" src="#" alt="imgLogin" />
+      <div id="imgLogin"></div>
       <div class="container">
-        <img src="" alt="imgLampada" />
+        <img class="img_luz" src="../assets/fotos/light.svg" alt="imgLampada" />
         <p class="p">Login</p>
         <input type="text" id="input_username" />
         <p class="p">Senha:</p>

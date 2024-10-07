@@ -6,11 +6,6 @@ body{
     background-color: #FEF9E6;
     font-family: 'Josefin Sans';
 }
-
-#div_palavras{
-  margin-right: 3.2%;
-}
-
  .titulo {
     padding: 100px;
     padding-bottom: 100px;
@@ -83,33 +78,4 @@ hr {
   border-top: 1px solid #EAEAEA;
   margin-bottom: 10px;
   
-}
-
-.rodape{
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-
-
-  p{
-      font-size: 24px ;
-      color: #868686;
-      margin-right: 40px;
-    
-  }
-  
-}
-
-.safelight2{
-  height: 70px;
-  padding: 20px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.separator {
-  width: 5px;
-  background-color: #84BFC3;
-  height: 90%; /* Altera conforme o tamanho desejado */
 }
