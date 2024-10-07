@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
 body{
     margin: 0;
     padding: 0;
     background-color: #FEF9E6;
+  font-family: "Josefin Sans";
+
 }
 
 :root {
@@ -11,42 +15,8 @@ body{
     --tamanho-footer: 65px;
 }
 
-.header {
-    height: var(--tamnho-header);
-    background-color: #84BFC3;
-    font-size: 20px;
-}
-
-.header .container {
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 90%;
-    display: flex;
-    margin: auto;
-}
-
-.header .login{
-    border: 2px solid #D96153;
-    border-radius: 20px;
-    background-color: #D96153;
-    padding: 5px 20px;
-}
-
-.header .cadastro{
-    border: 2px solid #FFB870;
-    border-radius: 20px;
-    background-color: #FFB870;
-    padding: 5px 20px;
-}
-
-.header a {
-    text-decoration: none;
-    color: white;
-}
-
-.agora{
-    font-weight: 800;
+.texto{
+    width: 80%;
 }
 
 .navbar {
@@ -64,10 +34,6 @@ body{
     align-items: center;
     height: var(--tamanho-banner);
     flex-direction: column;
-}
-
-.sobre-nos .container{
-    
 }
 
 #sobre_nos h1{

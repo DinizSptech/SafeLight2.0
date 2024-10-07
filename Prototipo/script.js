@@ -1,21 +1,27 @@
-function irHome(){
-    window.location.href = 'Prototipo\home.html';
+function irHome() {
+  window.location.href = "home.html";
 }
-function irSobre(){
-    window.location.href = 'Prototipo\Sobre nós.html';
+
+function irSobre() {
+  window.location.href = "about/sobre_nos.html";
 }
-function irCalc(){
-    window.location.href = 'Prototipo\Simulador de energia.html';
+
+function irCalc() {
+  window.location.href = "Simulador de energia.html";
 }
-function irFale(){
-    window.location.href = 'Prototipo\Fale conosco.html';
+
+function irFale() {
+  window.location.href = "PrototipoFale conosco.html";
 }
-function irFaq(){
-    window.location.href = 'Prototipo\faq.html';
+
+function irFaq() {
+  window.location.href = "faq/faq.html";
 }
-function irLogin(){
-    window.location.href = 'Prototipo\Cadastro.html';
+
+function irLogin() {
+  window.location.href = "login/login.html";
 }
-function irCadastro(){
-    window.location.href = 'Prototipo\Login.html';
+
+function irCadastro() {
+  window.location.href = "PrototipoLogin.html";
 }
