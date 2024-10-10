@@ -1,10 +1,14 @@
 /* Fonte Family */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
-body {
+body { 
   margin: 0%;
   background-color: #FFF9E7;
   font-family: "Josefin Sans";
+}
+
+body::-webkit-scrollbar { /* Esconde a scrollbar */
+  display: none;
 }
 
 /* HEADER DO SITE E OS BOTÕES*/
@@ -220,4 +224,24 @@ body .content .content {
   width: 5px;
   background-color: #84BFC3;
   height: 90%; /* Altera conforme o tamanho desejado */
+}
+
+.fade-in {
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+}
+
+.agora {
+  font-weight: 700;
 }

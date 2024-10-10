@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="../css/dashStyle.css">
+    <link rel="stylesheet" href="../css/default_style.css">
+    <link rel="icon" href="../assets/fotos/light.svg">
+
+    <title>Dashboard Estático</title>
+</head>
+<body>
+
+  <div class="header">
+    <img class="safelight" src="../assets/fotos/logo2.png" />
+
+    <div class="select" id="div_selects">
+      <div class="palavras" id="div_palavras">
+        <a href="./home.html">Home</a>
+        <a href="./sobreNos.html"">Sobre nós</a>
+        <a href="./calculadora.html"">Simulador de energia</a>
+        <a href="./faq.html">FAQ</a>
+      </div>
+
+      <div class="botão cor2">
+        <a href="./login.html">Login</a>
+      </div>
+      <div class="botão cor1"">
+        <a href="./cadFuncionario.html">Cadastro</a>
+      </div>
+    </div>
+  </div>
+  
+    
+      <div class="dashboard">
+        <div class="header_dash">
+          <img class="user_img" src="../assets/fotos/user_img.svg" alt="Imagem do Usuário">
+          <p>Seja bem vindo Fernando Brandão!</p>
+
+          <h1>Dashboard Empresa XPTO</h1> 
+        </div>
+
+        <div class="canvas">
+          <canvas class="chart" id="myChart1"></canvas>
+          <canvas class="chart" id="myChart2"></canvas>
+
+        </div>
+      </div>
+    
+
+      <footer>
+        <hr>
+        <div class="rodape">
+        <img class="safelight2" src="../assets/fotos/logo1.png">
+        <p> © 2024 SafeLight. Todos os direitos reservados.</p>
+      </div>
+      </footer>
+</body>
+</html>
+
+<script>
+const ctx1 = document.getElementById('myChart1');
+const ctx2 = document.getElementById('myChart2');
+
+new Chart(ctx1, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+</script>
