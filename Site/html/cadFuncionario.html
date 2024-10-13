@@ -16,8 +16,8 @@
     <div class="select" id="div_selects">
       <div class="palavras" id="div_palavras">
         <a href="./home.html">Home</a>
-        <a href="./sobreNos.html"">Sobre nós</a>
-        <a href=" ./calculadora.html"">Simulador de energia</a>
+        <a href="./sobreNos.html">Sobre nós</a>
+        <a href=" ./calculadora.html">Simulador de energia</a>
         <a href="./faq.html">FAQ</a>
       </div>
 
@@ -36,21 +36,150 @@
       <div class="titulo">Cadastro Funcionario</div>
       <p class="p">Nome:</p>
       <input type="text" id="ipt_nome_funcionario">
+      <p class="p">Nome empresa:</p>
+      <input type="text" id="ipt_nome_empresa">
       <p class="p">CPF:</p>
       <input type="text" id="ipt_cpf">
+      <div id="div_mensagem_cpf"></div>
       <p class="p">Celular:</p>
       <input type="text" id="ipt_celular">
+      <div id="div_mensagem_celular"></div>
       <p class="p">Email:</p>
       <input type="text" id="ipt_email">
+      <div id="div_mensagem_email"></div>
       <p class="p">Senha:</p>
-      <input type="password" id="ipt_senha">
+      <input type="text" id="ipt_senha">
+      <div id="div_mensagem_senha"></div>
+      <p class="p">Confirmação senha:</p>
+      <input type="text" id="ipt_senha_confirmacao">
+      <div id="div_mensagem_senha_confirmacao"></div>
+
       <br>
-      <button onclick="logar()">ENVIAR</button>
-      <br>
+      <button onclick="cadastrar()">ENVIAR</button>
+      
 
     </div>
   </div>
 </body>
 
 </html>
-<script src="./script.js"></script>
+<script>
+
+  function cadastrar(){
+    var nome = ipt_nome_funcionario.value;
+    var nome_empresa = ipt_nome_empresa.value;
+    var cpf = ipt_cpf.value
+    var celular = ipt_celular.value;
+    var email = ipt_email.value;
+    var senha = ipt_senha.value;
+    var senha_confimacao = ipt_senha_confirmacao.value;
+
+
+    var mensagem = ""
+    var mensagem_cpf = ""
+    var mensagem_celular = ""
+    var mensagem_email = ""
+    var mensagem_senha = ""
+    var mensagem_senha_confirmacao = ""
+    var cadastro = 0;
+
+    var tamanho_cpf= cpf.length; 
+   
+   
+    if (tamanho_cpf != 11) { 
+      mensagem_cpf = `CPF Incorreto ! quantidade de caracteres invalidas <br>`;
+      cadastro++
+    } 
+    div_mensagem_cpf.innerHTML = mensagem_cpf;
+
+  
+    var tamanho_celular = celular.length; 
+
+    if(tamanho_celular != 11){
+      mensagem_celular = `Número de celular invalído, quantidade de caracteres invalidas`
+      cadastro++
+    }
+    div_mensagem_celular.innerHTML = mensagem_celular;
+  
+
+    var email_arroba = email.includes('@');
+    if(email_arroba == false){
+      mensagem_email = "email incorreto <br>"
+      cadastro++
+    }
+    div_mensagem_email.innerHTML = mensagem_email;
+  
+
+    var senha_caracter_especial = senha.includes('@') || senha.includes('#') ||senha.includes('$')||senha.includes('!')||senha.includes('%');
+    if (senha_caracter_especial == false){
+      mensagem_senha = "Senha fraca falta caracter especial <br>" 
+      cadastro++
+    } 
+    
+    var senha_numero = senha.includes("0") || senha.includes("1") || senha.includes("2") || senha.includes("3") || senha.includes("4") || senha.includes("5") || senha.includes("6") || senha.includes("7") || senha.includes("8") || senha.includes("9")
+      if (senha_numero == false){
+        mensagem_senha += "Senha fraca falta numero<br>"
+        cadastro++
+      }
+
+      var tamanho_senha = senha.length; 
+
+    if(tamanho_senha < 8){
+      mensagem_senha += `Senha fraca precisa de ao menos 8 caracteres<br>`
+      cadastro++
+    }
+    
+    var letra_maiuscula = "";
+    var letra_minuscula = "";
+
+    for (var contador = 0; contador < tamanho_senha; contador++) {
+          var letra = senha[contador];
+
+
+        if (letra.toLowerCase() != letra) {
+           letra_maiuscula = true;
+            }
+
+  
+        if (letra.toUpperCase() != letra) {
+            letra_minuscula = true;
+            }
+         }
+
+
+       if (letra_maiuscula == false) {
+          mensagem_senha += "Senha fraca falta caracter maiusculo<br>";
+          cadastro++
+          }
+
+       if (letra_minuscula == false) {
+         mensagem_senha += "Senha fraca falta caracter minusculo<br>";
+         cadastro++
+        }
+
+         div_mensagem_senha.innerHTML = mensagem_senha;
+  
+  
+
+    if(senha != senha_confimacao){
+      mensagem_senha_confirmacao = "Senhas estão diferentes"
+      cadastro++
+    }
+    div_mensagem_senha_confirmacao.innerHTML = mensagem_senha_confirmacao;
+  
+        if (cadastro == "0"){
+            alert("Dados cadastrados")
+
+
+        document.getElementById('ipt_nome_funcionario').value = "";
+        document.getElementById('ipt_nome_empresa').value = "";  
+        document.getElementById('ipt_cpf').value = "";
+        document.getElementById('ipt_celular').value = "";
+        document.getElementById('ipt_email').value = "";
+        document.getElementById('ipt_senha').value = "";
+        document.getElementById('ipt_senha_confirmacao').value = "";
+        
+               } 
+  }
+
+</script>
