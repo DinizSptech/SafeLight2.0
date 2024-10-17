@@ -1,90 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/fotos/light.svg">
 
-    <link rel="stylesheet" href="../css/default_style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./assets/fotos/light.svg">
 
-    <title>Home - SafeLight</title>
-  </head>
-  <body>
-    <!--HEADER DO SITE E OS BOTÕES-->
-    <div class="header">
-      <img class="safelight" src="../assets/fotos/logo2.png" />
-  
-      <div class="select" id="div_selects">
-        <div class="palavras" id="div_palavras">
-          <a href="./home.html">Home</a>
-          <a href="./sobreNos.html"">Sobre nós</a>
-          <a href="./calculadora.html"">Simulador de energia</a>
-          <a href="./faq.html">FAQ</a>
-        </div>
-  
-        <div class="botão cor2">
-          <a href="./login.html">Login</a>
-        </div>
-        <div class="botão cor1"">
-          <a href="./cadFuncionario.html">Cadastro</a>
-        </div>
+  <link rel="stylesheet" href="../css/default_style.css" />
+
+  <title>Home - SafeLight</title>
+</head>
+
+<body>
+  <!--HEADER DO SITE E OS BOTÕES-->
+  <div class="header">
+    <img class="safelight" src="../assets/fotos/logo2.png" />
+
+    <div class="select" id="div_selects">
+      <div class="palavras" id="div_palavras">
+        <a href="./home.html">Home</a>
+        <a href="./calculadora.html">Simulador de energia</a>
+        <a href="./faq.html">FAQ</a>
+      </div>
+
+      <div class="botão cor2">
+        <a href="./login.html">Login</a>
+      </div>
+      <div class="botão cor1"">
+          <a href=" ./cadFuncionario.html">Cadastro</a>
       </div>
     </div>
+  </div>
 
-    <div class="content fade-in">
-      <img
-        class="img_womanComputer"
-        src="../assets/fotos/home_womanPC.svg"
-        alt=""
-      />
+  <!-- Ilustração/SVG  -->
+  <div class="content fade-in">
+    <img class="img_womanComputer" src="../assets/fotos/home_man.svg" alt="" />
 
-      <div class="content">
-        <img class="img_bulbLight" src="../assets/fotos/light.svg" alt="" />
-        <p class="text">
-          SafeLight melhora a segurança e produtividade no trabalho ao ajustar
-          automaticamente a iluminação com sensores. <br />
-          <br />
-          Monitore dados em tempo real, receba alertas e veja a economia gerada,
-          tudo através de uma interface web simples e intuitiva.
-        </p>
-      </div>
-    </div>
-
-    <div class="content faleConosco fade-in">
-      <h4>Fale Conosco</h4>
-
-      <p class="text_1">
-        A SafeLight disponibiliza vários canais de atendimento para atender aos
-        seus clientes com a máxima agilidade e praticidade. <br /> <br>
-        Explore as opções abaixo e veja qual a melhor opção para você.
+    <!-- Home Text -->
+    <div class="home_text">
+      <img class="img_bulbLight" src="../assets/fotos/light.svg" alt="" />
+      <p class="text">
+        SafeLight melhora a segurança e produtividade no trabalho ao ajustar
+        a iluminação com base nas informações dos sensores. <br />
+        <br />
+        Monitore dados em tempo real, receba alertas através de uma interface web simples e intuitiva.
       </p>
+    </div>
+  </div>
 
-      <div class="boxes">
-          <div class="box">
-            <img class="img_telefone" src="../assets/fotos/telefone.svg" alt="" />
-            <p class="text_2">
-              Se você tiver dúvidas, sugestões, entre outros, por favor,
-              comunique-nos:
-            </p>
-            <p class="text_contato">safelight@gmail.com</p>
-          </div>
-    
-          <div class="box">
-            <img class="img_email" src="../assets/fotos/email.svg" alt="" />
-            <p class="text_2">Que tal um bate papo com o nosso suporte Via WhatsApp:</p>
-            <p class="text_contato">(11) 97563-7678</p>
-          </div>
-
-      </div>
+  <div class="fade-in" id="sobre_nos">
+    <div class="container"></div>
+    <h1>Sobre nós</h1>
+    <div class="texto">
+      <p>Nossa missão é desenvolver soluções tecnológicas que promovam ambientes de trabalho mais saudáveis e
+        eficientes.</p>
+      <p>Acreditamos que a iluminação adequada pode transformar a qualidade de vida dos funcionários, aumentar a
+        produtividade e reduzir custos operacionais.</p>
     </div>
 
-    <footer>
-        <hr>
-        <div class="rodape">
-        <img class="safelight2" src="../assets/fotos/logo1.png">
-        <p> © 2024 SafeLight. Todos os direitos reservados.</p>
+  </div>
+
+  <div class="faleConosco fade-in">
+    <h4>Fale Conosco</h4>
+
+    <p class="text_1">
+      Se interessa pela nosso produto e deseja fazer este investimento em sua empresa? <br> <br>
+      A SafeLight disponibiliza vários canais de atendimento para atender aos
+      seus clientes com a máxima agilidade e praticidade. <br /> <br>
+      Explore as opções abaixo e veja qual a melhor opção para você.
+    </p>
+
+    <div class="boxes">
+      <div class="box">
+        <img class="img_telefone" src="../assets/fotos/telefone.svg" alt="" />
+        <p class="text_2">
+          Se você tiver dúvidas, sugestões, entre outros, por favor,
+          comunique-nos:
+        </p>
+        <p class="text_contato">safelight@gmail.com</p>
       </div>
-      </footer>
-  </body>
+
+      <div class="box">
+        <img class="img_email" src="../assets/fotos/email.svg" alt="" />
+        <p class="text_2">Que tal um bate papo com o nosso suporte Via WhatsApp:</p>
+        <p class="text_contato">(11) 97563-7678</p>
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  <footer>
+    <hr>
+    <div class="rodape">
+      <img class="safelight2" src="../assets/fotos/logo1.png">
+      <p> © 2024 SafeLight. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+
 </html>
-<script src="./script.js"></script>
+<script>
+  function scrollToDiv() {
+    var target = document.getElementById("sobre_nos");
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>

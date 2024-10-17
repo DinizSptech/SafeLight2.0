@@ -36,6 +36,7 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     padding: 50px 40px 20px 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     p {
         width: 90%;
@@ -53,16 +54,20 @@ body{
         color: #868686;
     }
 
-    button {
+    a {
         width: 50%;
         height: 40px;
 
         margin-top: 20px;
         border-radius: 10px;
 
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         background-color: #D96153;
-        color: black;
-        border: #D96153 1px solid;
+        color: white;
     }
 
     button:hover {
@@ -74,3 +79,4 @@ body{
         color: #FEF9E6;
     }
 }
+

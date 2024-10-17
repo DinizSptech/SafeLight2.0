@@ -1,104 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../css/dashStyle.css" />
+    <link rel="stylesheet" href="../css/default_style.css" />
+    <link rel="icon" href="../assets/fotos/light.svg" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <link rel="stylesheet" href="../css/dashStyle.css">
-    <link rel="stylesheet" href="../css/default_style.css">
-    <link rel="icon" href="../assets/fotos/light.svg">
 
     <title>Dashboard Estático</title>
-</head>
-<body>
+  </head>
 
-  <div class="header">
-    <img class="safelight" src="../assets/fotos/logo2.png" />
+  <body>
+    <div class="header">
+      <img class="safelight" src="../assets/fotos/logo2.png" />
 
-    <div class="select" id="div_selects">
-      <div class="palavras" id="div_palavras">
-        <a href="./home.html">Home</a>
-        <a href="./sobreNos.html"">Sobre nós</a>
-        <a href="./calculadora.html"">Simulador de energia</a>
-        <a href="./faq.html">FAQ</a>
-      </div>
+      <div class="select" id="div_selects">
+        <div class="palavras" id="div_palavras">
+          <a href="./home.html">Home</a>
+          <a href="./sobreNos.html">Sobre nós</a>
+          <a href=" ./calculadora.html">Simulador de energia</a>
+          <a href="./faq.html">FAQ</a>
+        </div>
 
-      <div class="botão cor2">
-        <a href="./login.html">Login</a>
-      </div>
-      <div class="botão cor1"">
-        <a href="./cadFuncionario.html">Cadastro</a>
+        <div class="botão cor2">
+          <a href="./login.html">Login</a>
+        </div>
+        <div class="botão cor1">
+          <a href="./cadFuncionario.html">Cadastro</a>
+        </div>
       </div>
     </div>
-  </div>
-  
-    
-      <div class="dashboard">
-        <div class="header_dash">
-          <img class="user_img" src="../assets/fotos/user_img.svg" alt="Imagem do Usuário">
+
+    <div class="dashboard fade-in">
+      <div class="header_dash">
+        <h1>Empresa XPTO</h1>
+
+        <div class="boxHeader">
+          <img
+            class="user_img"
+            src="../assets/fotos/user_img.svg"
+            alt="Imagem do Usuário"
+          />
           <p>Seja bem vindo Fernando Brandão!</p>
 
-          <h1>Dashboard Empresa XPTO</h1> 
-        </div>
-
-        <div class="canvas">
-          <canvas class="chart" id="myChart1"></canvas>
-          <canvas class="chart" id="myChart2"></canvas>
-
         </div>
       </div>
-    
+      <!-- <div class="chart-container">
+        <div class="headerChart">
+          Análise semanal de luminosidade por ambiente
+        </div>
+        <canvas class="boxCanvas" id="myChart1"></canvas>
+      </div> -->
+      <!-- <div class="kpi">Ambientes com a iluminação inadequada</div>
+      <div class="kpi">Ambiente com a iluminação adequada</div> -->
 
-      <footer>
-        <hr>
-        <div class="rodape">
-        <img class="safelight2" src="../assets/fotos/logo1.png">
-        <p> © 2024 SafeLight. Todos os direitos reservados.</p>
+      <div class="graficos">
+        <div class="ambiente">
+          <!-- Grafico + KPI -->
+          <div class="chart-container">
+            <div class="headerChart titleChart">Monitoramento</div>
+            <canvas class="boxCanvas" id="chartSalaReuniao"></canvas>
+          </div>
+          <div class="kpi">
+            <div class="headerKpi">
+              <h2 class="titleChart">Sala de Reunião</h2>
+            </div>
+            <span>Maior índice de iluminação</span>
+            <h3>791 Lux</h3>
+            <span>Menor índice de iluminação</span> <br />
+            <h3>444 Lux</h3>
+            <span>Média índice de iluminação</span> <br />
+            <h3>598 Lux</h3>
+          </div>
+        </div>
+
+        <div class="ambiente">
+          <!-- Grafico + KPI -->
+          <div class="chart-container">
+            <div class="headerChart titleChart">Monitoramento</div>
+            <canvas class="boxCanvas" id="chartEscritorio"></canvas>
+          </div>
+          <div class="kpi">
+            <div class="headerKpi">
+              <h2 class="titleChart">Escritório</h2>
+            </div>
+            <span>Maior índice de iluminação</span>
+            <h3>691 Lux</h3>
+            <span>Menor índice de iluminação</span> <br />
+            <h3>350 Lux</h3>
+            <span>Média índice de iluminação</span> <br />
+            <h3>520 Lux</h3>
+          </div>
+        </div>
+
+          <!-- Separar gráficos/ambiente por cor para ficar mais intuitivo -->
+
+        <!-- Dash 1; Análise de todos ambientes da empresa no dia atual -->
+        <!-- Dash 2; Análise geral dos ambientes em periodos por semana, mês e trimestre e sessão de alertas dos ambientes que precisam de ajuste na iluminação -->
       </div>
-      </footer>
-</body>
+    </div>
+
+    <footer>
+      <hr />
+      <div class="rodape">
+        <img class="safelight2" src="../assets/fotos/logo1.png" />
+        <p>© 2024 SafeLight. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
 </html>
-
-<script>
-const ctx1 = document.getElementById('myChart1');
-const ctx2 = document.getElementById('myChart2');
-
-new Chart(ctx1, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-new Chart(ctx2, {
-  type: 'line',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-
-</script>
+<script src="../javascript/chart.js"></script>
