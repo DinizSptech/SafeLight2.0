@@ -24,4 +24,4 @@ FIGMA
 https://www.figma.com/design/YMEqR9CYldYgEqApWdAWIQ/Safe-Light?node-id=0-1&node-type=canvas&t=cp6oGJzNF9tdGMIp-0
 
 CANVA DIAGRAMA DE SOLUÇÃO
-https://www.canva.com/design/DAGS6kWLAGE/SuYV-Q2GPSNwbTIqQD8F-Q/edit?utm_content=DAGS6kWLAGE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+https://www.canva.com/design/DAGTp4jGQeU/mPDzlZAQy9wMOhv8QN0DnQ/edit?utm_content=DAGTp4jGQeU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
