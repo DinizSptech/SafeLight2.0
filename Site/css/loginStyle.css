@@ -40,14 +40,16 @@ body {
 }
 
 .container p {
+  margin: 20px;
   width: 90%;
   font-size: 20px;
   font-weight: 350;
+  color: #3d3d3d;
 }
 
 .container input {
   width: 80%;
-  padding: 15px;
+  padding: 10px;
   border-radius: 20px;
   border: #fef9e6 1px solid;
   box-shadow: 2px 2px;
@@ -94,19 +96,15 @@ body {
 .container .loginButton {
   width: 50%;
   height: 40px;
-
   margin-top: 10px;
   border-radius: 10px;
-
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: #d96153;
   border: 2px #bebdba outset;
   cursor:pointer;
-
   color: white;
 }
 
