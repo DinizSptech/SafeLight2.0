@@ -43,67 +43,37 @@
             alt="Imagem do Usuário"
           />
           <p>Seja bem-vindo ${user}!</p>
-
         </div>
 
-        <a href="">
+        <a href="./dashboard.html">
           <span class="text">Análise individual</span>
-          <img class="svg" src="../assets/fotos/chartLine.svg" alt="">
+          <img class="svg" src="../assets/fotos/chartLine.svg" alt="" />
         </a>
-        <a href="./dashboard2.html">
+        <a href="">
           <span class="text">Análise geral</span>
-          <img class="svg" src="../assets/fotos/chartColumn.svg" alt="">
+          <img class="svg" src="../assets/fotos/chartColumn.svg" alt="" />
         </a>
       </div>
-      <!-- <div class="chart-container">
-        <div class="headerChart">
-          Análise semanal de luminosidade por ambiente
-        </div>
-        <canvas class="boxCanvas" id="myChart1"></canvas>
-      </div> -->
-      <!-- <div class="kpi">Ambientes com a iluminação inadequada</div>
-      <div class="kpi">Ambiente com a iluminação adequada</div> -->
 
       <div class="graficos">
         <div class="ambiente">
           <!-- Grafico + KPI -->
           <div class="chart-container">
             <div class="headerChart titleChart">Monitoramento</div>
-            <canvas class="boxCanvas" id="chartSalaReuniao"></canvas>
+            <canvas class="boxCanvas" id="chartGeral"></canvas>
           </div>
           <div class="kpi">
             <div class="headerKpi">
-              <h2 class="titleChart">Sala de Reunião</h2>
+              <h2 class="titleChart">Estatística gerais</h2>
             </div>
-            <span>Maior índice de iluminação</span>
-            <h3>791 Lux</h3>
-            <span>Menor índice de iluminação</span> <br />
-            <h3>444 Lux</h3>
-            <span>Média índice de iluminação</span> <br />
-            <h3>598 Lux</h3>
+            <span>Ambientes com a iluminação adequada</span>
+            <h3>Escritório 1 e Escritório 2</h3>
+            <span>Ambientes com a iluminação inadequada</span> <br />
+            <h3>Sala de conferência, Sala de Reunião e Cozinha</h3>
           </div>
         </div>
 
-        <div class="ambiente">
-          <!-- Grafico + KPI -->
-          <div class="chart-container">
-            <div class="headerChart titleChart">Monitoramento</div>
-            <canvas class="boxCanvas" id="chartEscritorio"></canvas>
-          </div>
-          <div class="kpi">
-            <div class="headerKpi">
-              <h2 class="titleChart">Escritório</h2>
-            </div>
-            <span>Maior índice de iluminação</span>
-            <h3>691 Lux</h3>
-            <span>Menor índice de iluminação</span> <br />
-            <h3>350 Lux</h3>
-            <span>Média índice de iluminação</span> <br />
-            <h3>520 Lux</h3>
-          </div>
-        </div>
-
-          <!-- Separar gráficos/ambiente por cor para ficar mais intuitivo -->
+        <!-- Separar gráficos/ambiente por cor para ficar mais intuitivo -->
 
         <!-- Dash 1; Análise de todos ambientes da empresa no dia atual -->
         <!-- Dash 2; Análise geral dos ambientes em periodos por semana, mês e trimestre e sessão de alertas dos ambientes que precisam de ajuste na iluminação -->
