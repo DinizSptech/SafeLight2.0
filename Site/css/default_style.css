@@ -1,24 +1,26 @@
 /* Fonte Family */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
-body { 
+body {
   margin: 0%;
-  background-color: #FFF9E7;
+  background-color: #fff9e7;
   font-family: "Josefin Sans";
 }
 
-body::-webkit-scrollbar { /* Esconde a scrollbar */
+body::-webkit-scrollbar {
+  /* Esconde a scrollbar */
   display: none;
 }
 
 /* HEADER DO SITE E OS BOTÕES*/
 /* inicio */
+
 .header {
   font-family: "Josefin Sans";
 
   width: 100%;
   height: 50px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   background-color: #84bfc3;
 
@@ -90,6 +92,10 @@ body::-webkit-scrollbar { /* Esconde a scrollbar */
     box-sizing: border-box;
   }
 
+.palavras a:hover {
+  color: #84bfc3;
+}
+
 .palavras a {
   font-weight: 600;
   font-size: 15px;
@@ -140,10 +146,10 @@ a:hover::after{
   align-items: center;
 }
 
-body .content { 
+body .content {
   /* margin: 0px 0px 50px 0px; */
   width: 100%;
-  margin: 30px 0px;
+  margin: 50px 0px;
   align-items: center;
   justify-content: center;
 }
@@ -163,7 +169,6 @@ body .content {
   width: 80%;
   text-align: justify;
   color: #868686;
-
 }
 
 .home_text {
@@ -178,7 +183,6 @@ body .content {
   display: flex;
   flex-direction: column;
   width: 100%;
-
 }
 
 .faleConosco h4 {
@@ -190,9 +194,9 @@ body .content {
 }
 
 .text_1 {
-  background-color: #84BFC3;
+  background-color: #84bfc3;
   color: white;
-  
+
   font-size: 25px;
   padding: 40px 150px;
 }
@@ -208,9 +212,8 @@ body .content {
   justify-content: center;
   width: 45%;
   margin: 0px 2.5%;
-  background-color: #FDF3D4;
+  background-color: #fdf3d4;
   padding: 15px;
-
 }
 
 .text_2 {
@@ -220,10 +223,9 @@ body .content {
 
 .text_contato {
   color: #ffb870;
-  
+
   margin: 10px;
   font-size: 25px;
-
 }
 
 .img_email {
@@ -239,20 +241,20 @@ body .content {
 
 /* Sobre Nos */
 #sobre_nos {
-  background-color: #FEF9E6;
+  background-color: #fef9e6;
   display: flex;
   align-items: center;
   height: auto;
   flex-direction: column;
 }
 
-#sobre_nos h1{
-  color: #FFB870;
+#sobre_nos h1 {
+  color: #ffb870;
   font-size: 60px;
   margin-bottom: 15px;
 }
 
-#sobre_nos p{
+#sobre_nos p {
   font-size: 25px;
   color: #868686;
 }
@@ -263,25 +265,21 @@ body .content {
   margin: 0px 0px 50px 0px;
 }
 
-
 /* Footer */
-.rodape{
+.rodape {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   display: flex;
 
-
-  p{
+  p {
     font-size: 15px;
-      color: #868686;
-      margin-right: 40px;
-    
+    color: #868686;
+    margin-right: 40px;
   }
-  
 }
 
-.safelight2{
+.safelight2 {
   height: 70px;
   padding: 20px;
   display: flex;
@@ -290,7 +288,7 @@ body .content {
 
 .separator {
   width: 5px;
-  background-color: #84BFC3;
+  background-color: #84bfc3;
   height: 90%; /* Altera conforme o tamanho desejado */
 }
 
@@ -298,18 +296,16 @@ body .content {
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-
 }
 
 @keyframes fadeInAnimation {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
   100% {
-      opacity: 1;
-   }
+    opacity: 1;
+  }
 }
-
-.agora {
-  font-weight: 700;
+.header .select .agora {
+  font-weight: 800;
 }
