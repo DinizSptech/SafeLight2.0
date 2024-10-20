@@ -1,0 +1,83 @@
+#sections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 195vh;
+}
+
+#sections h1 {
+  margin: 30px 0px;
+  text-align: center;
+  color: #ffb870;
+}
+
+#section1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 80%;
+}
+
+#section1 h1 {
+  width: 100%;
+}
+
+#section1 .boxProdutividade {
+  width: 50%;
+  margin: 15px 0px;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+}
+
+#section1 .boxProdutividade input {
+  align-self: center;
+
+  border-radius: 15px;
+  padding: 10px;
+  margin: 15px 0px;
+  width: 60%;
+}
+
+#section1 .boxProdutividade button {
+  align-self: center;
+  width: 50%;
+}
+
+#section1 #divmsg2 {
+  width: 50%;
+
+  margin: 15px 0px;
+}
+
+#section2 {
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+}
+
+#section2 table {
+  margin: 20px 0px;
+}
+
+#section2 input,select {
+  margin: 15px 0px;
+
+  border: #000000 2px solid;
+  border-style: inset;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#section2 #input_anotherW {
+  margin: 0px 0px 10px 0px;
+}
+
+#section2 #divmsg {
+    margin: 15px 0px;
+}

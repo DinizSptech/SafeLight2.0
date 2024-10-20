@@ -27,8 +27,8 @@ body {
 }
 
 .container {
-  width: 20%;
-  height: 65vh;
+  width: 25%;
+  height: 75vh;
   background-color: #84bfc3;
   border-radius: 20px;
 
@@ -117,6 +117,8 @@ body {
 .container #span_cadastro {
   margin-top: 30px;
   color: #fef9e6;
+  width: 100%;
+  text-align: center;
 
   a {
     color: #868686;
