@@ -43,8 +43,8 @@ CREATE TABLE sensor(
 idSensor int primary key auto_increment,
 fkEmpresa int,
 constraint fkEmpSensor foreign key (fkEmpresa) references empresa(idEmpresa),
-Andar char(3),
-Quadrante char(4)
+andar char(3),
+quadrante char(4)
 );		
 
 CREATE TABLE dados(
@@ -64,3 +64,19 @@ constraint fkSensorDimmer foreign key (fkSensor) references sensor(idSensor),
 percetual int,
 momento datetime
 );
+
+SELECT e.nome as Empresa,
+f.nome as "Nome funcionário",
+f.email as "Login do usuário",
+f.senhas as "Senha do usuário"
+FROM empresa as e
+JOIN funcionário as f ON idEmpresa = fkEmpresa;
+
+SELECT e.nome as Empresa,
+concat("Andar: ", s.andar, " Quadrante: ", s.quadrante, " Luminosidade: ", d.luminosidade, " as " , d.momento)
+FROM empresa as e
+JOIN sensor as s ON idEmpresa = fkEmpresa
+JOIN dados as d ON idSensor = fkSensor;
+
+
+

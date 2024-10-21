@@ -2,7 +2,7 @@
 # <img src="Site\assets\fotos\logo1.png">
 # ⁺˖ Safe Light ⸝⸝
 
-Nosso projeto visa otimizar a iluminação em ambientes corporativos através de um sistema de controle de luz baseado em sensores LDR. A ideia central é ajustar automaticamente a intensidade luminosa, garantindo o nível ideal para cada situação, promovendo conforto, produtividade e economia de energia.
+Nosso projeto visa otimizar a iluminação em ambientes corporativos através de um sistema de controle de luz baseado em sensores LDR. A ideia central é ajustar a intensidade luminosa do ambiente, garantindo o nível ideal para cada situação, promovendo conforto, produtividade e economia de energia.
 
 
 ## Referência
