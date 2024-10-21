@@ -25,11 +25,12 @@
 }
 
 #section1 .boxProdutividade {
-  width: 50%;
+  width: 100%;
   margin: 15px 0px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   text-align: center;
 }
@@ -40,12 +41,12 @@
   border-radius: 15px;
   padding: 10px;
   margin: 15px 0px;
-  width: 60%;
+  width: 30%;
 }
 
 #section1 .boxProdutividade button {
   align-self: center;
-  width: 50%;
+  width: 20%;
 }
 
 #section1 #divmsg2 {
@@ -57,21 +58,42 @@
 #section2 {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   width: 50%;
 }
 
 #section2 table {
-  margin: 20px 0px;
+  margin: 10px 0px;
+  width: 100%;
+  border: #000000 1px solid;
+  padding: 15px 5px 5px 5px;
+
+  text-align: center;
 }
 
-#section2 input,select {
+#section2 table th {
+  width: 100%;
+}
+
+#section2 input, select {
   margin: 15px 0px;
 
   border: #000000 2px solid;
   border-style: inset;
   border-radius: 15px;
   padding: 10px;
+  width: 70%;
+}
+
+#section2 button, #section1 .boxProdutividade button {
+  margin: 15px 0px;
+
+  border: #000000 2px solid;
+  border-style: inset;
+  border-radius: 15px;
+  padding: 10px;
+  width: 300px;
 }
 
 #section2 #input_anotherW {

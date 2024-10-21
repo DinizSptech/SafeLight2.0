@@ -8,11 +8,8 @@ function checkLogin() {
     var username = input_username.value;
     var password = input_password.value;
 
-    if (username == 'adminBrandao' && password == '1234') {
+    if (username == 'admin' && password == '1234') {
         window.location.href = './dashboard.html';
-    } else if (username == 'adminSafelight' && password == '@1234br') {
-        window.location.href = './dashboard.html';
-
     } else {
         alert('Usuário ou senha estão incorretos')
         

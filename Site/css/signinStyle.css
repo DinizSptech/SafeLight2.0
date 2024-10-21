@@ -43,6 +43,7 @@ body {
 .Cadastro_Funcionario {
   display: flex;
   justify-content: center;
+  height: calc(100% - 50px);
   margin-top: 60px;
   
 }
@@ -97,7 +98,7 @@ body {
     width: 90%;
     font-size: 18px;
     font-weight: 450;
-    margin-bottom: 5px;
+    margin: 5px 0px;
     text-align: center;
     color: #3d3d3d;
   }
