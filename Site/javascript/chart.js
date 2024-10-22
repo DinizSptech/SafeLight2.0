@@ -18,20 +18,8 @@ new Chart(geral1, {
         label: "Lux",
         data: [475, 481, 511, 650, 800],
         borderWidth: 2,
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)'
-        ],
-        borderColor: [
-          'rgba(75, 192, 192, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)'
-        ]
+        backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+        borderColor: 'rgba(75, 192, 192, 1)'
       },
       {
         label: "Ideal",
@@ -94,8 +82,8 @@ new Chart(salaReuniao, {
         label: "Lux",
         data: [423, 489, 444, 433, 573, 691, 662, 637, 592, 435, 350],
         borderWidth: 2,
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(160, 32, 240, 1)",
+        backgroundColor: "rgba(160, 32, 240, 0.2)",
         tension: 0.3, // Suaviza a linha do gráfico
       },
       {
@@ -153,8 +141,8 @@ new Chart(salaEscritorio, {
         label: "Lux",
         data: [423, 573, 444, 662, 433, 691, 592, 489, 350, 637, 435],
         borderWidth: 2,
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(160, 32, 240, 1)",
+        backgroundColor: "rgba(160, 32, 240, 0.2)",
         tension: 0.3, // Suaviza a linha do gráfico
       },
       {
