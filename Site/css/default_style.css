@@ -57,7 +57,7 @@ body::-webkit-scrollbar {
 
 .login:hover{
   background-color:#d96153;
-  border: 1.75px #ffffff outset;
+  border: 1.75px #ffffff inset;
 }
 
 .login {
@@ -70,7 +70,7 @@ body::-webkit-scrollbar {
 
 .cadastro:hover{
   background-color: #ffb870;
-  border: 1.75px #ffffff outset;
+  border: 1.75px #ffffff inset;
 }
 
 .select {
@@ -214,7 +214,7 @@ body .content {
   flex-wrap: wrap;
   justify-content: center;
   width: 45%;
-  margin: 0px 2.5%;
+  margin: 30px 2.5%;
   background-color: #fdf3d4;
   padding: 15px;
 }

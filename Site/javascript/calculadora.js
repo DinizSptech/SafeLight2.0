@@ -8,18 +8,7 @@ function calcular() {
 
   var horas = Number(ipthrs.value);
   var luzes = Number(iptqtd.value);
-  var regiao = iptregiao.value;
-  var preco = 0;
-
-  if (regiao == "sp") {
-    preco = 0.63;
-  }
-  if (regiao == "pr") {
-    preco = 0.48;
-  }
-  if (regiao == "rj") {
-    preco = 0.93;
-  }
+  var preco = 0.72;
 
   // Cálculo de consumo total de energia
   var consumokwh = (watts / 1000) * luzes * (horas * 30);
@@ -28,15 +17,8 @@ function calcular() {
   // Custo total
   var gastototal = consumokwh * preco;
 
-  // Impacto ambiental e economia estimada
-
-  // Conforme o Ministério da Ciência e Tecnologia, o fator de emissão de CO2 produzido é de 0,0817 KG/KWh
-  var impacto = consumokwh * 0.0817;
 
   // Cálculo de área de floresta necessária com base no valor de 39 kg de CO₂ por m²
-
-  var areasverdes = impacto / 39;
-  var areasverdesano = (impacto * 12) / 39;
   var economiaesperada = consumokwh * 0.4; // Economia de 40%
   var economiafinanceira = economiaesperada * preco;
 
@@ -47,10 +29,7 @@ function calcular() {
       gastototal
     )} mensais e R$${Math.floor(gastototal * 12)} anuais.<br>
     A economia financeira esperada com uma redução de 40% é de R$${economiafinanceira} por mês.<br>
-    A economia anual estimada é de R$${economiafinanceira * 12}.<br>
-    O impacto ambiental é de ${
-      impacto * 12
-    } Kg de CO₂ por ano e seria necessária uma área florestal de ${areasverdesano} m² para absorvê-lo.`;
+    A economia anual estimada é de R$${economiafinanceira * 12}.<br>`;
 }
 
 function calcularProdutividade() {

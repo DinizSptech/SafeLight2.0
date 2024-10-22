@@ -44,8 +44,8 @@ function cadastrar(){
   
 
     var senha_caracter_especial = senha.includes('@') || senha.includes('#') ||senha.includes('$')||senha.includes('!')||senha.includes('%');
-    if (senha_caracter_especial == false){
-      mensagem_senha += `<b style="font-size: 18px">Senha:</b> <br> Acrescente caracter especial <br>` 
+    if (senha_caracter_especial == false){ 
+      mensagem_senha += `<b style="font-size: 18px">Senha:</b> <br> Acrescente caracter especial (Apenas @#%!%) <br>` 
       cadastro++
     } 
     

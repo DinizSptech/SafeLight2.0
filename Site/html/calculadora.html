@@ -42,9 +42,8 @@
           <p>Média de horas trabalhada por dia:</p>
           <input placeholder="Insira as horas" id="ipt_horas_por_dia" type="number" />
           <button onclick="calcularProdutividade()">Calcular</button>
+          <div id="divmsg2"></div>
         </div>
-  
-        <div id="divmsg2"></div>
     </div>
     <div id="section2">
       <h1>Calculadora de Consumo de Energia</h1>
@@ -93,7 +92,7 @@
       </table>
   
       <p>Informe a quantidade de luzes por setor ou sala:</p>
-      <p><input placeholder="Insira a quantidade" id="iptqtd" type="number" /></p>
+      <input placeholder="Insira a quantidade" id="iptqtd" type="number" />
       <!-- class:input-centralizado, para centralizar o texto inserido na input -->
       <p>Informe a potência W (Watts) das luzes utilizadas:</p>
   
@@ -117,14 +116,6 @@
   
       <p>Informe o tempo de utilização das luzes (em horas diárias):</p>
       <input id="ipthrs" placeholder="Insira as horas" type="number" min="0" max="24" />
-  
-      <p>Informe sua região:</p>
-      <select id="iptregiao">
-        <option disabled selected value="#">Selecione uma região</option>
-        <option value="sp">São Paulo</option>
-        <option value="pr">Paraná</option>
-        <option value="rj">Rio de Janeiro</option>
-      </select>
       
       <button onclick="calcular()">Calcular</button>
       
