@@ -101,6 +101,7 @@ body {
     margin: 5px 0px;
     text-align: center;
     color: #3d3d3d;
+    padding-top: 10px;
   }
 
   input {
@@ -157,3 +158,16 @@ body {
   text-align: justify;
   width: 100%;
 }
+
+
+#ipt_gerente {
+  width: 70%;
+  height: 35px;
+  box-shadow: none; 
+  border: none;
+  text-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+

@@ -10,16 +10,23 @@ function cadastrar(){
 
     var mensagem = ""
     var mensagem_cpf = ""
+    var mensagem_empresa = ""
     var mensagem_celular = ""
     var mensagem_email = ""
     var mensagem_senha = ""
     var mensagem_senha_confirmacao = ""
     var cadastro = 0;
 
+
+    if (nome_empresa != "Coca-Loca" && nome_empresa != "Pieps" && nome_empresa != "Sofra" && nome_empresa != "Itua" && nome_empresa != "Brodesco" && nome_empresa != "Guugol" ) {
+      mensagem_empresa = `<b style='font-size: 18px'>Nome Empresa:</b> <br> Essa não é uma das nossas empresas parceiras, por favor inserir uma válida  <br>`;
+      cadastro++
+    }
+    div_mensagem_empresa.innerHTML = mensagem_empresa;
+    
     var tamanho_cpf= cpf.length; 
    
-   
-    if (tamanho_cpf != 11) { 
+     if (tamanho_cpf != 11) { 
       mensagem_cpf = `<b style='font-size: 18px'>CPF:</b> <br> Quantidade de caracteres inválida,  <br>`;
       cadastro++
     } 
