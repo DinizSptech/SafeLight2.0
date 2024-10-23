@@ -17,9 +17,8 @@ function calcular() {
   // Custo total
   var gastototal = consumokwh * preco;
 
-
   // Cálculo de área de floresta necessária com base no valor de 39 kg de CO₂ por m²
-  var economiaesperada = consumokwh * 0.4; // Economia de 40%
+  var economiaesperada = consumokwh * 0.2; // Economia de 20%
   var economiafinanceira = economiaesperada * preco;
 
   // Exibição dos resultados
@@ -28,8 +27,8 @@ function calcular() {
     Isso representa um gasto de R$${Math.floor(
       gastototal
     )} mensais e R$${Math.floor(gastototal * 12)} anuais.<br>
-    A economia financeira esperada com uma redução de 40% é de R$${economiafinanceira} por mês.<br>
-    A economia anual estimada é de R$${economiafinanceira * 12}.<br>`;
+    A economia financeira esperada com uma redução de 20% é de R$${Math.floor(economiafinanceira)} por mês.<br>
+    A economia anual estimada é de R$${Math.floor(economiafinanceira * 12)}.<br>`;
 }
 
 function calcularProdutividade() {
@@ -41,13 +40,12 @@ function calcularProdutividade() {
   var valorPorHora = salario / 30 / horasPorDia;
 
   // Cálculo do valor por hora após aumento de produtividade
-  var aumentoMinimo = valorPorHora * 1.15; // Aumento de 15%
   var aumentoMaximo = valorPorHora * 1.3; // Aumento de 30%
 
   divmsg2.innerHTML = `
   Atualmente, sua empresa tem uma produtividade de R$${Math.floor(valorPorHora * qntFuncionario)} por hora. 
   <br><br> 
-  Após a implementação, esperamos um aumento médio de produtividade entre 15% e 30%, resultando em uma produtividade entre R$${Math.floor(aumentoMinimo * qntFuncionario)} e R$${Math.floor(aumentoMaximo * qntFuncionario)} por hora.
+  Após a implementação, esperamos um aumento médio de 15% em sua produtividade, resultando em R$${Math.floor(aumentoMaximo * qntFuncionario)} por hora.
 `;
 
 
