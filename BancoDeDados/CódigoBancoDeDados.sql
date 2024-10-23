@@ -24,22 +24,23 @@ cpf char(11),
 celular char(11),
 email varchar(255),
 senha varchar(255),
-cargo varchar(20)
+gerente varchar(20),
+constraint chkAdmin check (gerente in (0,1))
 );
 
-INSERT INTO funcionario (fkEmpresa, nome, cpf, celular, email, senha, cargo) VALUES
-(1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'urubu100', 'Supervisor'),
-(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'batatinha123', 'Assistente'),
-(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'madioca456', 'Gerente'),
-(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'tuberculo789', 'Diretor'),
-(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'gaivota99', 'Técnico'),
-(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'mikewazausky', 'Gerente'),
-(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', 'sullivan888', 'Estagiário'),
-(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'cabritopunk999', 'Presidente'),
-(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3r0o4arl0s3ss3C4r4S0u3u', 'Gestor'),
-(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'CasaDeFerreiroEspetoDePau','Assistente'),
-(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345meia78', 'Estagiário'),
-(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTTSJj8iuGyyf', 'Coordenador');
+INSERT INTO funcionario (fkEmpresa, nome, cpf, celular, email, senha, gerente) VALUES
+(1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@', '0'),
+(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123', '1'),
+(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456', '0'),
+(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789', '1'),
+(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99', '1'),
+(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky', '0'),
+(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888', '1'),
+(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999', '1'),
+(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3rt0Carl0$Ess3C4r4S0u3u', '0'),
+(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'Ca$ADeFerreiroEspetoDePau','0'),
+(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345m#ia78', '1'),
+(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTT$Jj8iuGyyf', '1');
 
 create table endereco(
 idEndereco int primary key auto_increment,
@@ -72,23 +73,23 @@ local varchar(30)
 
 INSERT INTO sensor (fkEmpresa, andar, local) VALUES 
 (1, '1', 'Recepção'),
-(1, '1', 'Depósito'),
+(1, 'SS', 'Depósito'),
 (2, '2', 'Sala de reunião pequena'),
-(2, '2', 'Escritório 1'),
-(3, '3', 'Sala de assistencia técnica'),
-(3, '3', 'Sala de Reunião média'),
-(4, '4', 'Sala Supervisor'),
+(2, '1', 'Escritório 1'),
+(3, '1', 'Sala de assistencia técnica'),
+(3, '2', 'Sala de Reunião média'),
+(4, '5', 'Sala Supervisor'),
 (4, '4', 'Sala de reunião grande'),
-(5, '5', 'Sala supervisor site'),
+(5, '5', 'Sala supervisor back-end'),
 (5, '5', 'Sala supervisor BD'),
 (6, '6', 'Servidores'),
-(6, '6', 'Sala CEO'),
-(1, '1', 'Sala descanso'),
-(2, '2', 'Escritório 2'),
+(6, '7', 'Sala CEO'),
+(1, '2', 'Sala descanso'),
+(2, '3', 'Escritório 2'),
 (3, '3', 'Arquivos'),
-(4, '4', 'Escritório 3'),
-(5, '5', 'Administrativo'),
-(6, '6', 'Financeiro');
+(4, '2', 'Escritório 3'),
+(5, '6', 'Administrativo'),
+(6, '5', 'Financeiro');
 
 
 CREATE TABLE dados(
@@ -120,43 +121,14 @@ INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
 (17, 730, '2024-10-21 16:30:00'),
 (18, 820, '2024-10-21 16:45:00');
 
-
-CREATE TABLE dimmer(
-idDimmer int auto_increment,
-fkSensor int,
-constraint pkSensorDimmer primary key (idDimmer, fkSensor),
-constraint fkSensorDimmer foreign key (fkSensor) references sensor(idSensor),
-percentual int,
-momento datetime
-);
-
-INSERT INTO dimmer (fkSensor, percentual, momento) VALUES 
-(1, 75, '2024-10-21 08:05:00'),
-(2, 60, '2024-10-21 09:20:00'),
-(3, 85, '2024-10-21 10:35:00'),
-(4, 90, '2024-10-21 11:50:00'),
-(5, 50, '2024-10-21 12:05:00'),
-(6, 70, '2024-10-21 13:50:00'),
-(7, 80, '2024-10-21 14:10:00'),
-(8, 65, '2024-10-21 14:25:00'),
-(9, 55, '2024-10-21 14:40:00'),
-(10, 95, '2024-10-21 14:55:00'),
-(11, 40, '2024-10-21 15:10:00'),
-(12, 85, '2024-10-21 15:25:00'),
-(13, 75, '2024-10-21 15:40:00'),
-(14, 60, '2024-10-21 15:55:00'),
-(15, 90, '2024-10-21 16:10:00'),
-(16, 50, '2024-10-21 16:25:00'),
-(17, 70, '2024-10-21 16:40:00'),
-(18, 80, '2024-10-21 16:55:00');
-
-SELECT * FROM dimmer;
-
 SELECT e.nome as Empresa,
 concat(end.logradouro, ' ', end.numero) as endereço,
 f.nome as "Nome funcionário",
 f.email as "Login do usuário",
-f.senha as "Senha do usuário"
+f.senha as "Senha do usuário",
+CASE WHEN f.gerente = 1 THEN 'Usuário gerente'
+ELSE 'Usuário comum'
+END as 'Tipo de usuário'
 FROM empresa as e
 JOIN endereco as end ON idEmpresa = end.fkEmpresa
 JOIN funcionario as f ON idEmpresa = f.fkEmpresa;
@@ -165,19 +137,18 @@ SELECT e.nome as Empresa,
 concat("Andar: ", s.andar, ", Local: ", s.local, ", Luminosidade: ", d.luminosidade, " as " , d.momento) as Informações
 FROM empresa as e
 JOIN sensor as s ON idEmpresa = fkEmpresa
-JOIN dados as d ON idSensor = fkSensor;
+JOIN dados as d ON idSensor = fkSensor
+ORDER BY e.nome, s.andar;
 
 SELECT s.andar as Andar,
-s.quadrante as Quadrante,
-di.idDimmer, 
-di.percentual, 
+s.local as Local, 
        CASE 
 	WHEN d.luminosidade > 800 THEN 'Alta'
 	WHEN d.luminosidade BETWEEN 500 AND 800 THEN 'Média'
 	ELSE 'Baixa'
 	END AS 'Grau de luminosidade'
-FROM dimmer as di
-JOIN sensor as s ON di.fkSensor = idSensor
-JOIN dados as d ON di.fkSensor = d.fkSensor;
-
-
+from sensor as s
+JOIN dados as d ON s.idSensor = d.fkSensor
+JOIN empresa as e ON s.fkEmpresa = e.idEmpresa 
+WHERE e.nome = 'Sofra'
+ORDER by s.andar;
