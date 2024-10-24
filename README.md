@@ -49,7 +49,7 @@ _O comando acima irá iniciar sua API e efetuar os comandos de acordo com a sua 
 
 ## Autores
 
-- [Matheus Diniz](https://github.com/DinizSptech)
+- [Mateus Diniz](https://github.com/DinizSptech)
 - [João Assis](https://github.com/jodroassis)
 - [Gabriel Feitosa](https://github.com/gabrielpacificoo)
 - [Maria Eduarda Silva](https://github.com/mahducosta)
