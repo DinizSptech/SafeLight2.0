@@ -1,4 +1,6 @@
+CREATE DATABASE Safelight;
 USE SafeLight;
+
 
 CREATE TABLE empresa(
 idEmpresa int primary key auto_increment,
@@ -7,12 +9,12 @@ CNPJ char (14)
 );
 
 INSERT INTO empresa(nome,CNPJ) VALUES
-('Coca-Loca','02219482000109'),
-('Pieps','37555384000119'),
-('Sofra','27570297000187'),
-('Itua','84391627000100'),
-('Brodesco','43614289000141'),
-('Guugol','43614289000141');
+('Coca-cola','02219482000109'),
+('Pepsi','37555384000119'),
+('Safra','27570297000187'),
+('Itau','84391627000100'),
+('Bradesco','43614289000141'),
+('Google','43614289000141');
 
 CREATE TABLE funcionario(
 idFuncionario int auto_increment,
@@ -56,8 +58,11 @@ references	empresa(idEmpresa)
 );
 
 INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, fkEmpresa) VALUES 
-('Rua Haddock Lobo', '371', 'Centro', 'São Paulo', 'SP', 'Apto 1', 1),
-('Rua Malabar', '4561', 'Jardim', 'Rio de Janeiro', 'RJ', 'Casa', 2),
+('Rua dos Alfeneiros', '101', 'Centro', 'São Paulo', 'SP', 'Apto 1', 1),
+('Avenida das Nações', '202', 'Vila Nova', 'São Paulo', 'SP', 'Apto 2', 1),
+('Praça dos Bandeirantes', '303', 'Jardim Paulista', 'São Paulo', 'SP', 'Apto 3', 1),
+('Rua da Paz', '404', 'Copacabana', 'Rio de Janeiro', 'RJ', 'Casa', 2),
+('Avenida Atlântica', '505', 'Ipanema', 'Rio de Janeiro', 'RJ', 'Casa', 2),
 ('Rua 7 de Março', '873', 'Zona Sul', 'Belo Horizonte', 'MG', 'Loja', 3),
 ('Rua Doutor Engenheiro Guilherme', '43', 'Centro', 'Curitiba', 'PR', 'Sala 2', 4),
 ('Rua Senhor dos Passos', '654', 'Norte', 'Porto Alegre', 'RS', 'Cobertura', 5),
@@ -67,29 +72,37 @@ CREATE TABLE sensor(
 idSensor int primary key auto_increment,
 fkEmpresa int,
 constraint fkEmpSensor foreign key (fkEmpresa) references empresa(idEmpresa),
+fkEndereco int,
+constraint fkEndSensor foreign key (fkEndereco) references endereco(idEndereco),
 andar char(3),
 local varchar(30)
 );
 
-INSERT INTO sensor (fkEmpresa, andar, local) VALUES 
-(1, '1', 'Recepção'),
-(1, 'SS', 'Depósito'),
-(2, '2', 'Sala de reunião pequena'),
-(2, '1', 'Escritório 1'),
-(3, '1', 'Sala de assistencia técnica'),
-(3, '2', 'Sala de Reunião média'),
-(4, '5', 'Sala Supervisor'),
-(4, '4', 'Sala de reunião grande'),
-(5, '5', 'Sala supervisor back-end'),
-(5, '5', 'Sala supervisor BD'),
-(6, '6', 'Servidores'),
-(6, '7', 'Sala CEO'),
-(1, '2', 'Sala descanso'),
-(2, '3', 'Escritório 2'),
-(3, '3', 'Arquivos'),
-(4, '2', 'Escritório 3'),
-(5, '6', 'Administrativo'),
-(6, '5', 'Financeiro');
+INSERT INTO sensor (fkEmpresa,fkEndereco, andar, local) VALUES 
+(1, 1, '1', 'Recepção'),
+(1, 1, 'SS', 'Depósito'),
+(1, 2, '1', 'Recepção'),
+(1, 2, 'SS', 'Depósito'),
+(1, 3, '1', 'Recepção'),
+(1, 3, 'SS', 'Depósito'),
+(2, 4, '2', 'Sala de reunião pequena'),
+(2, 4, '1', 'Escritório 1'),
+(2, 5, '2', 'Sala de reunião pequena'),
+(2, 5, '1', 'Escritório 1'),
+(3, 6, '1', 'Sala de assistencia técnica'),
+(3, 6, '2', 'Sala de Reunião média'),
+(4, 7, '5', 'Sala Supervisor'),
+(4, 7, '4', 'Sala de reunião grande'),
+(5, 8, '5', 'Sala supervisor back-end'),
+(5, 8, '5', 'Sala supervisor BD'),
+(6, 9, '6', 'Servidores'),
+(6, 9, '7', 'Sala CEO'),
+(1, 1, '2', 'Sala descanso'),
+(2, 4, '3', 'Escritório 2'),
+(3, 6, '3', 'Arquivos'),
+(4, 7, '2', 'Escritório 3'),
+(5, 8, '6', 'Administrativo'),
+(6, 9, '5', 'Financeiro');
 
 
 CREATE TABLE dados(
@@ -150,5 +163,8 @@ s.local as Local,
 from sensor as s
 JOIN dados as d ON s.idSensor = d.fkSensor
 JOIN empresa as e ON s.fkEmpresa = e.idEmpresa 
-WHERE e.nome = 'Sofra'
+WHERE e.nome = 'Safra'
 ORDER by s.andar;
+
+Select * from sensor join endereco on sensor.fkEndereco = idEndereco;
+
