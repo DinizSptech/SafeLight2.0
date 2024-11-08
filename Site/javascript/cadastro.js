@@ -1,6 +1,6 @@
 function cadastrar(){
     var nome = ipt_nome_funcionario.value;
-    var nome_empresa = ipt_nome_empresa.value;
+    var nome_empresa = ipt_codigo_empresa.value;
     var cpf = ipt_cpf.value
     var celular = ipt_celular.value;
     var email = ipt_email.value;
@@ -18,11 +18,11 @@ function cadastrar(){
     var cadastro = 0;
 
 
-    if (nome_empresa != "Coca-Loca" && nome_empresa != "Pieps" && nome_empresa != "Sofra" && nome_empresa != "Itua" && nome_empresa != "Brodesco" && nome_empresa != "Guugol" ) {
-      mensagem_empresa = `<b style='font-size: 18px'>Nome Empresa:</b> <br> Essa não é uma das nossas empresas parceiras, por favor inserir uma válida  <br>`;
-      cadastro++
-    }
-    div_mensagem_empresa.innerHTML = mensagem_empresa;
+    // if (nome_empresa != "Coca-Loca" && nome_empresa != "Pieps" && nome_empresa != "Sofra" && nome_empresa != "Itua" && nome_empresa != "Brodesco" && nome_empresa != "Guugol" ) {
+    //   mensagem_empresa = `<b style='font-size: 18px'>Nome Empresa:</b> <br> Essa não é uma das nossas empresas parceiras, por favor inserir uma válida  <br>`;
+    //   cadastro++
+    // }
+    // div_mensagem_empresa.innerHTML = mensagem_empresa;
     
     var tamanho_cpf= cpf.length; 
    
@@ -112,7 +112,7 @@ function cadastrar(){
 
 
         document.getElementById('ipt_nome_funcionario').value = "";
-        document.getElementById('ipt_nome_empresa').value = "";  
+        document.getElementById('ipt_codigo_empresa').value = "";  
         document.getElementById('ipt_cpf').value = "";
         document.getElementById('ipt_celular').value = "";
         document.getElementById('ipt_email').value = "";

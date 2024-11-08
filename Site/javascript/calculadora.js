@@ -40,7 +40,7 @@ function calcularProdutividade() {
   var valorPorHora = salario / 30 / horasPorDia;
 
   // Cálculo do valor por hora após aumento de produtividade
-  var aumentoMaximo = valorPorHora * 1.3; // Aumento de 30%
+  var aumentoMaximo = valorPorHora * 1.15; // Aumento de 30%
 
   divmsg2.innerHTML = `
   Atualmente, sua empresa tem uma produtividade de R$${Math.floor(valorPorHora * qntFuncionario)} por hora. 

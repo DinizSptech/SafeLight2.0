@@ -1,3 +1,18 @@
+    function redirect(tipo){ 
+
+      if(tipo == "geral"){
+        var elemento = document.querySelectorAll(".geral");
+        elemento.style.display = "flex"
+        var diferente = document.querySelectorAll(".individual");
+        diferente.style.display = "none"
+      } else if (tipo == "individual"){
+        var elemento = document.querySelectorAll(".individual");
+        elemento.style.display = "flex"
+        var diferente = document.querySelectorAll(".geral");
+        diferente.style.display = "none"
+      }
+
+    }
 // Configuração do gráfico de monitoração localizado na Dashboard
 const geral1 = document.getElementById("chartGeral");
 const salaReuniao = document.getElementById("chartSalaReuniao");

@@ -46,11 +46,11 @@
 
         </div>
 
-        <a href="">
+        <a onclick="redirect('geral')" class="botao">
           <span class="text">Análise individual</span>
           <img class="svg" src="../assets/fotos/chartLine.svg" alt="">
         </a>
-        <a href="./dashboard2.html">
+        <a onclick="redirect('individual')" class="botao">
           <span class="text">Análise geral</span>
           <img class="svg" src="../assets/fotos/chartColumn.svg" alt="">
         </a>
@@ -65,7 +65,7 @@
       <div class="kpi">Ambiente com a iluminação adequada</div> -->
 
       <div class="graficos">
-        <div class="ambiente">
+        <div class="ambiente individual" style="display: flex;">
           <!-- Grafico + KPI -->
           <div class="chart-container">
             <div class="headerChart titleChart">Sala de Reunião - Ultimas 10 horas</div>
@@ -84,7 +84,7 @@
           </div>
         </div>
 
-        <div class="ambiente">
+        <div class="ambiente individual" style="display: flex;">
           <!-- Grafico + KPI -->
           <div class="chart-container">
             <div class="headerChart titleChart">Escritório - Ultimas 10 horas</div>
@@ -102,6 +102,24 @@
             <h3>520 Lux</h3>
           </div>
         </div>
+
+        <div class="ambiente geral" style="display: none;">
+          <!-- Grafico + KPI -->
+          <div class="chart-container">
+            <div class="headerChart titleChart">Análise geral - Andar 1</div>
+            <canvas class="boxCanvas" id="chartGeral"></canvas>
+          </div>
+          <div class="kpi">
+            <div class="headerKpi">
+              <h2 class="titleChart">Indicadores gerais</h2>
+            </div>
+            <span>Ambientes com a iluminação adequada</span>
+            <h3>Escritório 1 e Escritório 2</h3>
+            <span>Ambientes com a iluminação inadequada</span> <br />
+            <h3>Sala de conferência, Sala de Reunião e Cozinha</h3>
+          </div>
+        </div>
+
 
           <!-- Separar gráficos/ambiente por cor para ficar mais intuitivo -->
 

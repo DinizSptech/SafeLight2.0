@@ -152,3 +152,11 @@ JOIN dados as d ON s.idSensor = d.fkSensor
 JOIN empresa as e ON s.fkEmpresa = e.idEmpresa 
 WHERE e.nome = 'Sofra'
 ORDER by s.andar;
+
+INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, fkEmpresa) VALUES 
+('Rua 2', '217', 'Diadema bairro', 'Diadema', 'SP', null, 1);
+
+SELECT * FROM endereco;
+
+SELECT * FROM sensor JOIN empresa ON sensor.fkEmpresa = empresa.idEmpresa JOIN endereco ON empresa.idEmpresa = endereco.fkEmpresa WHERE idSensor = 1;
+
