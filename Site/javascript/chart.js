@@ -1,34 +1,82 @@
-    function redirect(tipo){ 
+function redirect(tipo) {
+  // Buttons
+  var geral = document.getElementById("button_geral");
+  var individual = document.getElementById("button_individual");
+  var cadastro = document.getElementById("button_cadastro");
 
-      if(tipo == "geral"){
-        var elemento = document.querySelector(".geral");
-        var diferente = document.querySelector(".individual");
+  if (tipo == "geral") {
+    // Variaveis dos elementos
+    var elemento = document.querySelector(".geral");
+    var diferente1 = document.querySelector(".individual");
+    var diferente2 = document.querySelector(".cadastrar");
 
-        elemento.style.display = "flex"
+    // Muda o display do elemento a ser visualizado
+    elemento.style.display = "flex";
 
-        setTimeout(() => { elemento.classList.add("show"); }, 10);
-        setTimeout(() => { diferente.classList.remove("show"); }, 10);
-        
-        diferente.style.display = "none"
-        
-      } else if (tipo == "individual"){
-        var elemento = document.querySelector(".individual");
-        var diferente = document.querySelector(".geral");
+    // Realiza a inserção e remoção de classes para transição de opacidade via CSS
+    setTimeout(() => {
+      elemento.classList.add("show");
+      geral.classList.add("agora");
+    }, 10);
+    // Remove a tag show (tag de transição) dos outros itens
+    setTimeout(() => {
+      diferente1.classList.remove("show");
+      diferente2.classList.remove("show");
+      individual.classList.remove("agora");
+      cadastro.classList.remove("agora");
+    }, 10);
 
-        elemento.style.display = "flex"
-        
-        setTimeout(() => { elemento.classList.add("show"); }, 10);
-        setTimeout(() => { diferente.classList.remove("show"); }, 10);
-        
-        diferente.style.display = "none"
-        
-      }
+    // Muda o display dos outros elementos para none
+    diferente1.style.display = "none";
+    diferente2.style.display = "none";
 
-    }
+  } else if (tipo == "individual") {
+    var elemento = document.querySelector(".individual");
+    var diferente1 = document.querySelector(".geral");
+    var diferente2 = document.querySelector(".cadastrar");
+
+    elemento.style.display = "flex";
+
+    setTimeout(() => {
+      elemento.classList.add("show");
+      individual.classList.add('agora')
+    }, 10);
+    setTimeout(() => {
+      diferente1.classList.remove("show");
+      diferente2.classList.remove("show");
+      geral.classList.remove('agora');
+      cadastro.classList.remove('agora');
+    }, 10);
+
+    diferente1.style.display = "none";
+    diferente2.style.display = "none";
+  } else if (tipo == "cadastro") {
+    var elemento = document.querySelector(".cadastrar");
+    var diferente1 = document.querySelector(".geral");
+    var diferente2 = document.querySelector(".individual");
+
+    elemento.style.display = "flex";
+
+    setTimeout(() => {
+      elemento.classList.add("show");
+      cadastro.classList.add('agora')
+    }, 10);
+    setTimeout(() => {
+      diferente1.classList.remove("show");
+      diferente2.classList.remove("show");
+      geral.classList.remove('agora');
+      individual.classList.remove('agora');
+    }, 10);
+
+    diferente1.style.display = "none";
+    diferente2.style.display = "none";
+  }
+}
+
 // Configuração do gráfico de monitoração localizado na Dashboard
 const geral1 = document.getElementById("chartGeral");
 const salaReuniao = document.getElementById("chartSalaReuniao");
-const salaEscritorio = document.getElementById("chartEscritorio")
+const salaEscritorio = document.getElementById("chartEscritorio");
 
 new Chart(geral1, {
   type: "bar",
@@ -45,15 +93,15 @@ new Chart(geral1, {
         label: "Lux",
         data: [475, 481, 511, 650, 800],
         borderWidth: 2,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)', 
-        borderColor: 'rgba(75, 192, 192, 1)'
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(75, 192, 192, 1)",
       },
       {
         label: "Ideal",
         data: [500, 600, 500, 500, 300],
         borderWidth: 2,
         backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)"
+        borderColor: "rgba(255, 99, 132, 1)",
       },
     ],
   },
@@ -61,12 +109,12 @@ new Chart(geral1, {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Iluminação por Ambiente'
-      }
+        text: "Iluminação por Ambiente",
+      },
     },
     scales: {
       y: {
@@ -74,19 +122,18 @@ new Chart(geral1, {
         beginAtZero: true,
         title: {
           display: true,
-          text: 'Lux (Nível de Iluminação)'
-        }
+          text: "Lux (Nível de Iluminação)",
+        },
       },
       x: {
         title: {
           display: true,
-          text: 'Ambientes'
-        }
-      }
+          text: "Ambientes",
+        },
+      },
     },
   },
 });
-
 
 new Chart(salaReuniao, {
   type: "line",

@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: row;
 
-  margin: 0% 2% 2% 2% ;
+  margin: 0% 2% 2% 2%;
   width: 96%;
   height: 110vh;
   /* background-color: #fdf3d4; */
@@ -44,7 +44,7 @@ body {
   }
 }
 
-.top_header_dash  h1 {
+.top_header_dash h1 {
   width: 40%;
   height: auto;
 
@@ -78,7 +78,7 @@ body {
   margin: 2% auto;
   text-decoration: none;
 
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 .header_dash a .text {
@@ -100,15 +100,15 @@ body {
   color: white;
 
   background-color: #928b76;
-
 }
 
 .header_dash a:hover {
-  transform:scale(1.05);
-  transform:translate(2%) ;
+  transform: scale(1.05);
+  /* transform: translate(2%); */
 }
 
-.graficos {
+.graficos,
+.cadastrar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -119,10 +119,39 @@ body {
   color: #202020;
 }
 
-.ambiente {
+.cadastrar {
+  display: none;
+}
+
+.ambiente,
+.modal {
   display: flex;
   width: 100%;
   margin: 2% 0% 0% 2%;
+}
+
+.modal {
+  padding: 5% 2% 2% 2%;
+  flex-direction: column;
+
+  background-color: #eee4c5;
+}
+
+.modal .inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.modal h1 {
+  color: #fff;
+  filter: drop-shadow(0 1px 0.3rem rgba(20, 20, 20, 0.5));
+  margin: 0% 0% 5% 0%;
+}
+
+.modal button {
+  width: 10%;
 }
 
 .chart-container {
@@ -189,26 +218,31 @@ body {
   margin: 0px 0px 15px 0px;
 }
 
-.botao{
-  &:hover{
-    cursor: pointer;
-  }
+.botao:hover {
+  cursor: pointer;
 }
 
-
-.geral, .individual {
+.geral,
+.individual {
   display: none;
   opacity: 0;
   transition: opacity 2s ease;
 }
 
-.geral.show, .individual.show {
+.geral.show,
+.individual.show {
   opacity: 1;
   display: flex;
-
 }
 
 .individual {
   display: flex;
+}
+
+.agora {
+  border: 0.5vh;
+  border-style: solid;
+  border-color: #fff;
+  transform: scale(1.05);
 
 }

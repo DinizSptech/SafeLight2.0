@@ -38,26 +38,30 @@
       <div class="boxHeader">
         <img
           class="user_img"
+          id="username"
           src="../assets/fotos/user_img.svg"
           alt="Imagem do Usuário"
         />
 
         <p>Seja bem-vindo Matheus!</p>
+      </div>
     </div>
-  </div>
 
     <div class="dashboard fade-in">
       <div class="header_dash">
-        <div class="boxHeader">
-        </div>
+        <div class="boxHeader"></div>
 
-        <a onclick="redirect('geral')" class="botao">
+        <a id="button_individual" onclick="redirect('individual')" class="botao">
           <span class="text">Análise individual</span>
           <img class="svg" src="../assets/fotos/chartLine.svg" alt="" />
         </a>
-        <a onclick="redirect('individual')" class="botao">
+        <a id="button_geral" onclick="redirect('geral')" class="botao">
           <span class="text">Análise geral</span>
           <img class="svg" src="../assets/fotos/chartColumn.svg" alt="" />
+        </a>
+        <a id="button_cadastro" onclick="redirect('cadastro')" class="botao">
+          <span class="text">Cadastro de funcionários</span>
+          <img class="svg" src="../assets/fotos/employees.svg" alt="" />
         </a>
       </div>
 
@@ -120,6 +124,50 @@
           </div>
         </div>
       </div>
+
+      <div class="cadastrar">
+        <div class="modal">
+
+          <h1>Sessão de Cadastro</h1>
+
+          <div class="inputs">
+            <div class="input-container">
+              <input type="text" id="input_nome" required="" />
+              <label for="input" class="label">Nome do funcionário</label>
+              <div class="underline"></div>
+            </div>
+            
+            <div class="input-container">
+              <input type="text" id="input_cpf" required="" />
+              <label for="input" class="label">CPF do funcionário</label>
+              <div class="underline"></div>
+            </div>
+  
+            <div class="input-container">
+              <input type="text" id="input_telefone" required="" />
+              <label for="input" class="label">Numero de contato do funcionário</label>
+              <div class="underline"></div>
+            </div>
+  
+            <div class="input-container">
+              <input type="text" id="input_email" required="" />
+              <label for="input" class="label">E-mail do funcionário</label>
+              <div class="underline"></div>
+            </div>
+  
+            <div class="input-container">
+              <input type="text" id="input_senha" required="" />
+              <label for="input" class="label">Senha do funcionário</label>
+              <div class="underline"></div>
+            </div>
+
+          </div>
+
+          <button>Cadastrar</button>
+        </div>
+      </div>
+
+
     </div>
 
     <footer>
