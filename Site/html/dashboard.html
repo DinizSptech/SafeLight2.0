@@ -32,43 +32,41 @@
       </div>
     </div>
 
+    <div class="top_header_dash">
+      <h1>Empresa BandLight</h1>
+
+      <div class="boxHeader">
+        <img
+          class="user_img"
+          src="../assets/fotos/user_img.svg"
+          alt="Imagem do Usuário"
+        />
+
+        <p>Seja bem-vindo Matheus!</p>
+    </div>
+  </div>
+
     <div class="dashboard fade-in">
       <div class="header_dash">
-        <h1>Empresa X</h1>
-
         <div class="boxHeader">
-          <img
-            class="user_img"
-            src="../assets/fotos/user_img.svg"
-            alt="Imagem do Usuário"
-          />
-          <p>Seja bem-vindo Usuário!</p>
-
         </div>
 
         <a onclick="redirect('geral')" class="botao">
           <span class="text">Análise individual</span>
-          <img class="svg" src="../assets/fotos/chartLine.svg" alt="">
+          <img class="svg" src="../assets/fotos/chartLine.svg" alt="" />
         </a>
         <a onclick="redirect('individual')" class="botao">
           <span class="text">Análise geral</span>
-          <img class="svg" src="../assets/fotos/chartColumn.svg" alt="">
+          <img class="svg" src="../assets/fotos/chartColumn.svg" alt="" />
         </a>
       </div>
-      <!-- <div class="chart-container">
-        <div class="headerChart">
-          Análise semanal de luminosidade por ambiente
-        </div>
-        <canvas class="boxCanvas" id="myChart1"></canvas>
-      </div> -->
-      <!-- <div class="kpi">Ambientes com a iluminação inadequada</div>
-      <div class="kpi">Ambiente com a iluminação adequada</div> -->
 
-      <div class="graficos">
-        <div class="ambiente individual" style="display: flex;">
-          <!-- Grafico + KPI -->
+      <div class="graficos individual">
+        <div class="ambiente" style="display: flex">
           <div class="chart-container">
-            <div class="headerChart titleChart">Sala de Reunião - Ultimas 10 horas</div>
+            <div class="headerChart titleChart">
+              Sala de Reunião - Ultimas 10 horas
+            </div>
             <canvas class="boxCanvas" id="chartSalaReuniao"></canvas>
           </div>
           <div class="kpi">
@@ -84,10 +82,11 @@
           </div>
         </div>
 
-        <div class="ambiente individual" style="display: flex;">
-          <!-- Grafico + KPI -->
+        <div class="ambiente" style="display: flex">
           <div class="chart-container">
-            <div class="headerChart titleChart">Escritório - Ultimas 10 horas</div>
+            <div class="headerChart titleChart">
+              Escritório - Ultimas 10 horas
+            </div>
             <canvas class="boxCanvas" id="chartEscritorio"></canvas>
           </div>
           <div class="kpi">
@@ -102,9 +101,10 @@
             <h3>520 Lux</h3>
           </div>
         </div>
+      </div>
 
-        <div class="ambiente geral" style="display: none;">
-          <!-- Grafico + KPI -->
+      <div class="graficos geral">
+        <div class="ambiente">
           <div class="chart-container">
             <div class="headerChart titleChart">Análise geral - Andar 1</div>
             <canvas class="boxCanvas" id="chartGeral"></canvas>
@@ -119,12 +119,6 @@
             <h3>Sala de conferência, Sala de Reunião e Cozinha</h3>
           </div>
         </div>
-
-
-          <!-- Separar gráficos/ambiente por cor para ficar mais intuitivo -->
-
-        <!-- Dash 1; Análise de todos ambientes da empresa no dia atual -->
-        <!-- Dash 2; Análise geral dos ambientes em periodos por semana, mês e trimestre e sessão de alertas dos ambientes que precisam de ajuste na iluminação -->
       </div>
     </div>
 

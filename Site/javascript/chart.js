@@ -1,15 +1,27 @@
     function redirect(tipo){ 
 
       if(tipo == "geral"){
-        var elemento = document.querySelectorAll(".geral");
+        var elemento = document.querySelector(".geral");
+        var diferente = document.querySelector(".individual");
+
         elemento.style.display = "flex"
-        var diferente = document.querySelectorAll(".individual");
+
+        setTimeout(() => { elemento.classList.add("show"); }, 10);
+        setTimeout(() => { diferente.classList.remove("show"); }, 10);
+        
         diferente.style.display = "none"
+        
       } else if (tipo == "individual"){
-        var elemento = document.querySelectorAll(".individual");
+        var elemento = document.querySelector(".individual");
+        var diferente = document.querySelector(".geral");
+
         elemento.style.display = "flex"
-        var diferente = document.querySelectorAll(".geral");
+        
+        setTimeout(() => { elemento.classList.add("show"); }, 10);
+        setTimeout(() => { diferente.classList.remove("show"); }, 10);
+        
         diferente.style.display = "none"
+        
       }
 
     }

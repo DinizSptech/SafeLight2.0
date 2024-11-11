@@ -114,7 +114,7 @@ body::-webkit-scrollbar {
   align-self: center;
 }
 
-a:after{
+.palavras a:after{
   content: '';
   position: absolute;
   background-color: #d96153;
@@ -125,7 +125,7 @@ a:after{
   transition: 0.5s;
 }
 
-a:hover::after{
+.palavras a:hover::after{
   width: 100%;
   
 }

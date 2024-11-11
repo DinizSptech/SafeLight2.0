@@ -10,37 +10,22 @@ body {
   display: flex;
   flex-direction: row;
 
-  margin: 2%;
+  margin: 0% 2% 2% 2% ;
   width: 96%;
   height: 110vh;
   /* background-color: #fdf3d4; */
 }
 
-.header_dash {
-  background-color: #eee4c5;
+.top_header_dash {
   display: flex;
-  /* flex-wrap: wrap; */
-  flex-direction: column;
 
-  width: 30%;
-  height: auto;
-  padding: 15px 0px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 2% 2% 0% 2%;
+  padding: 1%;
+  width: 96%;
+  background-color: #928b76;
 }
 
-.header_dash h1 {
-  width: 100%;
-  height: 50px;
-
-  margin: 5px 0px;
-  text-wrap: nowrap;
-  text-align: center;
-
-  font-size: 40px;
-  color: rgb(226, 199, 82);
-}
-
-.header_dash .boxHeader {
+.top_header_dash .boxHeader {
   display: flex;
   width: 100%;
   align-items: center;
@@ -49,6 +34,7 @@ body {
     font-size: large;
     width: 90%;
     margin: 0px 15px 0px 0px;
+    color: white;
   }
 
   .user_img {
@@ -58,16 +44,41 @@ body {
   }
 }
 
+.top_header_dash  h1 {
+  width: 40%;
+  height: auto;
+
+  margin: 5px 0px;
+  text-wrap: wrap;
+  text-align: center;
+
+  font-size: 5vh;
+  color: white;
+}
+
+.header_dash {
+  background-color: #eee4c5;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  width: 30%;
+  height: auto;
+  padding: 15px 0px;
+}
+
 .header_dash a {
   display: flex;
   flex-direction: row;
   align-items: center;
 
   width: 90%;
-  height: 20px;
-  margin: 15px 0px 10px 20px;
+  height: 5%;
+  margin: 2% auto;
   text-decoration: none;
 
+  transition: all 1s ease;
 }
 
 .header_dash a .text {
@@ -75,7 +86,7 @@ body {
   align-items: center;
 
   width: 100%;
-  height: 25px;
+  height: 100%;
   padding: 5px;
 
   color: #202020;
@@ -84,12 +95,17 @@ body {
 
 .header_dash a .svg {
   height: auto;
-  width: 25px;
-  padding: 5px;
+  height: 100%;
+  padding: 2%;
   color: white;
 
   background-color: #928b76;
 
+}
+
+.header_dash a:hover {
+  transform:scale(1.05);
+  transform:translate(2%) ;
 }
 
 .graficos {
@@ -106,7 +122,7 @@ body {
 .ambiente {
   display: flex;
   width: 100%;
-  margin: 0px 0px 15px 15px;
+  margin: 2% 0% 0% 2%;
 }
 
 .chart-container {
@@ -177,4 +193,22 @@ body {
   &:hover{
     cursor: pointer;
   }
+}
+
+
+.geral, .individual {
+  display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.geral.show, .individual.show {
+  opacity: 1;
+  display: flex;
+
+}
+
+.individual {
+  display: flex;
+
 }
