@@ -145,8 +145,9 @@ body {
 }
 
 .modal h1 {
-  color: #fff;
-  filter: drop-shadow(0 1px 0.3rem rgba(20, 20, 20, 0.5));
+  color: #202020;
+  /* filter: drop-shadow(0 1px 0.3rem rgba(20, 20, 20, 0.5)); */
+  font-size: 7.5vh;
   margin: 0% 0% 5% 0%;
 }
 
@@ -240,7 +241,7 @@ body {
 }
 
 .agora {
-  border: 0.5vh;
+  border: 0.1vh;
   border-style: solid;
   border-color: #fff;
   transform: scale(1.05);

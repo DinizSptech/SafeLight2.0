@@ -53,19 +53,19 @@
 
         <a id="button_individual" onclick="redirect('individual')" class="botao">
           <span class="text">Análise individual</span>
-          <img class="svg" src="../assets/fotos/chartLine.svg" alt="" />
+          <img class="svg grafico_l" src="../assets/fotos/chartLine.svg" alt="" />
         </a>
         <a id="button_geral" onclick="redirect('geral')" class="botao">
           <span class="text">Análise geral</span>
-          <img class="svg" src="../assets/fotos/chartColumn.svg" alt="" />
+          <img class="svg grafico_c" src="../assets/fotos/chartColumn.svg" alt="" />
         </a>
         <a id="button_cadastro" onclick="redirect('cadastro')" class="botao">
           <span class="text">Cadastro de funcionários</span>
-          <img class="svg" src="../assets/fotos/employees.svg" alt="" />
+          <img class="svg funcionario" src="../assets/fotos/employees.svg" alt="" />
         </a>
       </div>
 
-      <div class="graficos individual">
+      <div   class="graficos individual">
         <div class="ambiente" style="display: flex">
           <div class="chart-container">
             <div class="headerChart titleChart">
@@ -158,6 +158,12 @@
             <div class="input-container">
               <input type="text" id="input_senha" required="" />
               <label for="input" class="label">Senha do funcionário</label>
+              <div class="underline"></div>
+            </div>
+           
+            <div class="input-container">
+              <input type="text" id="input_cargo" required="" />
+              <label for="input" class="label">Cargo do funcionário</label>
               <div class="underline"></div>
             </div>
 
