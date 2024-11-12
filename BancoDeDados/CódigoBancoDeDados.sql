@@ -1,7 +1,6 @@
 CREATE DATABASE Safelight;
 USE SafeLight;
 
-
 CREATE TABLE empresa(
 idEmpresa int primary key auto_increment,
 nome varchar(90),
@@ -19,30 +18,29 @@ INSERT INTO empresa(nome,CNPJ) VALUES
 CREATE TABLE funcionario(
 idFuncionario int auto_increment,
 fkEmpresa int,
-constraint pkEmpresa primary key (idFuncionario, fkEmpresa),
-constraint fkFuncEmpresa foreign key (fkEmpresa) references empresa(idEmpresa),
+constraint pkComposta primary key (idFuncionario, fkEmpresa),
+constraint fkEmpresaFunc foreign key (fkEmpresa) references empresa(idEmpresa),
 nome varchar(45),
 cpf char(11),
 celular char(11),
 email varchar(255),
 senha varchar(255),
-gerente varchar(20),
-constraint chkAdmin check (gerente in (0,1))
+cargo varchar(70)
 );
 
-INSERT INTO funcionario (fkEmpresa, nome, cpf, celular, email, senha, gerente) VALUES
-(1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@', '0'),
-(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123', '1'),
-(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456', '0'),
-(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789', '1'),
-(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99', '1'),
-(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky', '0'),
-(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888', '1'),
-(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999', '1'),
-(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3rt0Carl0$Ess3C4r4S0u3u', '0'),
-(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'Ca$ADeFerreiroEspetoDePau','0'),
-(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345m#ia78', '1'),
-(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTT$Jj8iuGyyf', '1');
+INSERT INTO funcionario (fkEmpresa, nome, cpf, celular, email, senha, cargo) VALUES
+(1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@', 'Supervisor'),
+(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123', 'Estagiario'),
+(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456', 'Supervisor'),
+(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789', 'Gerente'),
+(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99', 'Estagiario'),
+(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky', 'Gerente'),
+(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888', 'Analista'),
+(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999', 'Supervisor'),
+(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3rt0Carl0$Ess3C4r4S0u3u', 'Gerente'),
+(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'Ca$ADeFerreiroEspetoDePau','Supervisor'),
+(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345m#ia78', 'Estagiario'),
+(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTT$Jj8iuGyyf', 'Estagiario');
 
 create table endereco(
 idEndereco int primary key auto_increment,
@@ -53,8 +51,8 @@ cidade varchar(45),
 estado char(2),
 complemento varchar(45),
 fkEmpresa int,
-constraint fkEmpresaEndereco foreign key (fkEmpresa)
-references	empresa(idEmpresa)
+constraint fkEnderecoEmpresa foreign key (fkEmpresa)
+references empresa(idEmpresa)
 );
 
 INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, fkEmpresa) VALUES 
@@ -70,39 +68,37 @@ INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, f
 
 CREATE TABLE sensor(
 idSensor int primary key auto_increment,
-fkEmpresa int,
-constraint fkEmpSensor foreign key (fkEmpresa) references empresa(idEmpresa),
 fkEndereco int,
-constraint fkEndSensor foreign key (fkEndereco) references endereco(idEndereco),
+constraint fkEnderecoSensor foreign key (fkEndereco) references endereco(idEndereco),
 andar char(3),
 local varchar(30)
 );
 
-INSERT INTO sensor (fkEmpresa,fkEndereco, andar, local) VALUES 
-(1, 1, '1', 'Recepção'),
-(1, 1, 'SS', 'Depósito'),
-(1, 2, '1', 'Recepção'),
-(1, 2, 'SS', 'Depósito'),
-(1, 3, '1', 'Recepção'),
-(1, 3, 'SS', 'Depósito'),
-(2, 4, '2', 'Sala de reunião pequena'),
-(2, 4, '1', 'Escritório 1'),
-(2, 5, '2', 'Sala de reunião pequena'),
-(2, 5, '1', 'Escritório 1'),
-(3, 6, '1', 'Sala de assistencia técnica'),
-(3, 6, '2', 'Sala de Reunião média'),
-(4, 7, '5', 'Sala Supervisor'),
-(4, 7, '4', 'Sala de reunião grande'),
-(5, 8, '5', 'Sala supervisor back-end'),
-(5, 8, '5', 'Sala supervisor BD'),
-(6, 9, '6', 'Servidores'),
-(6, 9, '7', 'Sala CEO'),
-(1, 1, '2', 'Sala descanso'),
-(2, 4, '3', 'Escritório 2'),
-(3, 6, '3', 'Arquivos'),
-(4, 7, '2', 'Escritório 3'),
-(5, 8, '6', 'Administrativo'),
-(6, 9, '5', 'Financeiro');
+INSERT INTO sensor (fkEndereco, andar, local) VALUES 
+(1, '1', 'Recepção'),
+(1, 'SS', 'Depósito'),
+(2, '1', 'Recepção'),
+(2, 'SS', 'Depósito'),
+(3, '1', 'Recepção'),
+(3, 'SS', 'Depósito'),
+(4, '2', 'Sala de reunião pequena'),
+(4, '1', 'Escritório 1'),
+(5, '2', 'Sala de reunião pequena'),
+(5, '1', 'Escritório 1'),
+(6, '1', 'Sala de assistencia técnica'),
+(6, '2', 'Sala de Reunião média'),
+(7, '5', 'Sala Supervisor'),
+(7, '4', 'Sala de reunião grande'),
+(8, '5', 'Sala supervisor back-end'),
+(8, '5', 'Sala supervisor BD'),
+(9, '6', 'Servidores'),
+(9, '7', 'Sala CEO'),
+(1, '2', 'Sala descanso'),
+(4, '3', 'Escritório 2'),
+(6, '3', 'Arquivos'),
+(7, '2', 'Escritório 3'),
+(8, '6', 'Administrativo'),
+(9, '5', 'Financeiro');
 
 
 CREATE TABLE dados(
@@ -112,7 +108,7 @@ constraint pkSensorDados primary key (idDado, fkSensor),
 constraint fkSensorDados foreign key (fkSensor) references sensor(idSensor),
 luminosidade int,
 momento datetime
-); 
+);
 
 INSERT INTO dados (fkSensor, luminosidade, momento) VALUES 
 (1, 850, '2024-10-21 08:00:00'),
@@ -134,17 +130,43 @@ INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
 (17, 730, '2024-10-21 16:30:00'),
 (18, 820, '2024-10-21 16:45:00');
 
+
+#TOPICO A ABORDAR
+SELECT  concat(end.logradouro, ' ', end.numero) as endereço,
+	e.nome as Empresa,
+	f.nome as Funcionário
+	FROM endereco as end
+	JOIN empresa as e
+	ON end.fkEMpresa = e.idEmpresa
+	JOIN funcionario as f
+	ON f.fkEmpresa = e.idEmpresa;
+
+
+SELECT * FROM EMPRESA;
+
+SELECT e.nome as Empresa,
+  CONCAT(end.logradouro, ' ', end.numero) AS endereço,
+  COUNT(s.idSensor) AS sensores,
+	GROUP_CONCAT(s.andar) as Andares
+	FROM endereco AS end
+	JOIN  sensor AS s 
+	ON s.fkEndereco = end.idEndereco
+	JOIN empresa as e
+	ON end.fkEmpresa = e.idEmpresa
+	GROUP BY e.nome, end.logradouro, end.numero
+	having e.nome = 'Coca-cola';
+
+# antigo select's downside;
 SELECT e.nome as Empresa,
 concat(end.logradouro, ' ', end.numero) as endereço,
 f.nome as "Nome funcionário",
 f.email as "Login do usuário",
 f.senha as "Senha do usuário",
-CASE WHEN f.gerente = 1 THEN 'Usuário gerente'
-ELSE 'Usuário comum'
-END as 'Tipo de usuário'
+f.cargo as Cargo
 FROM empresa as e
 JOIN endereco as end ON idEmpresa = end.fkEmpresa
-JOIN funcionario as f ON idEmpresa = f.fkEmpresa;
+JOIN funcionario as f ON idEmpresa = f.fkEmpresa
+WHERE e.idEmpresa = 1;
 
 SELECT e.nome as Empresa,
 concat("Andar: ", s.andar, ", Local: ", s.local, ", Luminosidade: ", d.luminosidade, " as " , d.momento) as Informações
@@ -163,7 +185,6 @@ s.local as Local,
 from sensor as s
 JOIN dados as d ON s.idSensor = d.fkSensor
 JOIN empresa as e ON s.fkEmpresa = e.idEmpresa 
-<<<<<<< HEAD
 WHERE e.nome = 'Sofra'
 ORDER by s.andar;
 
