@@ -171,8 +171,8 @@ WHERE e.idEmpresa = 1;
 SELECT e.nome as Empresa,
 concat("Andar: ", s.andar, ", Local: ", s.local, ", Luminosidade: ", d.luminosidade, " as " , d.momento) as Informações
 FROM empresa as e
-JOIN sensor as s ON idEmpresa = fkEmpresa
-JOIN dados as d ON idSensor = fkSensor
+JOIN sensor as s ON e.idEmpresa = endereco.fkEmpresa
+JOIN dados as d ON s.idSensor = d.fkSensor
 ORDER BY e.nome, s.andar;
 
 SELECT s.andar as Andar,
@@ -193,11 +193,17 @@ INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, f
 
 SELECT * FROM endereco;
 
-SELECT * FROM sensor JOIN empresa ON sensor.fkEmpresa = empresa.idEmpresa JOIN endereco ON empresa.idEmpresa = endereco.fkEmpresa WHERE idSensor = 1;
-=======
-WHERE e.nome = 'Safra'
+SELECT * FROM sensor;
+SELECT * FROM endereco;
+
+SELECT * FROM sensor as s 
+JOIN endereco 
+ON s.fkEndereco = endereco.idEndereco 
+JOIN empresa as emp
+ON emp.idEmpresa = endereco.fkEmpresa 
+WHERE endereco.fkEmpresa = 1
 ORDER by s.andar;
 
 Select * from sensor join endereco on sensor.fkEndereco = idEndereco;
->>>>>>> 0f6491ef26aaad322ec9c63ab09dc0652a8980b2
+
 
