@@ -1,14 +1,16 @@
 CREATE DATABASE Safelight;
-USE SafeLight;
+
+USE Safelight;
 
 CREATE TABLE empresa(
 idEmpresa int primary key auto_increment,
 nome varchar(90),
-CNPJ char (14)
+CNPJ char (14),
+codigoAcesso char(6) UNIQUE
 );
 
-INSERT INTO empresa(nome,CNPJ) VALUES
-('Coca-cola','02219482000109'),
+INSERT INTO empresa(nome,CNPJ, codigoAcesso) VALUES
+('Coca-cola','02219482000109', 'ABC123'),
 ('Pepsi','37555384000119'),
 ('Safra','27570297000187'),
 ('Itau','84391627000100'),
@@ -27,6 +29,8 @@ email varchar(255),
 senha varchar(255),
 cargo varchar(70)
 );
+
+SELECT * FROM empresa;
 
 INSERT INTO funcionario (fkEmpresa, nome, cpf, celular, email, senha, cargo) VALUES
 (1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@', 'Supervisor'),

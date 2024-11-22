@@ -1,0 +1,127 @@
+body {
+  margin: 0%;
+  background-color: #fef9e6;
+}
+
+#login {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#imgLogin {
+  width: 50%;
+  height: auto;
+
+  background-image: url(../assets/fotos/login_womanPC.png);
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+}
+
+.img_luz {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
+.container {
+  width: 25%;
+  height: 75vh;
+  background-color: #84bfc3;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px 40px 20px 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container p {
+  margin: 20px;
+  width: 90%;
+  font-size: 20px;
+  font-weight: 350;
+  color: #3d3d3d;
+}
+
+.container input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  border: #fef9e6 1px solid;
+  box-shadow: 2px 2px;
+
+  color: #868686;
+}
+
+.container input:focus {
+    transition: 1s;
+    border-radius: 10px;
+  }
+
+.container img {
+  width: 50px;
+  height: auto;
+}
+
+.container .container {
+  width: 100%;
+  height: 30px;
+  padding: 0px;
+  margin: 10px 0px 0px 0px;
+  box-shadow: none;
+
+  flex-direction: row;
+
+  justify-content: start;
+  align-content: start;
+  align-items: center;
+
+  input {
+    width: 30px;
+    height: 15px;
+    box-shadow: none;
+  }
+
+  p {
+    font-size: 15px;
+    width: 50%;
+    margin: 0px;
+  }
+}
+
+.container .loginButton {
+  width: 50%;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d96153;
+  border: 2px #bebdba outset;
+  cursor:pointer;
+  color: white;
+}
+
+.container .loginButton:hover {
+  transition: 1s;
+  background-color: #ffb870;
+  border: 2px #ffffff outset;
+}
+
+.container #span_cadastro {
+  margin-top: 30px;
+  color: #fef9e6;
+  width: 100%;
+  text-align: center;
+
+  a {
+    color: #868686;
+    text-decoration: none;
+  }
+}
