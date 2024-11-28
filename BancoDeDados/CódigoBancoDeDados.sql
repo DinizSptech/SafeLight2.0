@@ -11,40 +11,40 @@ codigoAcesso char(6) UNIQUE
 
 INSERT INTO empresa(nome,CNPJ, codigoAcesso) VALUES
 ('Coca-cola','02219482000109', 'ABC123'),
-('Pepsi','37555384000119'),
-('Safra','27570297000187'),
-('Itau','84391627000100'),
-('Bradesco','43614289000141'),
-('Google','43614289000141');
+('Pepsi','37555384000119', 'X7L2QK'),
+('Safra','27570297000187', 'A3PT9M'),
+('Itau','84391627000100', 'WQ4J8Z'),
+('Bradesco','43614289000141', 'N5YKC2'),
+('Google','43614289000141', 'L9RT3F');
 
-CREATE TABLE funcionario(
-idFuncionario int auto_increment,
+CREATE TABLE gerenciadores(
+idGerenciadores int auto_increment,
 fkEmpresa int,
-constraint pkComposta primary key (idFuncionario, fkEmpresa),
+constraint pkComposta primary key (idGerenciadores, fkEmpresa),
 constraint fkEmpresaFunc foreign key (fkEmpresa) references empresa(idEmpresa),
 nome varchar(45),
 cpf char(11),
 celular char(11),
 email varchar(255),
-senha varchar(255),
-cargo varchar(70)
+senha varchar(255)
 );
 
 SELECT * FROM empresa;
+SELECT * FROM gerenciadores;
 
-INSERT INTO funcionario (fkEmpresa, nome, cpf, celular, email, senha, cargo) VALUES
-(1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@', 'Supervisor'),
-(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123', 'Estagiario'),
-(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456', 'Supervisor'),
-(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789', 'Gerente'),
-(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99', 'Estagiario'),
-(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky', 'Gerente'),
-(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888', 'Analista'),
-(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999', 'Supervisor'),
-(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3rt0Carl0$Ess3C4r4S0u3u', 'Gerente'),
-(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'Ca$ADeFerreiroEspetoDePau','Supervisor'),
-(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345m#ia78', 'Estagiario'),
-(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTT$Jj8iuGyyf', 'Estagiario');
+INSERT INTO gerenciadores (fkEmpresa, nome, cpf, celular, email, senha) VALUES
+(1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@'),
+(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123'),
+(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456'),
+(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789'),
+(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99'),
+(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky'),
+(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888'),
+(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999'),
+(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3rt0Carl0$Ess3C4r4S0u3u'),
+(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'Ca$ADeFerreiroEspetoDePau'),
+(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345m#ia78'),
+(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTT$Jj8iuGyyf');
 
 create table endereco(
 idEndereco int primary key auto_increment,
@@ -142,7 +142,7 @@ SELECT  concat(end.logradouro, ' ', end.numero) as endereço,
 	FROM endereco as end
 	JOIN empresa as e
 	ON end.fkEMpresa = e.idEmpresa
-	JOIN funcionario as f
+	JOIN gerenciadores as f
 	ON f.fkEmpresa = e.idEmpresa;
 
 
@@ -169,7 +169,7 @@ f.senha as "Senha do usuário",
 f.cargo as Cargo
 FROM empresa as e
 JOIN endereco as end ON idEmpresa = end.fkEmpresa
-JOIN funcionario as f ON idEmpresa = f.fkEmpresa
+JOIN gerenciadores as f ON idEmpresa = f.fkEmpresa
 WHERE e.idEmpresa = 1;
 
 SELECT e.nome as Empresa,
