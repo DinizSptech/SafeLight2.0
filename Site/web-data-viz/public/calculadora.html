@@ -3,27 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./javascript/calculadora.js"></script>
-    <title>Calculadora Financeira e Simulador de Lux</title>
-</head>
-<body>
-    <!-- Redução Estimada: A porcentagem de redução no consumo de energia após a implementação do sistema. -->
-    <div id="section2">
+    <title>SafeLight</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="../css/default_style.css">
+    <link rel="stylesheet" href="../css/calcStyle.css">
+    <link rel="icon" href="../assets/fotos/light.svg">
+  </head>
+  <body>
+    <!--HEADER DO SITE E OS BOTÕES-->
+    <div class="header">
+      <img class="safelight" src="../assets/fotos/logo2.png" />
+  
+      <div class="select" id="div_selects">
+        <div class="palavras" id="div_palavras">
+          <a href="./index.html">Home</a>
+          <a href="./calculadora.html"">Simule aqui</a>
+          <a href="./faq.html">FAQ</a>
+        </div>
+  
+        <div class="login">
+          <a href="./login.html">Login</a>
+        </div>
+        <div class="cadastro">
+          <a href="./cadFuncionario.html">Cadastro</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="sections">
+      <div id="section1">
         <h1>Calculadora de Produtividade dos Funcionários</h1>
         <!-- Produtividade esperada: Por volta de 30% após a implementação do sistema. -->
-        <p>Quantidade de funcionários:</p>
-        <input id="ipt_qnt_funcionario" type="number" />
-        <p>Salário médio dos funcionários:</p>
-        <input id="ipt_salario" type="number" />
-        <p>Média de horas trabalhada por dia:</p>
-        <input id="ipt_horas_por_dia" type="number" />
-
-        <br><br>
-
-        <button onclick="calcularProdutividade()">Calcular</button>
-        <div id="divmsg2"></div>
+        <div class="boxProdutividade">
+          <p>Quantidade de funcionários:</p>
+          <input placeholder="Insira a quantidade" id="ipt_qnt_funcionario" type="number" />
+          <p>Salário médio dos funcionários:</p>
+          <input placeholder="Insira a média salarial" id="ipt_salario" type="number" />
+          <p>Média de horas trabalhada por dia:</p>
+          <input placeholder="Insira as horas" id="ipt_horas_por_dia" type="number" />
+          <button onclick="calcularProdutividade()">Calcular</button>
+          <div id="divmsg2"></div>
+        </div>
     </div>
-    <div id="section1">
+    <div id="section2">
       <h1>Calculadora de Consumo de Energia</h1>
       <table>
         <th>Tabela de Watts por ambiente</th>
@@ -68,12 +90,12 @@
           <td>50-100</td>
         </tr>
       </table>
-
+  
       <p>Informe a quantidade de luzes por setor ou sala:</p>
-      <p><input id="iptqtd" type="number" /></p>
+      <input placeholder="Insira a quantidade" id="iptqtd" type="number" />
       <!-- class:input-centralizado, para centralizar o texto inserido na input -->
       <p>Informe a potência W (Watts) das luzes utilizadas:</p>
-
+  
       <select id="select_watts" onchange="checkOutro()">
         <option value="#" selected disabled>Selecione uma opção</option>
         <option value="10">10 Watts</option>
@@ -89,24 +111,27 @@
         <option value="60">60 Watts</option>
         <option value="another">Outro</option>
       </select>
-
-      <input disabled type="number" id="input_anotherW" />
-
+  
+      <input style="display:none;" placeholder="Insira um valor" disabled type="number" id="input_anotherW" />
+  
       <p>Informe o tempo de utilização das luzes (em horas diárias):</p>
-      <input id="ipthrs" type="number" min="0" max="24" />
-
-      <p>Informe sua região:</p>
-      <select id="iptregiao">
-        <option disabled selected value="#">Selecione uma região</option>
-        <option value="sp">São Paulo</option>
-        <option value="pr">Paraná</option>
-        <option value="rj">Rio de Janeiro</option>
-      </select>
+      <input id="ipthrs" placeholder="Insira as horas" type="number" min="0" max="24" />
       
       <button onclick="calcular()">Calcular</button>
       
       <div id="divmsg"></div>
     </div>
 
+    </div>
+
+    <footer>
+      <hr>
+      <div class="rodape">
+      <img class="safelight2" src="../assets/fotos/logo1.png">
+      <p> © 2024 SafeLight. Todos os direitos reservados.</p>
+    </div>
+    </footer>
+
   </body>
 </html>
+<script src="../javascript/calculadora.js"></script>
