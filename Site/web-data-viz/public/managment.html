@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../css/managmentStyle.css" />
+  <link rel="stylesheet" href="../css/default_style.css" />
+  <link rel="icon" href="../assets/fotos/light.svg" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Gerenciamento - Safelight</title>
+</head>
+
+<body>
+  <div class="header">
+    <img class="safelight" src="../assets/fotos/logo2.png" />
+
+    <div class="select" id="div_selects">
+      <div class="palavras" id="div_palavras">
+        <a href="./home.html">Home</a>
+        <a href=" ./calculadora.html">Simule aqui</a>
+        <a href="./faq.html">FAQ</a>
+      </div>
+
+      <div class="login">
+        <a href="./login.html">Login</a>
+      </div>
+      <div class="cadastro">
+        <a href="./cadFuncionario.html">Cadastro</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="top_header_dash">
+    <h1>Gerenciamento Safelight</h1>
+
+    <div class="boxHeader">
+      <img class="user_img" id="username" src="../assets/fotos/user_img.svg" alt="Imagem do Usuário" />
+
+      <p>Seja bem-vindo Matheus!</p>
+    </div>
+  </div>
+
+  <div class="dashboard fade-in">
+    <div class="header_dash">
+      <div class="boxHeader"></div>
+
+      <!-- <a id="button_individual" onclick="redirect('individual')" class="botao">
+          <span class="text">Análise individual</span>
+          <img class="svg grafico_l" src="../assets/fotos/chartLine.svg" alt="" />
+        </a>
+        <a id="button_geral" onclick="redirect('geral')" class="botao">
+          <span class="text">Análise geral</span>
+          <img class="svg grafico_c" src="../assets/fotos/chartColumn.svg" alt="" />
+        </a> -->
+      <a id="button_cadastro" onclick="redirect('cadastro')" class="botao">
+        <span class="text">Cadastro de empresas</span>
+        <img class="svg funcionario" src="../assets/fotos/employees.svg" alt="" />
+      </a>
+    </div>
+
+    <div class="cadastrar">
+      <div class="modal">
+
+        <h1>Sessão de Cadastro</h1>
+
+        <div class="inputs">
+          <div class="input-container">
+            <input type="text" id="input_nome" required="" />
+            <label for="input" class="label">Nome da Empresa</label>
+            <div class="underline"></div>
+          </div>
+
+          <div class="input-container">
+            <input type="text" id="input_cnpj" required="" />
+            <label for="input" class="label">CNPJ da Empresa</label>
+            <div class="underline"></div>
+          </div>
+
+          <div class="input-container">
+            <input type="text" id="input_codigo" required="" />
+            <label for="input" class="label">Código de Acesso da Empresa (6 Caracteres)</label>
+            <div class="underline"></div>
+          </div>
+        </div>
+
+        <div id="outputCadEmpresa"></div>
+
+        <button onclick="cadastrarEmpresa()">Cadastrar</button>
+      </div>
+    </div>
+
+
+  </div>
+
+  <footer>
+    <hr />
+    <div class="rodape">
+      <img class="safelight2" src="../assets/fotos/logo1.png" />
+      <p>© 2024 SafeLight. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
+<script src="../javascript/chart.js"></script>
+<script>
+
+  function cadastrarEmpresa() {
+    var nomeEmpresaVar = input_nome.value;
+    var cnpjEmpresaVar = input_cnpj.value;
+    var codigoEmpresaVar = input_codigo.value;
+
+    if (nomeEmpresaVar == '' || cnpjEmpresaVar == '' | codigoEmpresaVar == '') {
+      outputCadEmpresa.innerHTML = '<p style="margin: 1.5% 0%; font-size: 3vh;">Os campos de cadastro estão em branco.</p>'
+      return
+    }
+
+    fetch("/empresas/cadastrar/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nomeEmpresa: nomeEmpresaVar,
+        cnpjEmpresa: cnpjEmpresaVar,
+        codigoEmpresa: codigoEmpresaVar
+      })
+    })
+      .then((result) => {
+        outputCadEmpresa.innerHTML = `Empresa ${nomeEmpresaVar} foi cadastrada com sucesso!`
+      }).catch((err) => {
+        outputCadEmpresa.innerHTML = `Erro ao cadastrar a Empresa ${nomeEmpresaVar}!`
+
+      })
+  }
+
+</script>
