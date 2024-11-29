@@ -18,7 +18,7 @@
 
       <div class="select" id="div_selects">
         <div class="palavras" id="div_palavras">
-          <a href="./index.html">Home</a>
+          <a href="./home.html">Home</a>
           <a href=" ./calculadora.html">Simule aqui</a>
           <a href="./faq.html">FAQ</a>
         </div>
@@ -65,65 +65,105 @@
         </a>
       </div>
 
-      <div   class="graficos individual">
+      <div class="graficos individual">
+        <div class="container-selects">
+          <select  class="select-dash" name="" id="">
+              <option value="#" disabled selected>Selecionar </option>
+              <option value=""></option>
+              <option value=""></option>
+          </select>
+          <div >
+            <select class="select-dash" name="" id="">
+              <option value="#" disabled selected>Selecionar </option>
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+          </div>
+        
+          <select  class="select-dash" name="" id="">
+            <option value="#" disabled selected>Selecionar </option>
+              <option value=""></option>
+              <option value=""></option>
+          </select>
+        </div>
         <div class="ambiente" style="display: flex">
           <div class="chart-container">
             <div class="headerChart titleChart">
               Sala de Reunião - Ultimas 10 horas
             </div>
-            <canvas class="boxCanvas" id="chartSalaReuniao"></canvas>
+            <canvas class="grafico-principal" id="chartSalaReuniao"></canvas>
           </div>
-          <div class="kpi">
-            <div class="headerKpi">
-              <h2 class="titleChart">Indicadores</h2>
-            </div>
-            <span>Maior índice de iluminação</span>
-            <h3>791 Lux</h3>
-            <span>Menor índice de iluminação</span> <br />
-            <h3>444 Lux</h3>
-            <span>Média índice de iluminação</span> <br />
-            <h3>598 Lux</h3>
-          </div>
+        
         </div>
-
+        
         <div class="ambiente" style="display: flex">
           <div class="chart-container">
-            <div class="headerChart titleChart">
-              Escritório - Ultimas 10 horas
-            </div>
-            <canvas class="boxCanvas" id="chartEscritorio"></canvas>
+            <div class="headerChart titleChart">Média por andar</div>
+            <canvas class="grafico-media" id="chartEscritorio"></canvas>
           </div>
-          <div class="kpi">
-            <div class="headerKpi">
-              <h2 class="titleChart">Indicadores</h2>
+        
+          <div class="kpis">
+            <div class="kpi">
+              <span>Maior índice de iluminação</span>
+              <h3>791 Lux</h3>
             </div>
-            <span>Maior índice de iluminação</span>
-            <h3>691 Lux</h3>
-            <span>Menor índice de iluminação</span> <br />
-            <h3>350 Lux</h3>
-            <span>Média índice de iluminação</span> <br />
-            <h3>520 Lux</h3>
+            <div class="kpi">
+              <span>Menor índice de iluminação</span>
+              <h3>444 Lux</h3>
+            </div>
+            <div class="kpi">
+              <span>Média índice de iluminação</span>
+              <h3>598 Lux</h3>
+            </div>
+            <div class="kpi">
+              <span>Média índice de iluminação</span>
+              <h3>598 Lux</h3>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="graficos geral">
-        <div class="ambiente">
-          <div class="chart-container">
-            <div class="headerChart titleChart">Análise geral - Andar 1</div>
-            <canvas class="boxCanvas" id="chartGeral"></canvas>
-          </div>
-          <div class="kpi">
-            <div class="headerKpi">
-              <h2 class="titleChart">Indicadores gerais</h2>
+        <div class="container-selects">
+            <select  class="select-dash" name="" id="">
+                <option value="#" disabled selected>Selecionar </option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+            <div >
+              <select class="select-dash" name="" id="">
+                <option value="#" disabled selected>Selecionar </option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
             </div>
+          
+            <select  class="select-dash" name="" id="">
+              <option value="#" disabled selected>Selecionar </option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+          </div>
+        <div class="ambiente">
+          <div class="kpis">
+            <div class="kpi">
             <span>Ambientes com a iluminação adequada</span>
             <h3>Escritório 1 e Escritório 2</h3>
+          </div>
+          <div class="kpi">
             <span>Ambientes com a iluminação inadequada</span> <br />
             <h3>Sala de conferência, Sala de Reunião e Cozinha</h3>
           </div>
         </div>
       </div>
+          <div class="chart-container">
+            <div class="headerChart titleChart">Análise geral - Andar 1</div>
+            <canvas class="boxCanvas" id="chartGeral"></canvas>
+          </div>
+          
+        </div>
+        
+   
 
       <div class="cadastrar">
         <div class="modal">
