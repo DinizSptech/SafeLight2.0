@@ -1,74 +1,69 @@
 CREATE DATABASE Safelight;
-
 USE Safelight;
-
+-- drop database safelight;
 CREATE TABLE empresa(
 idEmpresa int primary key auto_increment,
 nome varchar(90),
-CNPJ char (14),
-codigoAcesso char(6) UNIQUE
+CNPJ char (14)
 );
 
-INSERT INTO empresa(nome,CNPJ, codigoAcesso) VALUES
-('Coca-cola','02219482000109', 'ABC123'),
-('Pepsi','37555384000119', 'X7L2QK'),
-('Safra','27570297000187', 'A3PT9M'),
-('Itau','84391627000100', 'WQ4J8Z'),
-('Bradesco','43614289000141', 'N5YKC2'),
-('Google','43614289000141', 'L9RT3F');
+INSERT INTO empresa(nome,CNPJ) VALUES
+('Coca-cola','02219482000109'),
+('Pepsi','37555384000119'),
+('Safra','27570297000187'),
+('Itau','84391627000100'),
+('Bradesco','43614289000141'),
+('Google','43614289000141');
 
-CREATE TABLE gerenciadores(
-idGerenciadores int auto_increment,
-fkEmpresa int,
-constraint pkComposta primary key (idGerenciadores, fkEmpresa),
-constraint fkEmpresaFunc foreign key (fkEmpresa) references empresa(idEmpresa),
-nome varchar(45),
-cpf char(11),
-celular char(11),
-email varchar(255),
-senha varchar(255)
+CREATE TABLE endereco (
+  idEndereco INT PRIMARY KEY AUTO_INCREMENT,
+  logradouro VARCHAR(45),
+  numero CHAR(5),
+  bairro VARCHAR(45),
+  cidade VARCHAR(45),
+  estado CHAR(2),
+  complemento VARCHAR(45),
+  fkEmpresa INT,
+  codigoAcesso CHAR(6) UNIQUE,
+  CONSTRAINT fkEnderecoEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
-SELECT * FROM empresa;
-SELECT * FROM gerenciadores;
+INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, fkEmpresa, codigoAcesso) VALUES
+('Rua dos Alfeneiros', '101', 'Centro', 'São Paulo', 'SP', 'Apto 1', 1, 'ABC123'),
+('Avenida das Nações', '202', 'Vila Nova', 'São Paulo', 'SP', 'Apto 2', 1, 'X7L2QK'),
+('Praça dos Bandeirantes', '303', 'Jardim Paulista', 'São Paulo', 'SP', 'Apto 3', 1, 'A3PT9M'),
+('Rua da Paz', '404', 'Copacabana', 'Rio de Janeiro', 'RJ', 'Casa', 2, 'WQ4J8Z'),
+('Avenida Atlântica', '505', 'Ipanema', 'Rio de Janeiro', 'RJ', 'Casa', 2, 'N5YKC2'),
+('Rua 7 de Março', '873', 'Zona Sul', 'Belo Horizonte', 'MG', 'Loja', 3, 'L9RT3F'),
+('Rua Doutor Engenheiro Guilherme', '43', 'Centro', 'Curitiba', 'PR', 'Sala 2', 4, 'B2G8Y3'),
+('Rua Senhor dos Passos', '654', 'Norte', 'Porto Alegre', 'RS', 'Cobertura', 5, 'F1D2V8'),
+('Rua Albuquerque', '987', 'Sul', 'Brasília', 'DF', 'Apto 2', 6, 'T5P7K9');
 
-INSERT INTO gerenciadores (fkEndereco nome, cpf, celular, email, senha) VALUES
+
+CREATE TABLE gerenciadores (
+    idGerenciadores INT AUTO_INCREMENT PRIMARY KEY,
+    fkEndereco INT,
+    nome VARCHAR(45),
+    cpf CHAR(11),
+    celular CHAR(11),
+    email VARCHAR(255),
+    senha VARCHAR(255),
+    CONSTRAINT fkEnderecoGerenciadores FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+);
+
+select * from gerenciadores;
+
+INSERT INTO gerenciadores (fkEndereco, nome, cpf, celular, email, senha) VALUES
 (1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@'),
-(1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123'),
-(2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456'),
-(2, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789'),
-(3, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99'),
-(3, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky'),
-(4, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888'),
-(4, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999'),
-(5, 'Tatiane Rocha', '11517377048', '51991923718', 'tatiane.rocha@email.com', 'R0b3rt0Carl0$Ess3C4r4S0u3u'),
-(5, 'Marcos Ferreira', '59017622075', '51992783510', 'marcos.ferreira@email.com', 'Ca$ADeFerreiroEspetoDePau'),
-(6, 'Bruna Martins', '38671737020', '61956718953', 'bruna.martins@email.com', '2345m#ia78'),
-(6, 'Eduardo Nunes', '92300983028', '61921834895', 'eduardo.nunes@email.com', '1JtTT$Jj8iuGyyf');
+(2, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123'),
+(4, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456'),
+(5, 'Ana Santos', '95660572022', '21912345186', 'ana.santos@email.com', 'Tubercul#789'),
+(6, 'Fernanda Costa', '58725501038', '31921356758', 'fernanda.costa@email.com', 'Ga!vota99'),
+(7, 'Ricardo Lima', '02983657078', '31921784920', 'ricardo.lima@email.com', 'M!kewaz4usky'),
+(8, 'Juliana Almeida', '10093639058', '41927184561', 'juliana.almeida@email.com', '$Ullivan888'),
+(9, 'Paulo Sousa', '68231042016', '41979261734', 'paulo.sousa@email.com', 'C@britopunk999');
 
-create table endereco(
-idEndereco int primary key auto_increment,
-logradouro varchar(45),
-numero char(5),
-bairro varchar(45),
-cidade varchar(45),
-estado char(2),
-complemento varchar(45),
-fkEmpresa int,
-constraint fkEnderecoEmpresa foreign key (fkEmpresa)
-references empresa(idEmpresa)
-);
-
-INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, fkEmpresa) VALUES 
-('Rua dos Alfeneiros', '101', 'Centro', 'São Paulo', 'SP', 'Apto 1', 1),
-('Avenida das Nações', '202', 'Vila Nova', 'São Paulo', 'SP', 'Apto 2', 1),
-('Praça dos Bandeirantes', '303', 'Jardim Paulista', 'São Paulo', 'SP', 'Apto 3', 1),
-('Rua da Paz', '404', 'Copacabana', 'Rio de Janeiro', 'RJ', 'Casa', 2),
-('Avenida Atlântica', '505', 'Ipanema', 'Rio de Janeiro', 'RJ', 'Casa', 2),
-('Rua 7 de Março', '873', 'Zona Sul', 'Belo Horizonte', 'MG', 'Loja', 3),
-('Rua Doutor Engenheiro Guilherme', '43', 'Centro', 'Curitiba', 'PR', 'Sala 2', 4),
-('Rua Senhor dos Passos', '654', 'Norte', 'Porto Alegre', 'RS', 'Cobertura', 5),
-('Rua Albuquerque', '987', 'Sul', 'Brasília', 'DF', 'Apto 2', 6);
+select * from gerenciadores;
 
 CREATE TABLE sensor(
 idSensor int primary key auto_increment,
