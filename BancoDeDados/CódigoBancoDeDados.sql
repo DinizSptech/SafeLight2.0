@@ -196,6 +196,7 @@ INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, complemento, f
 ('Rua 2', '217', 'Diadema bairro', 'Diadema', 'SP', null, 1);
 
 SELECT * FROM endereco;
+SELECT * FROM gerenciadores;
 
 SELECT * FROM sensor;
 SELECT * FROM endereco;
