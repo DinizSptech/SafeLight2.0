@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href="./css/managmentStyle.css" />
   <link rel="stylesheet" href="./css/default_style.css" />
+  <link rel="stylesheet" href="./css/bobstyle.css" />
+
   <link rel="icon" href="./assets/fotos/light.svg" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -17,9 +19,10 @@
   <div class="header">
     <img class="safelight" src="./assets/fotos/logo2.png" />
 
-    <a href="../BobIA/public/index.html">
-      <img class="bobIA" src="./assets/fotos/bobIA.png" alt="">
-    </a>
+   
+      <img onclick="popUpBob()" class="bobIA" src="./assets/fotos/bobIA.png" alt="">
+  
+
     <div class="select" id="div_selects">
       <div class="palavras" id="div_palavras">
         <a href="./home.html">Home</a>
@@ -45,6 +48,30 @@
       <p>Seja bem-vindo Matheus!</p>
     </div>
   </div>
+
+
+    <!-- POPUP BOB IA -->
+    <div style="display: none;" id="bobIA">
+      <h1>BobIA</h1>
+    
+      <!-- função vai mostrar o popup se ele não estiver aberto, e vai fechar caso ele estiver aberto. 
+       
+      ainda não implementei as funções do bobIA nesse html, tem que implementar
+
+            - diogo yudi "Digo" Tateno
+      -->
+
+      <img onclick="popUpBob()" src="./assets/fotos/setaBaixo.png" alt="">
+      <br><br>
+      <h3>Resposta da IA:</h3>
+      
+      <div id="resposta">*TEXTO PARA TESTE,  RETIRAR DEPOIS*</div>
+      <button onclick="gerarResposta()">Gerar Resposta</button>
+
+      <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+  </div>
+
+
 
   <div class="dashboard fade-in">
     <div class="header_dash">
@@ -139,5 +166,13 @@
 
       })
   }
+
+    function popUpBob() {
+    if (bobIA.style.display === "none") {
+        bobIA.style.display = "flex";
+    } else {
+        bobIA.style.display = "none";
+    }
+}
 
 </script>
