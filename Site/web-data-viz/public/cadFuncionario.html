@@ -95,11 +95,11 @@
   }
 
   // Validar código de acesso do endereço
-  let enderecoValido = false;
-  for (let i = 0; i < listaEnderecosCadastrados.length; i++) {
+  var enderecoValido = false;
+  for (var i = 0; i < listaEnderecosCadastrados.length; i++) {
     if (listaEnderecosCadastrados[i].codigoAcesso === codigoVar) {
       enderecoValido = true;
-      idEnderecoSelecionado = listaEnderecosCadastrados[i].idEndereco;  // Captura o id do endereço válido
+      idEnderecoSelecionado = listaEnderecosCadastrados[i].idEndereco;
       break;
     }
   }

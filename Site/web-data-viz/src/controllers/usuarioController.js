@@ -83,13 +83,13 @@ function cadastrar(req, res) {
   }
 
   function listarEnderecos(req, res) {
-    usuarioModel.listarEnderecos() // Chama o model para listar endereços
+    usuarioModel.listarEnderecos()
         .then(function (enderecos) {
-            res.json(enderecos); // Retorna os endereços como JSON
+            res.json(enderecos);
         })
         .catch(function (erro) {
             console.log(erro);
-            res.status(500).json(erro); // Se houver erro, retorna um erro 500
+            res.status(500).json(erro);
         });
 }
 module.exports = {

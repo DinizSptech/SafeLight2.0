@@ -22,7 +22,7 @@ function cadastrar(nome, cpf, celular, email, senha, fkEndereco) {
 
   function listarEnderecos() {
     return new Promise(function(resolve, reject) {
-        var query = 'SELECT * FROM endereco';
+        var query = 'select * from endereco';
         database.executar(query)
             .then(function(resultado) {
                 resolve(resultado);
