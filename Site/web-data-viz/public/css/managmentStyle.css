@@ -16,6 +16,26 @@ body {
   /* background-color: #fdf3d4; */
 }
 
+.bobIA {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(grey 1px 1px 2px);
+  right: 30px;
+  bottom: 30px;
+  transition: 0.2s ease-out;
+  z-index: 3;
+}
+
+.bobIA:hover {
+  filter: drop-shadow(0px 0px 2px grey) brightness(110%);
+  transform: scale(1.1);
+}
+
+.bobIA:click{
+  transform: scale(12);
+}
+
 .top_header_dash {
   display: flex;
 
