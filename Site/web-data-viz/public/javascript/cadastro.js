@@ -109,7 +109,7 @@ function chkCadastro() {
     alert("Dados cadastrados");
 
     document.getElementById("ipt_nome_funcionario").value = "";
-    document.getElementById("ipt_codigo_empresa").value = "";
+    document.getElementById("ipt_codigo_endereco").value = "";
     document.getElementById("ipt_cpf").value = "";
     document.getElementById("ipt_celular").value = "";
     document.getElementById("ipt_email").value = "";

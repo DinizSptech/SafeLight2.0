@@ -32,7 +32,7 @@ senha varchar(255)
 SELECT * FROM empresa;
 SELECT * FROM gerenciadores;
 
-INSERT INTO gerenciadores (fkEmpresa, nome, cpf, celular, email, senha) VALUES
+INSERT INTO gerenciadores (fkEndereco nome, cpf, celular, email, senha) VALUES
 (1, 'João Silva', '89190680030', '11934164723', 'joao.silva@email.com', 'Urubu10@'),
 (1, 'Maria Oliveira', '57875337046', '11921345642', 'maria.oliveira@email.com', 'B@tatinha123'),
 (2, 'Carlos Pereira', '31309693064', '21921145654', 'carlos.pereira@email.com', 'M@ndioca456'),

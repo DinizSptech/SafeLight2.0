@@ -13,4 +13,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get("/enderecos/listar", function (req, res) {
+    usuarioController.listarEnderecos(req, res);
+});
+
 module.exports = router;

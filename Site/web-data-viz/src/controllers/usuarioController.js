@@ -46,50 +46,54 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    // Recupere os valores enviados pelo frontend
     var nome = req.body.nomeServer;
     var cpf = req.body.cpfServer;
     var celular = req.body.celularServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var fkEmpresa = req.body.idEmpresaVincularServer;
-
-    console.log('Estou no Controller ', nome, cpf, celular, email, senha, fkEmpresa)
-    // Faça as validações dos valores
+    var fkEndereco = req.body.fkEnderecoServer;  // Agora recebendo o código de acesso do endereço
+  
+    console.log('Estou no Controller', nome, cpf, celular, email, senha, fkEndereco);
+  
+    // Validação dos campos
     if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+      res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+      res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
+      res.status(400).send("Sua senha está undefined!");
+    } else if (fkEndereco == undefined) {
+      res.status(400).send("O código de acesso do endereço está undefined!");
     } else if (cpf == undefined) {
-        res.status(400).send("Sua cpf a vincular está undefined!");
+      res.status(400).send("Seu CPF está undefined!");
     } else if (celular == undefined) {
-        res.status(400).send("Sua celular a vincular está undefined!");
+      res.status(400).send("Seu celular está undefined!");
     } else {
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, cpf, celular, email, senha, fkEmpresa)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+      // Passe os valores para o Model
+      usuarioModel.cadastrar(nome, cpf, celular, email, senha, fkEndereco)
+        .then(function (resultado) {
+          res.json(resultado);
+        })
+        .catch(function (erro) {
+          console.log(erro);
+          res.status(500).json(erro.sqlMessage);
+        });
     }
-}
+  }
 
+  function listarEnderecos(req, res) {
+    usuarioModel.listarEnderecos() // Chama o model para listar endereços
+        .then(function (enderecos) {
+            res.json(enderecos); // Retorna os endereços como JSON
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro); // Se houver erro, retorna um erro 500
+        });
+}
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    listarEnderecos
 }
