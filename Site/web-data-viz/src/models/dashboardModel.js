@@ -18,7 +18,32 @@ function buscar_endereco(empresa){
     return database.executar(instrucaoSql);
 }
 
+function obterDadosSensores(idGerente) {
+    console.log("ACESSEI O MODEL - obterDadosSensores");
+
+    var instrucaoSql = `
+        SELECT 
+            d.luminosidade, 
+            d.momento, 
+            s.local, 
+            s.andar 
+        FROM 
+            dados as d
+        JOIN 
+            sensor as s ON d.fkSensor = s.idSensor
+        JOIN 
+            endereco as e ON s.fkEndereco = e.idEndereco
+        JOIN 
+            gerenciadores as g ON e.idEndereco = g.fkEndereco
+        WHERE 
+            g.idGerenciadores = ${idGerente};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     ver_endereco,
-    buscar_endereco
+    buscar_endereco,
+    obterDadosSensores
 };

@@ -147,18 +147,21 @@
         <div class="ambiente">
           <div class="kpis">
             <div class="kpi">
-            <span>Ambientes com a iluminação adequada</span>
-            <h3>Escritório 1 e Escritório 2</h3>
+              <div id="kpiAdequados">
+                <span>Ambientes com a iluminação adequada</span>
+              </div>
           </div>
           <div class="kpi">
-            <span>Ambientes com a iluminação inadequada</span> <br />
-            <h3>Sala de conferência, Sala de Reunião e Cozinha</h3>
+            <div id="kpiInadequados">
+              <span>Ambientes com a iluminação adequada</span>
+            </div>
           </div>
         </div>
       </div>
           <div class="chart-container">
-            <div class="headerChart titleChart">Análise geral - Andar 1</div>
-            <canvas class="boxCanvas" id="chartGeral"></canvas>
+            <div class="headerChart titleChart">Análise Geral</div>
+            <canvas class="boxCanvas" id="chartGeral"></canvas> 
+            <!-- chartGeral -->
           </div>
           
         </div>
@@ -226,3 +229,49 @@
   </body>
 </html>
 <script src="./javascript/chart.js"></script>
+<script>
+//   function obterDados() {
+
+//     var idGerente = sessionStorage.ID_USUARIO;
+
+//     fetch(`/obterSensores/${idGerente}`)
+//         .then(function(response) {
+//             return response.json();
+//         })
+//         .then(function(data) {
+//             plotarGraficoBarra(data);
+//         })
+//         .catch(function(err) {
+//             console.log(err);
+//         });
+// }
+
+// function plotarGraficoBarra(dados) {
+//     const luminosidade = [];
+//     const momentos = [];
+
+//     dados.forEach(dado => {
+//         luminosidade.push(dado.luminosidade);
+//         momentos.push(new Date(dado.momento).toLocaleString());
+//     });
+
+//     const ctx = document.getElementById('chartGeral').getContext('2d');
+//     new Chart(chartGeral, {
+//         type: 'bar',
+//         data: {
+//             labels: momentos,
+//             datasets: [{
+//                 label: 'Luminosidade',
+//                 data: luminosidade,
+//                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
+//                 borderColor: 'rgba(255, 99, 132, 1)',
+//                 borderWidth: 1
+//             }]
+//         }
+//     });
+// }
+
+  
+    
+
+</script>

@@ -32,7 +32,23 @@ function verEndereco(req, res) {
                   );
           }
 
+          function obterDadosSensores(req, res) {
+            var idGerente = req.params.idGerente;
+            console.log('obterDadosSensores - Gerente ID:', idGerente);
+        
+            dashboardModel.obterDadosSensores(idGerente)
+                .then(function (resultado) {
+                    res.json(resultado);
+                })
+                .catch(function (erro) {
+                    console.log("\nHouve um erro ao buscar os dados dos sensores! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                });
+        }
+        
+
 module.exports = {
     verEndereco,
-    buscarEndereco
+    buscarEndereco,
+    obterDadosSensores
 }

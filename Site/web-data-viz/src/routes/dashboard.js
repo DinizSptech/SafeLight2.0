@@ -11,4 +11,8 @@ router.get("/buscar-endereco", function (req, res) {
     dashboardController.buscarEndereco(req, res);
 });
 
+router.get("/obterSensores/:idGerente", function (req, res) {
+    dashboardController.obterDadosSensores(req, res);
+});
+
 module.exports = router;
