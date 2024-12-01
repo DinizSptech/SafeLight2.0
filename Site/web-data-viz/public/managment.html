@@ -19,9 +19,9 @@
   <div class="header">
     <img class="safelight" src="./assets/fotos/logo2.png" />
 
-   
-      <img onclick="popUpBob()" class="bobIA" src="./assets/fotos/bobIA.png" alt="">
-  
+
+    <img onclick="popUpBob()" class="bobIA" src="./assets/fotos/bobIA.png" alt="">
+
 
     <div class="select" id="div_selects">
       <div class="palavras" id="div_palavras">
@@ -45,30 +45,30 @@
     <div class="boxHeader">
       <img class="user_img" id="username" src="./assets/fotos/user_img.svg" alt="Imagem do Usuário" />
 
-      <p>Seja bem-vindo Matheus!</p>
+      <p>Seja bem-vindo administrador da Safelight!</p>
     </div>
   </div>
 
 
-    <!-- POPUP BOB IA -->
-    <div style="display: none;" id="bobIA">
-      <h1>BobIA</h1>
-    
-      <!-- função vai mostrar o popup se ele não estiver aberto, e vai fechar caso ele estiver aberto. 
+  <!-- POPUP BOB IA -->
+  <div style="display: none;" id="bobIA">
+    <h1>BobIA</h1>
+
+    <!-- função vai mostrar o popup se ele não estiver aberto, e vai fechar caso ele estiver aberto. 
        
       ainda não implementei as funções do bobIA nesse html, tem que implementar
 
             - diogo yudi "Digo" Tateno
       -->
 
-      <img onclick="popUpBob()" src="./assets/fotos/setaBaixo.png" alt="">
-      <br><br>
-      <h3>Resposta da IA:</h3>
-      
-      <div id="resposta">*TEXTO PARA TESTE,  RETIRAR DEPOIS*</div>
-      <button onclick="gerarResposta()">Gerar Resposta</button>
+    <img onclick="popUpBob()" src="./assets/fotos/setaBaixo.png" alt="">
+    <br><br>
+    <h3>Resposta da IA:</h3>
 
-      <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+    <div id="resposta">*TEXTO PARA TESTE, RETIRAR DEPOIS*</div>
+    <button onclick="gerarResposta()">Gerar Resposta</button>
+
+    <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
   </div>
 
 
@@ -88,6 +88,9 @@
       <a id="button_cadastro" onclick="redirect('cadastro')" class="botao">
         <span class="text">Cadastro de empresas</span>
         <img class="svg funcionario" src="./assets/fotos/employees.svg" alt="" />
+      </a>
+      <a id="button_sair" style="border-radius: 20px; width: 40%; text-align: center;" onclick="limparSessao()" class="botao">
+        <span style="border-radius: 20px; background-color: #FF8080; color: white;" class="text">Sair</span>
       </a>
     </div>
 
@@ -136,8 +139,17 @@
 
 </html>
 <script src="./javascript/chart.js"></script>
+<script src="./javascript/sessao.js"></script>
 <script>
+  
+  function chkSession() {
+    if (sessionStorage.IS_ADMIN == undefined || sessionStorage.IS_ADMIN == false) {
+      window.location = './index.html'  
+    }
+  }
 
+  document.body.onload = chkSession()
+  
   function cadastrarEmpresa() {
     var nomeEmpresaVar = input_nome.value;
     var cnpjEmpresaVar = input_cnpj.value;
@@ -167,12 +179,12 @@
       })
   }
 
-    function popUpBob() {
+  function popUpBob() {
     if (bobIA.style.display === "none") {
-        bobIA.style.display = "flex";
+      bobIA.style.display = "flex";
     } else {
-        bobIA.style.display = "none";
+      bobIA.style.display = "none";
     }
-}
+  }
 
 </script>
