@@ -119,7 +119,7 @@ body {
   flex-wrap: wrap;
 
   /* padding: 15px; */
-  width: 70%;
+  width: 100%;
   height: 150px;
   color: #202020;
 }
@@ -243,10 +243,15 @@ grafico-media{
   gap: 15px;
 }
 
+#viewIndividual {
+  width: 100%;
+}
+
 .container-selects {
+  width: 100%;
   margin: 0.5% ; 
-  padding: 0.5%;
   display: flex;
+  flex-direction: row;
   gap: 1rem; 
   justify-content: center; 
   

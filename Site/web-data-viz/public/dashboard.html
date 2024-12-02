@@ -34,7 +34,7 @@
   </div>
 
   <div class="top_header_dash">
-    <h1>Empresa BandLight</h1>
+    <h1>Empresa <span id="nome_empresa">BandLight</span></h1>
 
     <div class="boxHeader">
       <img class="user_img" id="username" src="./assets/fotos/user_img.svg" alt="Imagem do Usuário" />
@@ -55,71 +55,66 @@
         <span class="text">Análise geral</span>
         <img class="svg grafico_c" src="./assets/fotos/chartColumn.svg" alt="" />
       </a>
-      <a id="button_sair" style="border-radius: 20px; width: 40%; text-align: center;" onclick="limparSessao()" class="botao">
+      <a id="button_sair" style="border-radius: 20px; width: 40%; text-align: center;" onclick="limparSessao()"
+        class="botao">
         <span style="border-radius: 20px; background-color: #FF8080; color: white;" class="text">Sair</span>
       </a>
     </div>
 
-    <div class="graficos individual">
+    <div id="viewIndividual">
       <div class="container-selects">
-        <select class="select-dash" name="" id="">
-          <option value="#" disabled selected>Selecionar </option>
-          <option value=""></option>
-          <option value=""></option>
-        </select>
         <div>
-          <select class="select-dash" name="" id="">
-            <option value="#" disabled selected>Selecionar </option>
-            <option value=""></option>
-            <option value=""></option>
+          <select class="select-dash" id="andar">
+            <option value="#" disabled selected>Selecionar o andar </option>
           </select>
         </div>
-
-        <select class="select-dash" name="" id="">
-          <option value="#" disabled selected>Selecionar </option>
-          <option value=""></option>
-          <option value=""></option>
-        </select>
+        <button class="botao" onclick="confirmarAmbiente()">confirmar</button>
+        <div style="display: none;" id="div_filtrar">
+          <input id="input_data" class="select-dash" type="date">
+          <button class="botao" onclick="addDados(idEndereco, andar.value, input_data.value)">confirmar</button>
+        </div>
       </div>
-      <div class="ambiente" style="display: flex">
-        <div class="chart-container">
-          <div class="headerChart titleChart">
-            Sala de Reunião - Ultimas 10 horas
+      <div class="graficos individual">
+        <div class="ambiente" style="display: flex">
+          <div class="chart-container">
+            <div id="titleChart" class="headerChart titleChart">
+              Sem dados
+            </div>
+            <canvas class="grafico-principal" id="chartIndividual"></canvas>
           </div>
-          <canvas class="grafico-principal" id="chartSalaReuniao"></canvas>
+
         </div>
 
-      </div>
+        <div class="ambiente" style="display: flex">
+          <div class="chart-container">
+            <div class="headerChart titleChart">Média por andar</div>
+            <canvas class="grafico-media" id="chartAndar"></canvas>
+          </div>
 
-      <div class="ambiente" style="display: flex">
-        <div class="chart-container">
-          <div class="headerChart titleChart">Média por andar</div>
-          <canvas class="grafico-media" id="chartEscritorio"></canvas>
-        </div>
-
-        <div class="kpis">
-          <div class="kpi">
-            <span>Maior índice de iluminação</span>
-            <h3>791 Lux</h3>
-          </div>
-          <div class="kpi">
-            <span>Menor índice de iluminação</span>
-            <h3>444 Lux</h3>
-          </div>
-          <div class="kpi">
-            <span>Média índice de iluminação</span>
-            <h3>598 Lux</h3>
-          </div>
-          <div class="kpi">
-            <span>Média índice de iluminação</span>
-            <h3>598 Lux</h3>
+          <div class="kpis">
+            <div class="kpi">
+              <span>Maior índice de iluminação</span>
+              <h3>791 Lux</h3>
+            </div>
+            <div class="kpi">
+              <span>Menor índice de iluminação</span>
+              <h3>444 Lux</h3>
+            </div>
+            <div class="kpi">
+              <span>Média índice de iluminação</span>
+              <h3>598 Lux</h3>
+            </div>
+            <div class="kpi">
+              <span>Média índice de iluminação</span>
+              <h3>598 Lux</h3>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="graficos geral">
-      <div class="container-selects">
+      <!-- <div style="display: none;" class="container-selects">
         <select class="select-dash" name="" id="">
           <option value="#" disabled selected>Selecionar </option>
           <option value=""></option>
@@ -138,7 +133,7 @@
           <option value=""></option>
           <option value=""></option>
         </select>
-      </div>
+      </div> -->
       <div class="ambiente">
         <div class="kpis">
           <div class="kpi">
@@ -224,17 +219,198 @@
 </body>
 
 </html>
+<script src="./javascript/chart.js"></script>
+<script src="./javascript/sessao.js"></script>
 <script>
+  var andarSelecionado = '';
+
+  var empresa = sessionStorage.EMPRESA_USUARIO;
+  var idEndereco = sessionStorage.ENDERECO_USUARIO;
+
+
   function chkSession() {
     if (sessionStorage.ID_USUARIO == undefined) {
       window.location = './index.html'
     }
   }
 
+  function getEndereco() {
+    var listaEndereco = [];
+    var msg = ''
+    fetch(`/dashboard/ver-endereco/${sessionStorage.ENDERECO_USUARIO}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO getEndereco()!")
+      // resposta.json(resposta).then((enderecos) => {
+      //   enderecos.forEach((endereco) => {
+      //     listaEndereco.push(endereco)
+      //   }
+      //   )
+      // }
+      resposta.json().then((enderecos) => {
+        listaEndereco = enderecos.lista_enderecos;
+        console.log(listaEndereco)
+
+        for (var cont = 0; cont < listaEndereco.length; cont++) {
+          msg += `<option value="${listaEndereco[cont].idSensor}"> ${listaEndereco[cont].ambiente}</option>`
+        }
+        console.log(msg)
+        document.getElementById('andar').innerHTML += msg;
+      });
+    }
+    )
+  }
+
+  const createChartIndividual = new Chart(chartIndividual, {
+    type: "line",
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: "Lux",
+          data: [],
+          borderWidth: 2,
+          borderColor: "rgba(160, 32, 240, 1)",
+          backgroundColor: "rgba(160, 32, 240, 0.2)",
+          tension: 0.3, // Suaviza a linha do gráfico
+        },
+        {
+          label: "Máximo",
+          data: [],
+          borderWidth: 1,
+          borderColor: "rgba(255, 99, 132, 1)",
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderDash: [10, 5], // Linha tracejada para diferenciar
+        },
+        {
+          label: "Mínimo",
+          data: [],
+          borderWidth: 1,
+          borderColor: "rgba(54, 162, 235, 1)",
+          backgroundColor: "rgba(54, 162, 235, 0.05)",
+          borderDash: [10, 5], // Linha tracejada para diferenciar
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          suggestedMax: 1000, // Ajusta a escala máxima
+        },
+      },
+      plugins: {
+        legend: {
+          position: "top", // Move a legenda para o topo
+        },
+      },
+    },
+  });
+
+  var ambiente = ''
+
+  function addDados(idEndereco, idSensor, data, validacao) {
+
+    var dataHoje = new Date().toISOString().slice(0, 10)
+
+    if (data == 'hoje') {
+      data = dataHoje
+    }
+
+    var listaMomento = [];
+    var listaLuminosidade = [];
+    var listaMax = [];
+    var listaMin = [];
+
+    fetch(`/dashboard/pegarIndividual/${idEndereco}/${idSensor}/${data}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO addDados()!")
+
+      resposta.json().then((dados) => {
+        console.log(dados)
+
+        if (dados.length == 0) {
+          alert(`Sem dados para este o dia de`)
+          titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `
+        createChartIndividual.data.datasets[0].data = [];  
+        createChartIndividual.data.datasets[1].data = [];  
+        createChartIndividual.data.datasets[2].data = [];  
+        createChartIndividual.data.labels = [];  
+        createChartIndividual.update();
+
+          return false;
+        }
+
+        for (var i = 0; i < dados.length; i++) {
+          var luminosidade = dados[i].luminosidade;
+          var momento = dados[i].momento;
+
+          var horario = momento.slice(11, 16)
+
+          listaLuminosidade.push(luminosidade)
+          listaMomento.push(horario)
+        }
+        console.log(listaMomento)
+        console.log(listaLuminosidade)
+
+        var lengthMaximo = listaMomento.length;
+
+        for (let i = 0; i < listaMomento.length; i++) {
+          listaMax.push(500);
+          listaMin.push(300);
+        }
+
+        titleChart.innerHTML = `${ambiente} | No dia ${data.slice(5)} `
+        createChartIndividual.data.datasets[0].data = listaLuminosidade;  // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[1].data = listaMax;  // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[2].data = listaMin;  // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.labels = listaMomento;  // Atualiza os rótulos (momentos) no gráfico
+
+        // Após atualizar os dados, é necessário chamar o método `update()` para refletir as mudanças no gráfico
+        createChartIndividual.update();  // Atualiza o gráfico para mostrar os novos dados
+        validou = true;
+        return true;
+      })
+    })
+  }
+
+  var validou = false;
+  
+  function confirmarAmbiente() {
+    if (document.getElementById('andar').value == '#') {
+      alert('Selecione um ambiente')
+      return
+    }
+
+
+    div_filtrar.style.display = 'block'
+    var optionSelecionada = andar.options[andar.selectedIndex];
+    var textoSelecionado = optionSelecionada.text;  
+
+    ambiente = textoSelecionado;
+
+    var idSensor = andar.value;
+
+    addDados(idEndereco, idSensor, 'hoje', validou);
+
+    // addDados()
+
+    // Mostrar na tela
+    showIndividual()
+  }
+
   document.body.onload = chkSession()
+  document.body.onload = getEndereco()
 
   textEMAIL.innerText = sessionStorage.EMAIL_USUARIO;
   textNOME.innerText = sessionStorage.NOME_USUARIO;
+  nome_empresa.innerText = sessionStorage.NOME_EMPRESA_USUARIO;
 </script>
-<script src="./javascript/chart.js"></script>
-<script src="./javascript/sessao.js"></script>
