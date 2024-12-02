@@ -2,6 +2,7 @@ function calcular() {
   // Captura dos valores de entrada
   var watts = select_watts.value;
 
+  
   if (watts == "another") {
     watts = Number(input_anotherW.value);
   }
@@ -9,7 +10,9 @@ function calcular() {
   var horas = Number(ipthrs.value);
   var luzes = Number(iptqtd.value);
   var preco = 0.72;
-
+  if(watts == "#" || horas == "" || luzes == ""){
+    alert("Preencha todos os campos para calcular")
+  } else{
   // Cálculo de consumo total de energia
   var consumokwh = (watts / 1000) * luzes * (horas * 30);
   var consumokwhano = (watts / 1000) * luzes * (horas * 365);
@@ -31,11 +34,15 @@ function calcular() {
     A economia anual estimada é de R$${Math.floor(economiafinanceira * 12)}.<br>`;
 }
 
+}
 function calcularProdutividade() {
   var qntFuncionario = Number(ipt_qnt_funcionario.value);
   var salario = Number(ipt_salario.value);
   var horasPorDia = Number(ipt_horas_por_dia.value);
 
+  if(qntFuncionario == 0 || salario == 0 || horasPorDia == 0){
+    alert("Preencha todos os campos para calcular")
+  } else{
   // Cálculo do valor atual por hora
   var valorPorHora = salario / 30 / horasPorDia;
 
@@ -55,7 +62,7 @@ function calcularProdutividade() {
 //     aumentoMinimo * qntFuncionario
 //   )} até R$${Math.floor(aumentoMaximo * qntFuncionario)} por hora.`;
 }
-
+}
 function checkOutro() {
   var select = document.getElementById("select_watts").value;
   var anotheript = document.getElementById("input_anotherW");
@@ -68,4 +75,11 @@ function checkOutro() {
     anotheript.disabled = true;
     anotheript.style.display = 'none';
   }
+}
+
+function login(){
+  window.location.replace("./login.html"); 
+}
+function cadastro(){
+  window.location.replace("./cadFuncionario.html"); 
 }

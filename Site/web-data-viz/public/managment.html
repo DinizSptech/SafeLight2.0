@@ -30,11 +30,11 @@
         <a href="./faq.html">FAQ</a>
       </div>
 
-      <div class="login">
-        <a href="./login.html">Login</a>
+      <div class="login" onclick="login()">
+        <a>Login</a>
       </div>
-      <div class="cadastro">
-        <a href="./cadFuncionario.html">Cadastro</a>
+      <div class="cadastro" onclick="cadastro()">
+        <a>Cadastro</a>
       </div>
     </div>
   </div>
@@ -141,6 +141,12 @@
 <script src="./javascript/chart.js"></script>
 <script src="./javascript/sessao.js"></script>
 <script>
+  function login(){
+  window.location.replace("./login.html"); 
+}
+function cadastro(){
+  window.location.replace("./cadFuncionario.html"); 
+}
   
   function chkSession() {
     if (sessionStorage.IS_ADMIN == undefined || sessionStorage.IS_ADMIN == false) {
