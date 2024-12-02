@@ -51,10 +51,10 @@
 
 
   <!-- POPUP BOB IA -->
-  <div style="display: none;" id="bobIA">
-    <h1>BobIA</h1>
+     <div style="display: none;" id="bobIA">
+       <h1>BobIA</h1>
 
-    <!-- função vai mostrar o popup se ele não estiver aberto, e vai fechar caso ele estiver aberto. 
+       <!-- função vai mostrar o popup se ele não estiver aberto, e vai fechar caso ele estiver aberto. 
        
       ainda não implementei as funções do bobIA nesse html, tem que implementar
 
@@ -117,11 +117,11 @@
             <label for="input" class="label">Código de Acesso da Empresa (6 Caracteres)</label>
             <div class="underline"></div>
           </div>
+          <button onclick="cadastrarEmpresa()">Cadastrar</button>
         </div>
 
         <div id="outputCadEmpresa"></div>
 
-        <button onclick="cadastrarEmpresa()">Cadastrar</button>
       </div>
     </div>
 
@@ -186,11 +186,13 @@ function cadastro(){
   }
 
   function popUpBob() {
-    if (bobIA.style.display === "none") {
-      bobIA.style.display = "flex";
-    } else {
-      bobIA.style.display = "none";
-    }
+
+      window.location.href = 'http://localhost:3000/index.html'
+    // if (bobIA.style.display === "none") {
+    //   bobIA.style.display = "flex";
+    // } else {
+    //   bobIA.style.display = "none";
+    // }
   }
 
 </script>

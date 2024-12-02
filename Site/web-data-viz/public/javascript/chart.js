@@ -39,6 +39,13 @@ function redirect(tipo) {
     var diferente2 = document.querySelector(".cadastrar");
     diferente1.style.display = "none";
     diferente2.style.display = "none";
+  } else if (tipo == "cadastro") {
+
+    var cadastrar = document.querySelector(".cadastrar");
+
+    cadastrar.style.display = "flex";
+
+    cadastrar.classList.add("show");
   } 
 }
 
