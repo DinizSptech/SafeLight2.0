@@ -19,16 +19,16 @@
 
     <div class="select" id="div_selects">
       <div class="palavras" id="div_palavras">
-        <a href="./home.html">Home</a>
+        <a href="./index.html">Home</a>
         <a href=" ./calculadora.html">Simule aqui</a>
         <a href="./faq.html">FAQ</a>
       </div>
 
-      <div class="login">
-        <a href="./login.html">Login</a>
+      <div class="login" onclick="login()">
+        <a>Login</a>
       </div>
-      <div class="cadastro">
-        <a href="./cadFuncionario.html">Cadastro</a>
+      <div class="cadastro" onclick="cadastro()">
+        <a>Cadastro</a>
       </div>
     </div>
   </div>
@@ -228,6 +228,12 @@
   var idEndereco = sessionStorage.ENDERECO_USUARIO;
 
 
+  function login(){
+  window.location.replace("./login.html"); 
+}
+function cadastro(){
+  window.location.replace("./cadFuncionario.html"); 
+}
   function chkSession() {
     if (sessionStorage.ID_USUARIO == undefined) {
       window.location = './index.html'
