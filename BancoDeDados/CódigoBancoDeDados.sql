@@ -4,7 +4,7 @@ USE Safelight;
 CREATE TABLE empresa(
 idEmpresa int primary key auto_increment,
 nome varchar(90),
-CNPJ char (14)
+CNPJ char(14) UNIQUE
 );
 
 INSERT INTO empresa(nome,CNPJ) VALUES
@@ -44,7 +44,7 @@ CREATE TABLE gerenciadores (
     idGerenciadores INT AUTO_INCREMENT PRIMARY KEY,
     fkEndereco INT,
     nome VARCHAR(45),
-    cpf CHAR(11),
+    cpf CHAR(11) UNIQUE,
     celular CHAR(11),
     email VARCHAR(255),
     senha VARCHAR(255),
@@ -106,8 +106,29 @@ fkSensor int,
 constraint pkSensorDados primary key (idDado, fkSensor),
 constraint fkSensorDados foreign key (fkSensor) references sensor(idSensor),
 luminosidade int,
-momento datetime
+momento datetime default CURRENT_TIMESTAMP()
 );
+
+
+INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
+(1, 350, '2024-12-01 01:15:00');
+-- DADOS DE TESTE
+INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
+(1, 450, '2024-12-03 08:00:00'),
+(1, 500, '2024-12-03 09:00:00'),
+(1, 550, '2024-12-03 10:00:00'),
+(1, 600, '2024-12-03 11:00:00'),
+(1, 620, '2024-12-03 12:00:00'),
+(1, 610, '2024-12-03 13:00:00'),
+(1, 580, '2024-12-03 14:00:00'),
+(1, 540, '2024-12-03 15:00:00'),
+(1, 500, '2024-12-03 16:00:00'),
+(1, 460, '2024-12-03 17:00:00'),
+(1, 420, '2024-12-03 18:00:00'),
+(1, 380, '2024-12-03 19:00:00'),
+(1, 350, '2024-12-03 20:00:00'),
+(1, 300, '2024-12-03 21:00:00'),
+(1, 250, '2024-12-03 22:00:00');
 
 INSERT INTO dados (fkSensor, luminosidade, momento) VALUES 
 (1, 850, '2024-10-21 08:00:00'),
