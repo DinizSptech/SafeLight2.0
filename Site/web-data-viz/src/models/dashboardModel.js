@@ -26,7 +26,8 @@ function obterDadosSensoresIndividual(idEndereco, idSensor, data) {
 	FROM dados as d 
 	JOIN sensor as s 
 	ON d.fkSensor = s.idSensor
-	WHERE s.fkEndereco = ${idEndereco} and s.idSensor = ${idSensor} and d.momento like '%${data}%';
+	WHERE s.fkEndereco = ${idEndereco} and s.idSensor = ${idSensor} and d.momento like '%${data}%'
+    ORDER BY momento asc;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

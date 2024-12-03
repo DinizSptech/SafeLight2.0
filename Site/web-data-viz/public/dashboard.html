@@ -55,6 +55,10 @@
         <span class="text">Análise geral</span>
         <img class="svg grafico_c" src="./assets/fotos/chartColumn.svg" alt="" />
       </a>
+      <a id="button_portal" href="https://safelight.zohodesk.com/portal/en/home" class="botao">
+        <span class="text">Help Desk</span>
+        <img class="svg grafico_c" src="./assets/fotos/helpdesk.svg" alt="" />
+      </a>
       <a id="button_sair" style="border-radius: 20px; width: 40%; text-align: center;" onclick="limparSessao()"
         class="botao">
         <span style="border-radius: 20px; background-color: #FF8080; color: white;" class="text">Sair</span>
@@ -68,10 +72,10 @@
             <option value="#" disabled selected>Selecionar o andar </option>
           </select>
         </div>
-        <button class="botao" onclick="confirmarAmbiente()">confirmar</button>
+        <button class="botao" onclick="confirmarAmbiente(idEndereco, andar.value, 'hoje')">Confirmar</button>
         <div style="display: none;" id="div_filtrar">
           <input id="input_data" class="select-dash" type="date">
-          <button class="botao" onclick="addDados(idEndereco, andar.value, input_data.value)">confirmar</button>
+          <button class="botao" onclick="confirmarAmbiente(idEndereco, andar.value, input_data.value)">Filtrar Data</button>
         </div>
       </div>
       <div class="graficos individual">
@@ -228,12 +232,12 @@
   var idEndereco = sessionStorage.ENDERECO_USUARIO;
 
 
-  function login(){
-  window.location.replace("./login.html"); 
-}
-function cadastro(){
-  window.location.replace("./cadFuncionario.html"); 
-}
+  function login() {
+    window.location.replace("./login.html");
+  }
+  function cadastro() {
+    window.location.replace("./cadFuncionario.html");
+  }
   function chkSession() {
     if (sessionStorage.ID_USUARIO == undefined) {
       window.location = './index.html'
@@ -321,7 +325,8 @@ function cadastro(){
 
   function addDados(idEndereco, idSensor, data, validacao) {
 
-    var dataHoje = new Date().toISOString().slice(0, 10)
+    var hoje = new Date();
+    var dataHoje = hoje.toISOString().split('T')[0];
 
     if (data == 'hoje') {
       data = dataHoje
@@ -344,13 +349,12 @@ function cadastro(){
         console.log(dados)
 
         if (dados.length == 0) {
-          alert(`Sem dados para este o dia de`)
           titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `
-        createChartIndividual.data.datasets[0].data = [];  
-        createChartIndividual.data.datasets[1].data = [];  
-        createChartIndividual.data.datasets[2].data = [];  
-        createChartIndividual.data.labels = [];  
-        createChartIndividual.update();
+          createChartIndividual.data.datasets[0].data = [];
+          createChartIndividual.data.datasets[1].data = [];
+          createChartIndividual.data.datasets[2].data = [];
+          createChartIndividual.data.labels = [];
+          createChartIndividual.update();
 
           return false;
         }
@@ -388,29 +392,113 @@ function cadastro(){
     })
   }
 
+  function updateDados(idEndereco, idSensor, data, validacao) {
+
+    var hoje = new Date();
+    var dataHoje = hoje.toISOString().split('T')[0];
+
+    if (data == 'hoje') {
+      data = dataHoje
+    }
+
+    var listaMomento = [];
+    var listaLuminosidade = [];
+    var listaMax = [];
+    var listaMin = [];
+
+    fetch(`/dashboard/pegarIndividual/${idEndereco}/${idSensor}/${data}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO addDados()!")
+
+      resposta.json().then((dadosNovos) => {
+        console.log(dadosNovos)
+
+        if (dadosNovos.length < 1) {
+          titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `
+          createChartIndividual.data.datasets[0].data = [];
+          createChartIndividual.data.datasets[1].data = [];
+          createChartIndividual.data.datasets[2].data = [];
+          createChartIndividual.data.labels = [];
+          createChartIndividual.update();
+          return
+        }
+
+        var dadosMomento = dadosNovos[createChartIndividual.data.labels.length - 1].momento.slice(11, 16);
+        console.log(dadosMomento)
+        console.log(createChartIndividual.data.labels[createChartIndividual.data.labels.length - 1])
+
+        if (dadosMomento == createChartIndividual.data.labels[createChartIndividual.data.labels.length - 1]) {
+          alert('Sem dados novos')
+          return
+        }
+        // alert('Tenho dados novos')
+
+        for (var i = 0; i < dadosNovos.length; i++) {
+          var luminosidade = dadosNovos[i].luminosidade;
+          var momento = dadosNovos[i].momento;
+
+          var horario = momento.slice(11, 16)
+
+          listaLuminosidade.push(luminosidade)
+          listaMomento.push(horario)
+        }
+        console.log(listaMomento)
+        console.log(listaLuminosidade)
+
+        var lengthMaximo = listaMomento.length;
+
+        for (let i = 0; i < listaMomento.length; i++) {
+          listaMax.push(500);
+          listaMin.push(300);
+        }
+
+        titleChart.innerHTML = `${ambiente} | No dia ${data.slice(5)} `
+        createChartIndividual.data.datasets[0].data = listaLuminosidade;  // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[1].data = listaMax;  // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[2].data = listaMin;  // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.labels = listaMomento;  // Atualiza os rótulos (momentos) no gráfico
+
+        // Após atualizar os dados, é necessário chamar o método `update()` para refletir as mudanças no gráfico
+        createChartIndividual.update();  // Atualiza o gráfico para mostrar os novos dados
+        validou = true;
+        return true;
+      })
+    })
+  }
+
   var validou = false;
-  
-  function confirmarAmbiente() {
+  var loop;
+
+  function confirmarAmbiente(endereco, sensor, data) {
     if (document.getElementById('andar').value == '#') {
       alert('Selecione um ambiente')
       return
     }
 
+    console.log('Acabando com o interval')
+    clearInterval(loop)
 
     div_filtrar.style.display = 'block'
     var optionSelecionada = andar.options[andar.selectedIndex];
-    var textoSelecionado = optionSelecionada.text;  
+    var textoSelecionado = optionSelecionada.text;
 
     ambiente = textoSelecionado;
 
-    var idSensor = andar.value;
+    // var idSensor = andar.value;
 
-    addDados(idEndereco, idSensor, 'hoje', validou);
-
-    // addDados()
+    addDados(endereco, sensor, 'hoje');
 
     // Mostrar na tela
     showIndividual()
+
+    loop = setInterval(() => {
+      console.log('Interval de Update')
+      updateDados(endereco, sensor, data);
+    }, 10000);
   }
 
   document.body.onload = chkSession()
