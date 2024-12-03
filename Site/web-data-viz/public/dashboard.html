@@ -355,8 +355,21 @@ function cadastro(){
           return false;
         }
 
-        for (var i = 0; i < dados.length; i++) {
-          var luminosidade = dados[i].luminosidade;
+          var media = 0
+          var cont = 0
+          var momento = dados[Math.ceil(avg / 2) * i]
+          for(var i2 = 1; i2 <= avg; i2++){
+            var valor = dados[((i - 1)* avg) + i2 - 1]?.luminosidade
+            console.log(dados[((i - 1)* avg) * i2 - 1]?.luminosidade)
+            if(valor !== undefined && valor !== null ){
+              media += valor
+              cont++
+            } else {
+              break
+            }
+          } 
+          media /= cont
+          var luminosidade = media
           var momento = dados[i].momento;
 
           var horario = momento.slice(11, 16)
