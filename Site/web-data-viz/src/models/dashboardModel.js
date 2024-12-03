@@ -39,11 +39,11 @@ function obterDadosKPI(idEndereco, data) {
     console.log("ACESSEI O MODEL - obterDadosSensoresAndar");
 
     var instrucaoSql = `
-    SELECT avg(luminosidade) as avg, max(luminosidade) as max, min(luminosidade) as min
+    SELECT truncate(avg(luminosidade),0) as avg, max(luminosidade) as max, min(luminosidade) as min
 	FROM dados as d 
 	JOIN sensor as s
 	ON d.fkSensor = s.idSensor WHERE s.fkEndereco = ${idEndereco}
-    AND momento like '${data}'
+    AND momento like '%${data}%';
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

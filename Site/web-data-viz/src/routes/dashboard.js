@@ -19,7 +19,7 @@ router.get("/pegarIndividual/:idEndereco/:idSensor/:data", function (req, res) {
     dashboardController.obterDadosSensoresIndividual(req, res);
 });
 
-router.get("/pegarKPI/:idEndereco/:data", function (req, res) {
+router.get("/pegarKPI/:idEndereco/:data/:idSensor", function (req, res) {
     dashboardController.obterDadosKPI(req, res);
 });
 

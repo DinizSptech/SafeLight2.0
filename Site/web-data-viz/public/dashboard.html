@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="./css/dashStyle.css" />
     <link rel="stylesheet" href="./css/default_style.css" />
-    <link rel="icon" href="./assets/fotos/light.svg" />
+    <link rel="icon" href="./assets/fotos/light" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>Dashboard - Safelight</title>
@@ -42,7 +42,6 @@
           src="./assets/fotos/user_img.svg"
           alt="Imagem do Usuário"
         />
-
         <p>
           Seja bem-vindo <span id="textNOME"></span> (<span
             id="textEMAIL"
@@ -107,7 +106,7 @@
           </div>
           <button
             class="botao"
-            onclick="confirmarAmbiente(idEndereco, andar.value, 'hoje')"
+            onclick="confirmarAmbiente(idEndereco, andar.value, 'hoje'), pegarKPI(andar.value,'hoje')"
           >
             Confirmar
           </button>
@@ -115,20 +114,20 @@
             <input id="input_data" class="select-dash" type="date" />
             <button
               class="botao"
-              onclick="confirmarAmbiente(idEndereco, andar.value, input_data.value), pegarKPI(input_data.value)"
+              onclick="confirmarAmbiente(idEndereco, andar.value, input_data.value), pegarKPI(idEndereco, input_data.value)"
             >
               Filtrar Data
             </button>
           </div>
         </div>
 
-        <div class="kpis">
-          <div class="kpi">
-            <span>Média índice de iluminação</span>
-            <h3 id="avgLux">598 Lux</h3>
-          </div>
-        </div>
         <div class="graficos individual">
+          <div class="kpis">
+            <div class="kpi">
+              <span>Média índice de iluminação</span>
+              <h3 id="avgLux">598 Lux</h3>
+            </div>
+          </div>
           <div class="ambiente" style="display: flex">
             <div class="chart-container">
               <div id="titleChart" class="headerChart titleChart">
@@ -138,13 +137,11 @@
             </div>
           </div>
 
-          <div class="ambiente" style="display: flex">
+          <div class="ambiente" style="display: none">
             <div class="chart-container">
               <div class="headerChart titleChart">Média por andar</div>
               <canvas class="grafico-media" id="chartAndar"></canvas>
             </div>
-
-
           </div>
         </div>
         <div id="alerta"></div>
@@ -181,6 +178,14 @@
             <div class="kpi">
               <div id="kpiInadequados">
                 <span>Ambientes com a iluminação adequada</span>
+              </div>
+            </div>
+            <div class="kpi">
+              <div id="kpiInfo">
+                <span
+                  >A iluminação ideal é que a média esteja entre 500 a 300
+                  Lux</span
+                >
               </div>
             </div>
           </div>
@@ -350,10 +355,9 @@
   var dataHoje = new Date().toISOString().slice(0, 10);
 
   function addDados(idEndereco, idSensor, data) {
-    var hoje = new Date();
-    var dataHoje = hoje.toISOString().split("T")[0];
-
     if (data == "hoje") {
+      var hoje = new Date();
+      var dataHoje = hoje.toISOString().split("T")[0];
       data = dataHoje;
     }
 
@@ -625,21 +629,37 @@
   //     },
   //   }).then(function (resposta) {
   //     console.log("ESTOU NO THEN DO pegarKPI()!")
-  function pegarKPI(data) {
-    fetch(`/pegarKPI/${sessionStorage.ENDERECO_USUARIO}/${data}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(function (resposta) {
+  function pegarKPI(idSensor, data) {
+    var hoje = new Date();
+    var dataHoje = hoje.toISOString().split("T")[0];
+    
+    if (data == "hoje") {
+      data = dataHoje;
+    }
+
+    fetch(
+      `/dashboard/pegarKPI/${sessionStorage.ENDERECO_USUARIO}/${data}/${idSensor}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(function (resposta) {
       resposta.json().then((json) => {
         console.log(json);
         console.log(JSON.stringify(json));
 
         console.log("Dados :", json.KPIS);
-        maxLux.innerHTML = json.KPIS[0].max;
-        minLux.innerHTML = json.KPIS[0].min;
-        avgLux.innerHTML = json.KPIS[0].avg;
-        ampLux.innerHTML = json.KPIS[0].max - json.KPIS[0].min;
+        console.log(json.KPIS);
+        var media = json.KPIS[0].avg
+        if(json.KPIS[0].avg < 300 || json.KPIS[0].avg > 500){
+          avgLux.innerHTML = `<span style="color: red;">${media}</span>`
+        }else{
+          avgLux.innerHTML = `<span style="color: green;">${media}</span>`
+        }
+        
+        // ampLux.innerHTML = json.KPIS[0].max - json.KPIS[0].min;
       });
     });
   }
