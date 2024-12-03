@@ -1,124 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/dashStyle.css" />
+    <link rel="stylesheet" href="./css/default_style.css" />
+    <link rel="icon" href="./assets/fotos/light.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <link rel="stylesheet" href="./css/dashStyle.css" />
-  <link rel="stylesheet" href="./css/default_style.css" />
-  <link rel="icon" href="./assets/fotos/light.svg" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard - Safelight</title>
+  </head>
 
-  <title>Dashboard - Safelight</title>
-</head>
+  <body>
+    <div class="header">
+      <img class="safelight" src="./assets/fotos/logo2.png" />
 
-<body>
-  <div class="header">
-    <img class="safelight" src="./assets/fotos/logo2.png" />
-
-    <div class="select" id="div_selects">
-      <div class="palavras" id="div_palavras">
-        <a href="./index.html">Home</a>
-        <a href=" ./calculadora.html">Simule aqui</a>
-        <a href="./faq.html">FAQ</a>
-      </div>
-
-      <div class="login" onclick="login()">
-        <a>Login</a>
-      </div>
-      <div class="cadastro" onclick="cadastro()">
-        <a>Cadastro</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="top_header_dash">
-    <h1>Empresa <span id="nome_empresa">BandLight</span></h1>
-
-    <div class="boxHeader">
-      <img class="user_img" id="username" src="./assets/fotos/user_img.svg" alt="Imagem do Usuário" />
-
-      <p>Seja bem-vindo <span id="textNOME"></span> (<span id="textEMAIL"></span>)!</p>
-    </div>
-  </div>
-
-  <div class="dashboard fade-in">
-    <div class="header_dash">
-      <div class="boxHeader"></div>
-
-      <a id="button_individual" onclick="redirect('individual')" class="botao">
-        <span class="text">Análise individual</span>
-        <img class="svg grafico_l" src="./assets/fotos/chartLine.svg" alt="" />
-      </a>
-      <a id="button_geral" onclick="redirect('geral')" class="botao">
-        <span class="text">Análise geral</span>
-        <img class="svg grafico_c" src="./assets/fotos/chartColumn.svg" alt="" />
-      </a>
-      <a id="button_portal" href="https://safelight.zohodesk.com/portal/en/home" class="botao">
-        <span class="text">Help Desk</span>
-        <img class="svg grafico_c" src="./assets/fotos/helpdesk.svg" alt="" />
-      </a>
-      <a id="button_sair" style="border-radius: 20px; width: 40%; text-align: center;" onclick="limparSessao()"
-        class="botao">
-        <span style="border-radius: 20px; background-color: #FF8080; color: white;" class="text">Sair</span>
-      </a>
-    </div>
-
-    <div id="viewIndividual">
-      <div class="container-selects">
-        <div>
-          <select class="select-dash" id="andar">
-            <option value="#" disabled selected>Selecionar o andar </option>
-          </select>
+      <div class="select" id="div_selects">
+        <div class="palavras" id="div_palavras">
+          <a href="./index.html">Home</a>
+          <a href=" ./calculadora.html">Simule aqui</a>
+          <a href="./faq.html">FAQ</a>
         </div>
-        <button class="botao" onclick="confirmarAmbiente(idEndereco, andar.value, 'hoje')">Confirmar</button>
-        <div style="display: none;" id="div_filtrar">
-          <input id="input_data" class="select-dash" type="date">
-          <button class="botao" onclick="confirmarAmbiente(idEndereco, andar.value, input_data.value), pegarKPI(input_data.value)">Filtrar Data</button>
+
+        <div class="login" onclick="login()">
+          <a>Login</a>
+        </div>
+        <div class="cadastro" onclick="cadastro()">
+          <a>Cadastro</a>
         </div>
       </div>
-      <div class="graficos individual">
-        <div class="ambiente" style="display: flex">
-          <div class="chart-container">
-            <div id="titleChart" class="headerChart titleChart">
-              Sem dados
+    </div>
+
+    <div class="top_header_dash">
+      <h1>Empresa <span id="nome_empresa">BandLight</span></h1>
+
+      <div class="boxHeader">
+        <img
+          class="user_img"
+          id="username"
+          src="./assets/fotos/user_img.svg"
+          alt="Imagem do Usuário"
+        />
+
+        <p>
+          Seja bem-vindo <span id="textNOME"></span> (<span
+            id="textEMAIL"
+          ></span
+          >)!
+        </p>
+      </div>
+    </div>
+
+    <div class="dashboard fade-in">
+      <div class="header_dash">
+        <div class="boxHeader"></div>
+
+        <a
+          id="button_individual"
+          onclick="redirect('individual')"
+          class="botao"
+        >
+          <span class="text">Análise individual</span>
+          <img
+            class="svg grafico_l"
+            src="./assets/fotos/chartLine.svg"
+            alt=""
+          />
+        </a>
+        <a id="button_geral" onclick="redirect('geral')" class="botao">
+          <span class="text">Análise geral</span>
+          <img
+            class="svg grafico_c"
+            src="./assets/fotos/chartColumn.svg"
+            alt=""
+          />
+        </a>
+        <a
+          id="button_portal"
+          href="https://safelight.zohodesk.com/portal/en/home"
+          class="botao"
+        >
+          <span class="text">Help Desk</span>
+          <img class="svg grafico_c" src="./assets/fotos/helpdesk.svg" alt="" />
+        </a>
+        <a
+          id="button_sair"
+          style="border-radius: 20px; width: 40%; text-align: center"
+          onclick="limparSessao()"
+          class="botao"
+        >
+          <span
+            style="border-radius: 20px; background-color: #ff8080; color: white"
+            class="text"
+            >Sair</span
+          >
+        </a>
+      </div>
+
+      <div id="viewIndividual">
+        <div class="container-selects">
+          <div>
+            <select class="select-dash" id="andar">
+              <option value="#" disabled selected>Selecionar o andar</option>
+            </select>
+          </div>
+          <button
+            class="botao"
+            onclick="confirmarAmbiente(idEndereco, andar.value, 'hoje')"
+          >
+            Confirmar
+          </button>
+          <div style="display: none" id="div_filtrar">
+            <input id="input_data" class="select-dash" type="date" />
+            <button
+              class="botao"
+              onclick="confirmarAmbiente(idEndereco, andar.value, input_data.value), pegarKPI(input_data.value)"
+            >
+              Filtrar Data
+            </button>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <span>Média índice de iluminação</span>
+            <h3 id="avgLux">598 Lux</h3>
+          </div>
+        </div>
+        <div class="graficos individual">
+          <div class="ambiente" style="display: flex">
+            <div class="chart-container">
+              <div id="titleChart" class="headerChart titleChart">
+                Sem dados
+              </div>
+              <canvas class="grafico-principal" id="chartIndividual"></canvas>
             </div>
-            <canvas class="grafico-principal" id="chartIndividual"></canvas>
           </div>
 
-        </div>
+          <div class="ambiente" style="display: flex">
+            <div class="chart-container">
+              <div class="headerChart titleChart">Média por andar</div>
+              <canvas class="grafico-media" id="chartAndar"></canvas>
+            </div>
 
-        <div class="ambiente" style="display: flex">
-          <div class="chart-container">
-            <div class="headerChart titleChart">Média por andar</div>
-            <canvas class="grafico-media" id="chartAndar"></canvas>
-          </div>
 
-          <div class="kpis">
-            <div class="kpi">
-              <span>Maior índice de iluminação</span>
-              <h3 id="maxLux" >791 Lux</h3>
-            </div>
-            <div class="kpi">
-              <span>Menor índice de iluminação</span>
-              <h3 id="minLux" >444 Lux</h3>
-            </div>
-            <div class="kpi">
-              <span>Média índice de iluminação</span>
-              <h3 id="avgLux" >598 Lux</h3>
-            </div>
-            <div class="kpi">
-              <span>Amplitude do índice de iluminação</span>
-              <h3 id="ampLux" >598 Lux</h3>
-            </div>
           </div>
         </div>
+        <div id="alerta"></div>
       </div>
-    </div>
 
-    <div class="graficos geral">
-      <!-- <div style="display: none;" class="container-selects">
+      <div class="graficos geral">
+        <!-- <div style="display: none;" class="container-selects">
         <select class="select-dash" name="" id="">
           <option value="#" disabled selected>Selecionar </option>
           <option value=""></option>
@@ -138,99 +171,92 @@
           <option value=""></option>
         </select>
       </div> -->
-      <div class="ambiente">
-        <div class="kpis">
-          <div class="kpi">
-            <div id="kpiAdequados">
-              <span>Ambientes com a iluminação adequada</span>
+        <div class="ambiente">
+          <div class="kpis">
+            <div class="kpi">
+              <div id="kpiAdequados">
+                <span>Ambientes com a iluminação adequada</span>
+              </div>
             </div>
-          </div>
-          <div class="kpi">
-            <div id="kpiInadequados">
-              <span>Ambientes com a iluminação adequada</span>
+            <div class="kpi">
+              <div id="kpiInadequados">
+                <span>Ambientes com a iluminação adequada</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="chart-container">
-        <div class="headerChart titleChart">Análise Geral</div>
-        <canvas class="boxCanvas" id="chartGeral"></canvas>
-        <!-- chartGeral -->
-      </div>
-
-    </div>
-
-
-
-    <div class="cadastrar">
-      <div class="modal">
-
-        <h1>Sessão de Cadastro</h1>
-
-        <div class="inputs">
-          <div class="input-container">
-            <input type="text" id="input_nome" required="" />
-            <label for="input" class="label">Nome do funcionário</label>
-            <div class="underline"></div>
-          </div>
-
-          <div class="input-container">
-            <input type="text" id="input_cpf" required="" />
-            <label for="input" class="label">CPF do funcionário</label>
-            <div class="underline"></div>
-          </div>
-
-          <div class="input-container">
-            <input type="text" id="input_telefone" required="" />
-            <label for="input" class="label">Numero de contato do funcionário</label>
-            <div class="underline"></div>
-          </div>
-
-          <div class="input-container">
-            <input type="text" id="input_email" required="" />
-            <label for="input" class="label">E-mail do funcionário</label>
-            <div class="underline"></div>
-          </div>
-
-          <div class="input-container">
-            <input type="text" id="input_senha" required="" />
-            <label for="input" class="label">Senha do funcionário</label>
-            <div class="underline"></div>
-          </div>
-
-          <div class="input-container">
-            <input type="text" id="input_cargo" required="" />
-            <label for="input" class="label">Cargo do funcionário</label>
-            <div class="underline"></div>
-          </div>
-
+        <div class="chart-container">
+          <div class="headerChart titleChart">Análise Geral</div>
+          <canvas class="boxCanvas" id="chartGeral"></canvas>
+          <!-- chartGeral -->
         </div>
+      </div>
 
-        <button>Cadastrar</button>
+      <div class="cadastrar">
+        <div class="modal">
+          <h1>Sessão de Cadastro</h1>
+
+          <div class="inputs">
+            <div class="input-container">
+              <input type="text" id="input_nome" required="" />
+              <label for="input" class="label">Nome do funcionário</label>
+              <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+              <input type="text" id="input_cpf" required="" />
+              <label for="input" class="label">CPF do funcionário</label>
+              <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+              <input type="text" id="input_telefone" required="" />
+              <label for="input" class="label"
+                >Numero de contato do funcionário</label
+              >
+              <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+              <input type="text" id="input_email" required="" />
+              <label for="input" class="label">E-mail do funcionário</label>
+              <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+              <input type="text" id="input_senha" required="" />
+              <label for="input" class="label">Senha do funcionário</label>
+              <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+              <input type="text" id="input_cargo" required="" />
+              <label for="input" class="label">Cargo do funcionário</label>
+              <div class="underline"></div>
+            </div>
+          </div>
+
+          <button>Cadastrar</button>
+        </div>
       </div>
     </div>
 
-
-  </div>
-
-  <footer>
-    <hr />
-    <div class="rodape">
-      <img class="safelight2" src="./assets/fotos/logo1.png" />
-      <p>© 2024 SafeLight. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-</body>
-
+    <footer>
+      <hr />
+      <div class="rodape">
+        <img class="safelight2" src="./assets/fotos/logo1.png" />
+        <p>© 2024 SafeLight. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
 </html>
 <script src="./javascript/chart.js"></script>
 <script src="./javascript/sessao.js"></script>
 <script>
-  var andarSelecionado = '';
+  var andarSelecionado = "";
 
   var empresa = sessionStorage.EMPRESA_USUARIO;
   var idEndereco = sessionStorage.ENDERECO_USUARIO;
-
 
   function login() {
     window.location.replace("./login.html");
@@ -240,20 +266,20 @@
   }
   function chkSession() {
     if (sessionStorage.ID_USUARIO == undefined) {
-      window.location = './index.html'
+      window.location = "./index.html";
     }
   }
 
   function getEndereco() {
     var listaEndereco = [];
-    var msg = ''
+    var msg = "";
     fetch(`/dashboard/ver-endereco/${sessionStorage.ENDERECO_USUARIO}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO getEndereco()!")
+      console.log("ESTOU NO THEN DO getEndereco()!");
       // resposta.json(resposta).then((enderecos) => {
       //   enderecos.forEach((endereco) => {
       //     listaEndereco.push(endereco)
@@ -262,16 +288,15 @@
       // }
       resposta.json().then((enderecos) => {
         listaEndereco = enderecos.lista_enderecos;
-        console.log(listaEndereco)
+        console.log(listaEndereco);
 
         for (var cont = 0; cont < listaEndereco.length; cont++) {
-          msg += `<option value="${listaEndereco[cont].idSensor}"> ${listaEndereco[cont].ambiente}</option>`
+          msg += `<option value="${listaEndereco[cont].idSensor}"> ${listaEndereco[cont].ambiente}</option>`;
         }
-        console.log(msg)
-        document.getElementById('andar').innerHTML += msg;
+        console.log(msg);
+        document.getElementById("andar").innerHTML += msg;
       });
-    }
-    )
+    });
   }
 
   const createChartIndividual = new Chart(chartIndividual, {
@@ -321,16 +346,15 @@
     },
   });
 
-  var ambiente = ''
-  var dataHoje = new Date().toISOString().slice(0, 10)
+  var ambiente = "";
+  var dataHoje = new Date().toISOString().slice(0, 10);
 
   function addDados(idEndereco, idSensor, data) {
-
     var hoje = new Date();
-    var dataHoje = hoje.toISOString().split('T')[0];
+    var dataHoje = hoje.toISOString().split("T")[0];
 
-    if (data == 'hoje') {
-      data = dataHoje
+    if (data == "hoje") {
+      data = dataHoje;
     }
 
     var listaMomento = [];
@@ -341,16 +365,16 @@
     fetch(`/dashboard/pegarIndividual/${idEndereco}/${idSensor}/${data}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO addDados()!")
+      // console.log("ESTOU NO THEN DO addDados()!")
 
       resposta.json().then((dados) => {
-        console.log('Dados :', dados)
+        // console.log('Dados :', dados)
 
         if (dados.length == 0) {
-          titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `
+          titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `;
           createChartIndividual.data.datasets[0].data = [];
           createChartIndividual.data.datasets[1].data = [];
           createChartIndividual.data.datasets[2].data = [];
@@ -359,7 +383,8 @@
 
           return false;
         }
-        var avg = Math.ceil(dados.length * 0.05)
+        /*         var avg = Math.ceil(dados.length * 0.05)
+
         for (var i = 1; i <= 20; i++) {
 
           var media = 0
@@ -367,24 +392,37 @@
           var momento = dados[Math.ceil(avg / 2) * i]
           for(var i2 = 1; i2 <= avg; i2++){
             var valor = dados[((i - 1)* avg) + i2 - 1]?.luminosidade
+
             console.log(dados[((i - 1)* avg) * i2 - 1]?.luminosidade)
+            
             if(valor !== undefined && valor !== null ){
               media += valor
               cont++
-            } else {
+            } 
+            else {
               break
             }
           } 
           media /= cont
           var luminosidade = media
-          var momento = dados[i].momento;
-          var horario = momento.slice(11, 16)
+          var momento = dados[i]?.momento;
+          var horario = momento?.slice(11, 16)
 
           listaLuminosidade.push(luminosidade)
           listaMomento.push(horario)
+        } */
+
+        // Método para exibir os dados sem serem agrupados (Melhor para a exibição em maiores intervalos)
+        for (let i = 0; i < dados.length; i++) {
+          var luminosidade = dados[i].luminosidade;
+          var horario = dados[i].momento;
+
+          listaLuminosidade.push(luminosidade);
+          listaMomento.push(horario);
         }
-        console.log('Lista momento:',listaMomento)
-        console.log('Lista luminosidade:',listaLuminosidade)
+
+        // console.log('Lista momento:',listaMomento)
+        // console.log('Lista luminosidade:',listaLuminosidade)
 
         var lengthMaximo = listaMomento.length;
 
@@ -393,27 +431,59 @@
           listaMin.push(300);
         }
 
-        titleChart.innerHTML = `${ambiente} | No dia ${data.slice(5)} `
-        createChartIndividual.data.datasets[0].data = listaLuminosidade;  // Atualiza os dados de luminosidade no dataset
-        createChartIndividual.data.datasets[1].data = listaMax;  // Atualiza os dados de luminosidade no dataset
-        createChartIndividual.data.datasets[2].data = listaMin;  // Atualiza os dados de luminosidade no dataset
-        createChartIndividual.data.labels = listaMomento;  // Atualiza os rótulos (momentos) no gráfico
+        titleChart.innerHTML = `${ambiente} | No dia ${data.slice(5)} `;
+        createChartIndividual.data.datasets[0].data = listaLuminosidade; // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[1].data = listaMax; // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[2].data = listaMin; // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.labels = listaMomento; // Atualiza os rótulos (momentos) no gráfico
 
         // Após atualizar os dados, é necessário chamar o método `update()` para refletir as mudanças no gráfico
-        createChartIndividual.update();  // Atualiza o gráfico para mostrar os novos dados
+        createChartIndividual.update(); // Atualiza o gráfico para mostrar os novos dados
         validou = true;
         return true;
-      })
-    })
+      });
+    });
   }
 
-  function updateDados(idEndereco, idSensor, data, validacao) {
+  function alertaDados(ambiente) {
+    var ultimosDados = createChartIndividual.data.datasets[0].data;
+    var dadosLength = createChartIndividual.data.datasets[0].data.length - 1;
+    var div_Alerta = document.getElementById("alerta");
 
+    var nivel = "";
+    var lux = 0;
+
+    ultimosDados = ultimosDados[dadosLength];
+
+    if (ultimosDados > 500) {
+      nivel = "alto";
+    } else if (ultimosDados < 300) {
+      nivel = "baixo";
+    } else {
+      div_Alerta.innerHTML = "";
+      return;
+    }
+
+    lux = ultimosDados;
+
+    div_Alerta.innerHTML = `
+      <div class="mensagem-alarme">
+          <div class="informacao">
+              <div>&#12644;</div> 
+              <h3>${ambiente} está com o indíce de iluminação ${nivel}!</h3>
+              <small>Iluminação capturada: ${lux} Lux.</small>   
+          </div>
+          <div class="alarme-sino"></div>
+      </div>
+    `;
+  }
+
+  function updateDados(idEndereco, idSensor, data) {
     var hoje = new Date();
-    var dataHoje = hoje.toISOString().split('T')[0];
+    var dataHoje = hoje.toISOString().split("T")[0];
 
-    if (data == 'hoje') {
-      data = dataHoje
+    if (data == "hoje") {
+      data = dataHoje;
     }
 
     var listaMomento = [];
@@ -424,42 +494,50 @@
     fetch(`/dashboard/pegarIndividual/${idEndereco}/${idSensor}/${data}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO addDados()!")
+      // console.log("ESTOU NO THEN DO addDados()!")
 
       resposta.json().then((dadosNovos) => {
-        console.log(dadosNovos)
+        // console.log(dadosNovos)
 
         if (dadosNovos.length < 1) {
-          titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `
+          titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `;
           createChartIndividual.data.datasets[0].data = [];
           createChartIndividual.data.datasets[1].data = [];
           createChartIndividual.data.datasets[2].data = [];
           createChartIndividual.data.labels = [];
           createChartIndividual.update();
-          return
+          return;
         }
 
-        var dadosMomento = dadosNovos[createChartIndividual.data.labels.length - 1].luminosidade
-        console.log('Dados momento: ',dadosMomento)
-        console.log(createChartIndividual.data.datasets[0].data[createChartIndividual.data.datasets[0].data.length - 1])
+        var ultimoDadoBanco = dadosNovos[dadosNovos.length - 1].luminosidade;
+        var ultimoDadoGrafico =
+          createChartIndividual.data.datasets[0].data[
+            createChartIndividual.data.datasets[0].data.length - 1
+          ];
 
-        if (dadosMomento == createChartIndividual.data.datasets[0].data[createChartIndividual.data.datasets[0].data.length - 1]) {
-          alert('Sem dados novos')
-          return
+        console.log(ultimoDadoBanco);
+        console.log(ultimoDadoGrafico);
+
+        if (dadosNovos.length < 0) {
+          return;
+        }
+
+        if (ultimoDadoBanco == ultimoDadoGrafico) {
+          return;
         }
         // alert('Tenho dados novos')
-        var avg = Math.ceil(dados.length * 0.05)
+        /* var avg = Math.ceil(dadosNovos.length * 0.05)
         for (var i = 1; i <= 20; i++) {
 
           var media = 0
           var cont = 0
-          var momento = dados[Math.ceil(avg / 2) * i]
+          var momento = dadosNovos[Math.ceil(avg / 2) * i]
           for(var i2 = 1; i2 <= avg; i2++){
-            var valor = dados[((i - 1)* avg) + i2 - 1]?.luminosidade
-            console.log(dados[((i - 1)* avg) * i2 - 1]?.luminosidade)
+            var valor = dadosNovos[((i - 1)* avg) + i2 - 1]?.luminosidade
+            console.log(dadosNovos[((i - 1)* avg) * i2 - 1]?.luminosidade)
             if(valor !== undefined && valor !== null ){
               media += valor
               cont++
@@ -469,14 +547,23 @@
           } 
           media /= cont
           var luminosidade = media
-          var momento = dados[i].momento;
+          var momento = dadosNovos[i].momento;
           var horario = momento.slice(11, 16)
 
           listaLuminosidade.push(luminosidade)
           listaMomento.push(horario)
+        } */
+
+        for (let i = 0; i < dadosNovos.length; i++) {
+          var luminosidade = dadosNovos[i].luminosidade;
+          var horario = dadosNovos[i].momento;
+
+          listaLuminosidade.push(luminosidade);
+          listaMomento.push(horario);
         }
-        console.log('Lista momento:',listaMomento)
-        console.log('Lista luminosidade:',listaLuminosidade)
+
+        console.log("Lista momento:", listaMomento);
+        console.log("Lista luminosidade:", listaLuminosidade);
 
         var lengthMaximo = listaMomento.length;
 
@@ -485,33 +572,32 @@
           listaMin.push(300);
         }
 
-        titleChart.innerHTML = `${ambiente} | No dia ${data.slice(5)} `
-        createChartIndividual.data.datasets[0].data = listaLuminosidade;  // Atualiza os dados de luminosidade no dataset
-        createChartIndividual.data.datasets[1].data = listaMax;  // Atualiza os dados de luminosidade no dataset
-        createChartIndividual.data.datasets[2].data = listaMin;  // Atualiza os dados de luminosidade no dataset
-        createChartIndividual.data.labels = listaMomento;  // Atualiza os rótulos (momentos) no gráfico
+        titleChart.innerHTML = `${ambiente} | No dia ${data.slice(5)} `;
+        createChartIndividual.data.datasets[0].data = listaLuminosidade; // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[1].data = listaMax; // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.datasets[2].data = listaMin; // Atualiza os dados de luminosidade no dataset
+        createChartIndividual.data.labels = listaMomento; // Atualiza os rótulos (momentos) no gráfico
 
         // Após atualizar os dados, é necessário chamar o método `update()` para refletir as mudanças no gráfico
-        createChartIndividual.update();  // Atualiza o gráfico para mostrar os novos dados
-        validou = true;
+        createChartIndividual.update(); // Atualiza o gráfico para mostrar os novos dados
         return true;
-      })
-    })
+      });
+    });
   }
 
   var validou = false;
   var loop;
 
   function confirmarAmbiente(endereco, sensor, data) {
-    if (document.getElementById('andar').value == '#') {
-      alert('Selecione um ambiente')
-      return
+    if (document.getElementById("andar").value == "#") {
+      alert("Selecione um ambiente");
+      return;
     }
 
-    console.log('Acabando com o interval')
-    clearInterval(loop)
+    console.log("Acabando com o interval");
+    clearInterval(loop);
 
-    div_filtrar.style.display = 'block'
+    div_filtrar.style.display = "block";
     var optionSelecionada = andar.options[andar.selectedIndex];
     var textoSelecionado = optionSelecionada.text;
 
@@ -522,11 +608,12 @@
     addDados(endereco, sensor, data);
 
     // Mostrar na tela
-    showIndividual()
+    showIndividual();
 
     loop = setInterval(() => {
-      console.log('Interval de Update')
+      console.log("Interval de Update");
       updateDados(endereco, sensor, data);
+      alertaDados(ambiente);
     }, 10000);
   }
 
@@ -537,32 +624,29 @@
   //       "Content-Type": "application/json"
   //     },
   //   }).then(function (resposta) {
-  //     console.log("ESTOU NO THEN DO pegarKPI()!") 
+  //     console.log("ESTOU NO THEN DO pegarKPI()!")
   function pegarKPI(data) {
     fetch(`/pegarKPI/${sessionStorage.ENDERECO_USUARIO}/${data}`, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-          }).then(function (resposta) {
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(function (resposta) {
+      resposta.json().then((json) => {
+        console.log(json);
+        console.log(JSON.stringify(json));
 
+        console.log("Dados :", json.KPIS);
+        maxLux.innerHTML = json.KPIS[0].max;
+        minLux.innerHTML = json.KPIS[0].min;
+        avgLux.innerHTML = json.KPIS[0].avg;
+        ampLux.innerHTML = json.KPIS[0].max - json.KPIS[0].min;
+      });
+    });
+  }
 
-        console.log('Dados :', json.KPIS)
-        maxLux.innerHTML = json.KPIS[0].max
-        minLux.innerHTML = json.KPIS[0].min
-        avgLux.innerHTML = json.KPIS[0].avg
-        ampLux.innerHTML = (json.KPIS[0].max - json.KPIS[0].min) 
-    })})
-      }
-    
-  
-
-
-  document.body.onload = chkSession()
-  document.body.onload = getEndereco()
-  document.body.onload = pegarKPI(dataHoje)
+  document.body.onload = chkSession();
+  document.body.onload = getEndereco();
+  document.body.onload = pegarKPI(dataHoje);
 
   textEMAIL.innerText = sessionStorage.EMAIL_USUARIO;
   textNOME.innerText = sessionStorage.NOME_USUARIO;

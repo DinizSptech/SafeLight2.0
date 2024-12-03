@@ -13,7 +13,7 @@ INSERT INTO empresa(nome,CNPJ) VALUES
 ('Safra','27570297000187'),
 ('Itau','84391627000100'),
 ('Bradesco','43614289000141'),
-('Google','43614289000141');
+('Google','43614289000142');
 
 CREATE TABLE endereco (
   idEndereco INT PRIMARY KEY AUTO_INCREMENT,
@@ -111,7 +111,7 @@ momento datetime default CURRENT_TIMESTAMP()
 
 
 INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
-(1, 350, '2024-12-01 01:15:00');
+(1, 100, '2024-12-01 13:00:00');
 -- DADOS DE TESTE
 INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
 (1, 450, '2024-12-03 08:00:00'),
@@ -259,6 +259,11 @@ JOIN dados ON idSensor = fkSensor
 WHERE fkEndereco = 6
 GROUP BY idSensor;
 
+select * from gerenciadores where idgerenciadores = 4;
+SELECT * from sensor join dados on dados.fksensor = sensor.idsensor where fkendereco = 4;
+
+select * from dados;
+
 SELECT * from gerenciadores JOIN endereco on fkEndereco = idEndereco JOIN empresa on fkEmpresa = idEmpresa;
 
 select * from dados JOIN sensor on fkSensor = idSensor JOIN endereco on fkEndereco = idEndereco JOIN empresa on fkEmpresa = idEmpresa;
@@ -274,3 +279,10 @@ select * from dados JOIN sensor on fkSensor = idSensor JOIN endereco on fkEndere
 	JOIN sensor as s
 	ON d.fkSensor = s.idSensor WHERE s.fkEndereco = '1'
     AND momento like '%2024-12-02%';
+    
+    SELECT idSensor, luminosidade, momento
+        FROM dados as d
+        JOIN sensor as s
+        ON d.fkSensor = s.idSensor
+        WHERE s.fkEndereco = 1 and s.idSensor = 1 and d.momento like '%2024-12-03%'
+    ORDER BY momento;

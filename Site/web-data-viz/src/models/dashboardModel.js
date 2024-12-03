@@ -22,12 +22,12 @@ function obterDadosSensoresIndividual(idEndereco, idSensor, data) {
     console.log("ACESSEI O MODEL - obterDadosSensoresIndividual");
 
     var instrucaoSql = `
-    SELECT idSensor, luminosidade, momento
+    SELECT idSensor, luminosidade, DATE_FORMAT(momento,'%H:%i') as momento
 	FROM dados as d 
 	JOIN sensor as s 
 	ON d.fkSensor = s.idSensor
 	WHERE s.fkEndereco = ${idEndereco} and s.idSensor = ${idSensor} and d.momento like '%${data}%'
-    ORDER BY momento desc;
+    ORDER BY momento asc;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
