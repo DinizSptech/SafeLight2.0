@@ -121,10 +121,10 @@ function plotarGraficoBarra(dados) {
 
   document.getElementById(
     "kpiAdequados"
-  ).textContent = `Ambientes Adequados: ${ambientesAdequados}`;
+  ).innerHTML = `Ambientes Adequados: <br><br>${ambientesAdequados}`;
   document.getElementById(
     "kpiInadequados"
-  ).textContent = `Ambientes Inadequados: ${ambientesInadequados}`;
+  ).innerHTML = `Ambientes Inadequados: <br><br>${ambientesInadequados}`;
 
   var ctx = document.getElementById("chartGeral").getContext("2d");
 

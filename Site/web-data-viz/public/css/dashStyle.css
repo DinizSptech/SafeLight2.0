@@ -237,6 +237,30 @@ grafico-media{
   }
 }
 
+.kpis_geral{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+#kpiAdequados,
+#kpiInadequados {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.kpi_geral{
+  background-color: #fff;
+  padding: 2%;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: auto;
+  width: 15%;
+}
+
 .kpis{
   display: flex; 
   flex-wrap: wrap; 
