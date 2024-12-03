@@ -27,7 +27,7 @@ function obterDadosSensoresIndividual(idEndereco, idSensor, data) {
 	JOIN sensor as s 
 	ON d.fkSensor = s.idSensor
 	WHERE s.fkEndereco = ${idEndereco} and s.idSensor = ${idSensor} and d.momento like '%${data}%'
-    ORDER BY momento asc;
+    ORDER BY momento desc;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -39,8 +39,7 @@ function obterDadosSensores(idGerente) {
 
     var instrucaoSql = `
         SELECT 
-            d.luminosidade, 
-            d.momento, 
+            AVG(d.luminosidade) as luminosidade,  
             s.local, 
             s.andar 
         FROM 
@@ -51,8 +50,9 @@ function obterDadosSensores(idGerente) {
             endereco as e ON s.fkEndereco = e.idEndereco
         JOIN 
             gerenciadores as g ON e.idEndereco = g.fkEndereco
-        WHERE 
-            g.idGerenciadores = ${idGerente};
+		WHERE g.idGerenciadores = ${idGerente}
+		GROUP BY 
+			s.local, s.andar;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

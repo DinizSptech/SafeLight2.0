@@ -427,11 +427,11 @@
           return
         }
 
-        var dadosMomento = dadosNovos[createChartIndividual.data.labels.length - 1].momento.slice(11, 16);
-        console.log(dadosMomento)
-        console.log(createChartIndividual.data.labels[createChartIndividual.data.labels.length - 1])
+        var dadosMomento = dadosNovos[createChartIndividual.data.labels.length - 1].luminosidade
+        console.log('Dados momento: ',dadosMomento)
+        console.log(createChartIndividual.data.datasets[0].data[createChartIndividual.data.datasets[0].data.length - 1])
 
-        if (dadosMomento == createChartIndividual.data.labels[createChartIndividual.data.labels.length - 1]) {
+        if (dadosMomento == createChartIndividual.data.datasets[0].data[createChartIndividual.data.datasets[0].data.length - 1]) {
           alert('Sem dados novos')
           return
         }
@@ -490,7 +490,7 @@
 
     // var idSensor = andar.value;
 
-    addDados(endereco, sensor, 'hoje');
+    addDados(endereco, sensor, data);
 
     // Mostrar na tela
     showIndividual()
