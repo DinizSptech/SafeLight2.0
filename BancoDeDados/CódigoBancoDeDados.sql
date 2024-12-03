@@ -127,7 +127,28 @@ INSERT INTO dados (fkSensor, luminosidade, momento) VALUES
 (15, 880, '2024-10-21 16:00:00'),
 (16, 610, '2024-10-21 16:15:00'),
 (17, 730, '2024-10-21 16:30:00'),
-(18, 820, '2024-10-21 16:45:00');
+(18, 820, '2024-10-21 16:45:00'),
+(12, 500, '2024-12-02 10:00:00'),
+(12, 450, '2024-12-02 10:05:00'),
+(12, 600, '2024-12-02 10:10:00'),
+(12, 550, '2024-12-02 10:15:00'),
+(12, 470, '2024-12-02 10:20:00'),
+(12, 520, '2024-12-02 10:25:00'),
+(12, 480, '2024-12-02 10:30:00'),
+(12, 560, '2024-12-02 10:35:00'),
+(12, 530, '2024-12-02 10:40:00'),
+(12, 490, '2024-12-02 10:45:00'),
+(12, 510, '2024-12-02 10:50:00'),
+(12, 540, '2024-12-02 10:55:00'),
+(12, 580, '2024-12-02 11:00:00'),
+(12, 570, '2024-12-02 11:05:00'),
+(12, 550, '2024-12-02 11:10:00'),
+(12, 620, '2024-12-02 11:15:00'),
+(12, 600, '2024-12-02 11:20:00'),
+(12, 630, '2024-12-02 11:25:00'),
+(12, 590, '2024-12-02 11:30:00'),
+(12, 560, '2024-12-02 11:35:00');
+
 
 
 #TOPICO A ABORDAR
@@ -206,4 +227,29 @@ ORDER by s.andar;
 
 Select * from sensor join endereco on sensor.fkEndereco = idEndereco;
 
+SELECT idSensor, max(luminosidade), min(luminosidade), avg(luminosidade) 
+FROM dados 
+LEFT JOIN sensor ON idSensor = fkSensor 
+GROUP BY idSensor;
 
+SELECT idSensor, concat(andar, ' - ', local) as ambiente,
+ andar, max(luminosidade) as max, min(luminosidade), avg(luminosidade) FROM sensor 
+JOIN dados ON idSensor = fkSensor 
+WHERE fkEndereco = 6
+GROUP BY idSensor;
+
+SELECT * from gerenciadores JOIN endereco on fkEndereco = idEndereco JOIN empresa on fkEmpresa = idEmpresa;
+
+select * from dados JOIN sensor on fkSensor = idSensor JOIN endereco on fkEndereco = idEndereco JOIN empresa on fkEmpresa = idEmpresa;
+
+    SELECT andar, avg(luminosidade)
+	FROM dados as d 
+	JOIN sensor as s
+	ON d.fkSensor = s.idSensor WHERE s.fkEndereco = 1
+    GROUP BY andar;
+    
+        SELECT avg(luminosidade) as avg, max(luminosidade) as max, min(luminosidade) as min
+	FROM dados as d 
+	JOIN sensor as s
+	ON d.fkSensor = s.idSensor WHERE s.fkEndereco = '1'
+    AND momento like '%2024-12-02%';

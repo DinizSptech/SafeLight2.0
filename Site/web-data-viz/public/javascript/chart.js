@@ -59,12 +59,12 @@ function showIndividual() {
 
   setTimeout(() => {
     elemento.classList.add("show");
-    individual.classList.add('agora')
+    // individual.classList.add('agora')
   }, 10);
   setTimeout(() => {
     diferente1.classList.remove("show");
     diferente2.classList.remove("show");
-    geral.classList.remove('agora');
+    // geral.classList.remove('agora');
     cadastro.classList.remove('agora');
   }, 10);
 
@@ -174,63 +174,63 @@ var idGerente = sessionStorage.ID_USUARIO;
           });
       }
 
-new Chart(chartAndar, {
-  type: "line",
-  data: {
-    labels: [
-      "8:00",
-      "9:00",
-      "10:00",
-      "11:00",
-      "12:00",
-      "13:00",
-      "14:00",
-      "15:00",
-      "16:00",
-      "17:00",
-      "18:00",
-    ],
-    datasets: [
-      {
-        label: "Lux",
-        data: [],
-        borderWidth: 2,
-        borderColor: "rgba(160, 32, 240, 1)",
-        backgroundColor: "rgba(160, 32, 240, 0.2)",
-        tension: 0.3, // Suaviza a linha do gráfico
-      },
-      {
-        label: "Máximo",
-        data: [600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600],
-        borderWidth: 1,
-        borderColor: "rgba(255, 99, 132, 1)",
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderDash: [10, 5], // Linha tracejada para diferenciar
-      },
-      {
-        label: "Mínimo",
-        data: [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500],
-        borderWidth: 1,
-        borderColor: "rgba(54, 162, 235, 1)",
-        backgroundColor: "rgba(54, 162, 235, 0.05)",
-        borderDash: [10, 5], // Linha tracejada para diferenciar
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true,
-        suggestedMax: 1000, // Ajusta a escala máxima
-      },
-    },
-    plugins: {
-      legend: {
-        position: "top", // Move a legenda para o topo
-      },
-    },
-  },
-});
+// new Chart(chartAndar, {
+//   type: "line",
+//   data: {
+//     labels: [
+//       "8:00",
+//       "9:00",
+//       "10:00",
+//       "11:00",
+//       "12:00",
+//       "13:00",
+//       "14:00",
+//       "15:00",
+//       "16:00",
+//       "17:00",
+//       "18:00",
+//     ],
+//     datasets: [
+//       {
+//         label: "Lux",
+//         data: [],
+//         borderWidth: 2,
+//         borderColor: "rgba(160, 32, 240, 1)",
+//         backgroundColor: "rgba(160, 32, 240, 0.2)",
+//         tension: 0.3, // Suaviza a linha do gráfico
+//       },
+//       {
+//         label: "Máximo",
+//         data: [600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600],
+//         borderWidth: 1,
+//         borderColor: "rgba(255, 99, 132, 1)",
+//         backgroundColor: "rgba(255, 99, 132, 0.2)",
+//         borderDash: [10, 5], // Linha tracejada para diferenciar
+//       },
+//       {
+//         label: "Mínimo",
+//         data: [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500],
+//         borderWidth: 1,
+//         borderColor: "rgba(54, 162, 235, 1)",
+//         backgroundColor: "rgba(54, 162, 235, 0.05)",
+//         borderDash: [10, 5], // Linha tracejada para diferenciar
+//       },
+//     ],
+//   },
+//   options: {
+//     responsive: true,
+//     scales: {
+//       y: {
+//         beginAtZero: true,
+//         suggestedMax: 1000, // Ajusta a escala máxima
+//       },
+//     },
+//     plugins: {
+//       legend: {
+//         position: "top", // Move a legenda para o topo
+//       },
+//     },
+//   },
+// });
 
-          graficoindividual.data.datasets = [423, 573, 444, 662, 433, 691, 592, 489, 350, 637, 435]
+          // graficoindividual.data.datasets = [423, 573, 444, 662, 433, 691, 592, 489, 350, 637, 435]

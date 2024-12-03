@@ -19,7 +19,7 @@ function ver_endereco(endereco) {
 // }
 
 function obterDadosSensoresIndividual(idEndereco, idSensor, data) {
-    console.log("ACESSEI O MODEL - obterDadosSensores");
+    console.log("ACESSEI O MODEL - obterDadosSensoresIndividual");
 
     var instrucaoSql = `
     SELECT idSensor, luminosidade, momento
@@ -33,13 +33,28 @@ function obterDadosSensoresIndividual(idEndereco, idSensor, data) {
     return database.executar(instrucaoSql);
 }
 
+
+function obterDadosKPI(idEndereco, data) {
+    console.log("ACESSEI O MODEL - obterDadosSensoresAndar");
+
+    var instrucaoSql = `
+    SELECT avg(luminosidade) as avg, max(luminosidade) as max, min(luminosidade) as min
+	FROM dados as d 
+	JOIN sensor as s
+	ON d.fkSensor = s.idSensor WHERE s.fkEndereco = ${idEndereco}
+    AND momento like '${data}'
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function obterDadosSensores(idGerente) {
     console.log("ACESSEI O MODEL - obterDadosSensores");
 
     var instrucaoSql = `
-        SELECT 
-            d.luminosidade, 
-            d.momento, 
+      SELECT  
+			avg(d.luminosidade) as luminosidade,
             s.local, 
             s.andar 
         FROM 
@@ -51,7 +66,8 @@ function obterDadosSensores(idGerente) {
         JOIN 
             gerenciadores as g ON e.idEndereco = g.fkEndereco
         WHERE 
-            g.idGerenciadores = ${idGerente};
+            g.idGerenciadores = ${idGerente}
+        GROUP BY s.local, s.andar;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -59,6 +75,7 @@ function obterDadosSensores(idGerente) {
 }
 module.exports = {
     ver_endereco,
+    obterDadosKPI,
     // buscar_endereco,
     obterDadosSensores,
     obterDadosSensoresIndividual

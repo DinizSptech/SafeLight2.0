@@ -30,10 +30,29 @@ function verEndereco(req, res) {
                 res.json(resultado);
             })
             .catch(function (erro) {
-                console.log("\nHouve um erro ao buscar os dados dos sensores! Erro: ", erro.sqlMessage);
+                console.log("\nHouve um erro ao buscar os dados dos sensores individuais! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
-            });
+            })
     }
+
+    function obterDadosKPI(req, res) {
+        var endereco = req.params.idEndereco;
+        var data = req.params.data;
+
+        console.log('obterDadosKPI - Endereço:', endereco, ' Data: ', data);
+    
+        dashboardModel.obterDadosKPI(endereco, data)
+            .then(function (resultado) {
+                res.json({
+                    KPIS: resultado
+                });
+            })
+            .catch(function (erro) {
+                console.log("\nHouve um erro ao buscar os dados dos sensores por andar! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            })
+    }
+
     // function buscarEndereco(req, res) {
     //     console.log('buscarEndereco')
     //           dashboardModel.buscar_endereco()
@@ -67,6 +86,7 @@ function verEndereco(req, res) {
 
 module.exports = {
     verEndereco,
+    obterDadosKPI,
     // buscarEndereco,
     obterDadosSensores,
     obterDadosSensoresIndividual

@@ -68,10 +68,10 @@
             <option value="#" disabled selected>Selecionar o andar </option>
           </select>
         </div>
-        <button class="botao" onclick="confirmarAmbiente()">confirmar</button>
+        <button class="botao" onclick="confirmarAmbiente()">Confirmar endereço</button>
         <div style="display: none;" id="div_filtrar">
           <input id="input_data" class="select-dash" type="date">
-          <button class="botao" onclick="addDados(idEndereco, andar.value, input_data.value)">confirmar</button>
+          <button class="botao" style="height: 100%;" onclick="addDados(idEndereco, andar.value, input_data.value), pegarKPI(input_data.value)">Confirmar data</button>
         </div>
       </div>
       <div class="graficos individual">
@@ -94,19 +94,19 @@
           <div class="kpis">
             <div class="kpi">
               <span>Maior índice de iluminação</span>
-              <h3>791 Lux</h3>
+              <h3 id="maxLux" >791 Lux</h3>
             </div>
             <div class="kpi">
               <span>Menor índice de iluminação</span>
-              <h3>444 Lux</h3>
+              <h3 id="minLux" >444 Lux</h3>
             </div>
             <div class="kpi">
               <span>Média índice de iluminação</span>
-              <h3>598 Lux</h3>
+              <h3 id="avgLux" >598 Lux</h3>
             </div>
             <div class="kpi">
-              <span>Média índice de iluminação</span>
-              <h3>598 Lux</h3>
+              <span>Amplitude do índice de iluminação</span>
+              <h3 id="ampLux" >598 Lux</h3>
             </div>
           </div>
         </div>
@@ -318,10 +318,10 @@ function cadastro(){
   });
 
   var ambiente = ''
+  var dataHoje = new Date().toISOString().slice(0, 10)
 
-  function addDados(idEndereco, idSensor, data, validacao) {
+  function addDados(idEndereco, idSensor, data) {
 
-    var dataHoje = new Date().toISOString().slice(0, 10)
 
     if (data == 'hoje') {
       data = dataHoje
@@ -341,17 +341,16 @@ function cadastro(){
       console.log("ESTOU NO THEN DO addDados()!")
 
       resposta.json().then((dados) => {
-        console.log(dados)
+        console.log('Dados :', dados)
 
         if (dados.length == 0) {
-          alert(`Sem dados para este o dia de`)
+          alert(`Sem dados para este dia`)
           titleChart.innerHTML = `Sem dados no dia ${data.slice(5)} `
         createChartIndividual.data.datasets[0].data = [];  
         createChartIndividual.data.datasets[1].data = [];  
         createChartIndividual.data.datasets[2].data = [];  
         createChartIndividual.data.labels = [];  
         createChartIndividual.update();
-
           return false;
         }
         var avg = Math.ceil(dados.length * 0.05)
@@ -373,7 +372,6 @@ function cadastro(){
           media /= cont
           var luminosidade = media
           var momento = dados[i].momento;
-
           var horario = momento.slice(11, 16)
 
           listaLuminosidade.push(luminosidade)
@@ -403,6 +401,8 @@ function cadastro(){
     })
   }
 
+  
+
   var validou = false;
   
   function confirmarAmbiente() {
@@ -428,8 +428,39 @@ function cadastro(){
     showIndividual()
   }
 
+  // function pegarKPI(data){
+  //   fetch(`/pegarKPI/${sessionStorage.ENDERECO_USUARIO}/${data}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //   }).then(function (resposta) {
+  //     console.log("ESTOU NO THEN DO pegarKPI()!") 
+  function pegarKPI(data) {
+    fetch(`/pegarKPI/${sessionStorage.ENDERECO_USUARIO}/${data}`, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+          }).then(function (resposta) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+
+        console.log('Dados :', json.KPIS)
+        maxLux.innerHTML = json.KPIS[0].max
+        minLux.innerHTML = json.KPIS[0].min
+        avgLux.innerHTML = json.KPIS[0].avg
+        ampLux.innerHTML = (json.KPIS[0].max - json.KPIS[0].min) 
+    })})
+      }
+    
+  
+
+
   document.body.onload = chkSession()
   document.body.onload = getEndereco()
+  document.body.onload = pegarKPI(dataHoje)
 
   textEMAIL.innerText = sessionStorage.EMAIL_USUARIO;
   textNOME.innerText = sessionStorage.NOME_USUARIO;
