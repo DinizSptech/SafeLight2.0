@@ -354,6 +354,8 @@ function cadastro(){
 
           return false;
         }
+        var avg = Math.ceil(dados.length * 0.05)
+        for (var i = 1; i <= 20; i++) {
 
           var media = 0
           var cont = 0
@@ -377,12 +379,12 @@ function cadastro(){
           listaLuminosidade.push(luminosidade)
           listaMomento.push(horario)
         }
-        console.log(listaMomento)
-        console.log(listaLuminosidade)
+        console.log('Lista momento:',listaMomento)
+        console.log('Lista luminosidade:',listaLuminosidade)
 
         var lengthMaximo = listaMomento.length;
 
-        for (let i = 0; i < listaMomento.length; i++) {
+        for (let i = 1; i <= 20; i++) {
           listaMax.push(500);
           listaMin.push(300);
         }
