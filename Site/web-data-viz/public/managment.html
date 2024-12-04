@@ -85,13 +85,16 @@
           <span class="text">Análise geral</span>
           <img class="svg grafico_c" src="./assets/fotos/chartColumn.svg" alt="" />
         </a> -->
-      <a id="button_cadastro" onclick="redirect('cadastro')" class="botao">
-        <span class="text">Cadastro de empresas</span>
+        <!-- onclick="redirect('cadastro')" -->
+      <a id="button_cadastro" href="https://desk.zoho.com/agent/safelight/"  class="botao">
+        <span class="text">Ferramenta de Suporte</span>
         <img class="svg funcionario" src="./assets/fotos/employees.svg" alt="" />
       </a>
-      <a id="button_sair" style="border-radius: 20px; width: 40%; text-align: center;" onclick="limparSessao()" class="botao">
-        <span style="border-radius: 20px; background-color: #FF8080; color: white;" class="text">Sair</span>
-      </a>
+      <center>
+        <div class="cadastro" onclick="limparSessao()" style="background-color: #FF8080; color: white; border-radius: 20px; width: 40%; height: 40px;">
+          <a style="width: 100%; justify-content: center;">Sair</a>
+        </div>
+      </center>
     </div>
 
     <div class="cadastrar">
@@ -187,7 +190,7 @@ function cadastro(){
 
   function popUpBob() {
 
-      window.location.href = 'http://localhost:3000/index.html'
+      window.location.href = 'https://10.18.34.131:3000/index.html'
     // if (bobIA.style.display === "none") {
     //   bobIA.style.display = "flex";
     // } else {
