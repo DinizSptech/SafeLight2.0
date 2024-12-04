@@ -54,21 +54,14 @@ function obterDadosSensores(idGerente) {
     console.log("ACESSEI O MODEL - obterDadosSensores");
 
     var instrucaoSql = `
-        SELECT 
-            AVG(d.luminosidade) as luminosidade,  
-            s.local, 
-            s.andar 
-        FROM 
-            dados as d
-        JOIN 
-            sensor as s ON d.fkSensor = s.idSensor
-        JOIN 
-            endereco as e ON s.fkEndereco = e.idEndereco
-        JOIN 
-            gerenciadores as g ON e.idEndereco = g.fkEndereco
-		WHERE g.idGerenciadores = ${idGerente}
-		GROUP BY 
-			s.local, s.andar;
+    SELECT 
+        luminosidade, 
+        local, 
+        andar
+    FROM 
+        vw_geral
+    WHERE 
+        idGerenciadores = ${idGerente};
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
